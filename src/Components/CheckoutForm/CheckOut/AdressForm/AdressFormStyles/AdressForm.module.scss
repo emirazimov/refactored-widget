@@ -1,0 +1,93 @@
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
+@use "../../../../../../../../global" as *;
+.flightNumberInput {
+  @include airlines_icon;
+
+  @include main-inputs-size-and-background-styles-etc;
+}
+.airLinesInput {
+  @include ticket_icon;
+  @include main-inputs-size-and-background-styles-etc;
+}
+.dateTimeBlockContainer {
+  // width: 100%;
+  // display: flex;
+  // flex-direction: row;
+  @include globals_styles;
+  // @import "https://bookinglane-widgets.s3.us-east-2.amazonaws.com/just-for-test/_global.scss/globals_styles";
+}
+.datePicker {
+  width: 50%;
+}
+.datePickerSelf {
+  //   height: 100px;
+  //   width: 100%;
+  //   height: 37px;
+  //   padding-left: 37px;
+
+  //   background-position-x: 2%;
+  //   background-color: white;
+  //   border: none;
+
+  width: 100%;
+}
+.datePickerSelfRoot {
+  //   @include date_picker_icon;
+  //   width: 100%;
+  //   height: 37px;
+  //   padding-left: 37px;
+  //   color: black;
+  //   background-position-x: 2%;
+  //   background-color: white;
+  //   border: none;
+  //   width: 100%;
+  //   height: 37px;
+  width: 100%;
+  height: 37px;
+  padding-left: 37px;
+  color: black;
+  @include date_picker_icon;
+  background-position-x: 2%;
+  background-color: white;
+  border: none;
+}
+
+.datePickerSelfInput {
+}
+
+.timePicker {
+  width: 50%;
+}
+.timePickerContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.timePickerInput {
+  @include clock_icon;
+  @include main-inputs-size-and-background-styles-etc;
+}
+
+.toggleButtonsContainer {
+  display: flex;
+  flex-direction: row;
+
+  position: absolute;
+  top: 20%;
+  right: 5px;
+  background-color: red;
+  border-radius: 3px;
+}
+.toggleButtonAM {
+  width: 32px;
+  height: 23px;
+}
+.toggleButtonAM {
+  width: 32px;
+  height: 23px;
+}
+// . {
+// }
+// date_picker_icon
+// time_picker_icon
