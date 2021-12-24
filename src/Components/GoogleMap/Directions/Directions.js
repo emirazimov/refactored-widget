@@ -1,9 +1,11 @@
 import { useMediaQuery } from "@material-ui/core"
 import Grid from "@material-ui/core/Grid"
 import { makeStyles } from "@material-ui/core/styles"
+// import { styles } from "@material-ui/pickers/views/Calendar/Calendar"
 import { GoogleApiWrapper, Map } from "google-maps-react"
 import React from "react"
-import MapStyles from "./mapStyles"
+import MapStyles from "../mapStyles"
+import styles from "./Directions.module.scss"
 
 const useStyles = makeStyles((theme) => ({
   mapContainer: {
@@ -69,12 +71,17 @@ const Directions = ({ destinations, setDistance, ...props }) => {
 
   return (
     <>
-      <Grid container direction="column">
-        <Grid
-          item
-          className={
-            !isMobile ? classes.mapContainer : classes.mapContainerForMobile
-          }
+      <div
+        // container
+        // direction="column"
+        className={styles.directionsWrapper}
+      >
+        <div
+          // item
+          // className={
+          //   !isMobile ? classes.mapContainer : classes.mapContainerForMobile
+          // }
+          className={styles.directionsContainer}
         >
           <Map
             google={props.google}
@@ -83,8 +90,8 @@ const Directions = ({ destinations, setDistance, ...props }) => {
             className={"map"}
             onReady={handleMapReady}
           ></Map>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </>
   )
 }

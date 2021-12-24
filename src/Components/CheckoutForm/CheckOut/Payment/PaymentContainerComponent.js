@@ -169,6 +169,14 @@ const PaymentContainerComponent = ({
     console.log(type)
   }
 
+  const extractStateId = (name) => {
+    const res = states.find((element, index, array) => {
+      return element.name == name
+    })
+    res ? setStatesId(res.id) : setStatesId(null)
+    console.log(res)
+  }
+
   return (
     <PaymentUIComponent
       next={next}
@@ -210,6 +218,7 @@ const PaymentContainerComponent = ({
       setCreditCardNum={setCreditCardNum}
       handleNum={handleNum}
       handleType={handleType}
+      extractStateId={extractStateId}
     />
   )
 }

@@ -15,7 +15,7 @@ import Typography from "@material-ui/core/Typography"
 import Autocomplete from "@material-ui/lab/Autocomplete"
 import Button from "@material-ui/core/Button"
 import Checkbox from "@material-ui/core/Checkbox"
-import Switch from "@material-ui/core/Switch"
+// import Switch from "@material-ui/core/Switch"
 import { Link } from "@material-ui/core"
 import { placesApi } from "../../../../api/api"
 import TextField from "@material-ui/core/TextField"
@@ -32,6 +32,9 @@ import Cleave from "cleave.js/react"
 import "./PaymentStyles.css"
 import { AntSwitch } from "../AdressForm/AdressFormStyles"
 import { useStyles } from "./PaymentStyles"
+// import { styles } from "@material-ui/pickers/views/Calendar/Calendar"
+import styles from "./Payment.module.scss"
+import { Switch } from "../../../Helpers/Switch/Switch"
 
 const SignupSchema = yup.object().shape({
   // greetClientInfo: yup.object().shape({
@@ -96,6 +99,7 @@ const PaymentUIComponent = ({
   setCreditCardNum,
   handleNum,
   handleType,
+  extractStateId,
 }) => {
   const classes = useStyles()
 
@@ -107,311 +111,457 @@ const PaymentUIComponent = ({
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container justify="center" className={classes.contentContainer}>
-          <Grid container direction="column" spacing={2}>
-            <Grid item>
-              <Typography
-                variant="body2"
-                style={{
-                  fontFamily: "Roboto",
-                  fontWeight: 500,
-                  // color: "white",
-                  fontSize: "22px",
-                  lineHeight: "36px",
-                }}
-                className={classes.paymentTexts}
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>
+        <div
+          // container
+          // justify="center"
+          // className={classes.contentContainer}
+          className={styles.paymentWrapper}
+        >
+          <div
+            // container
+            // direction="column"
+            // spacing={2}
+            className={styles.paymentContainer}
+          >
+            <div
+              // item
+              className={styles.paymentTitleContainer}
+            >
+              <span
+                // variant="body2"
+                // style={{
+                //   fontFamily: "Roboto",
+                //   fontWeight: 500,
+                //   // color: "white",
+                //   fontSize: "22px",
+                //   lineHeight: "36px",
+                // }}
+                // className={classes.paymentTexts}
+                className={styles.paymentTitleSelf}
               >
                 Payment
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Grid
-                container
-                direction="row"
-                justify="space-between"
-                alignItems="center"
+              </span>
+            </div>
+            <div
+              // item
+              className={styles.isPassengerCardholderContainer}
+            >
+              {/* <div
+                // container
+                // direction="row"
+                // justify="space-between"
+                // alignItems="center"
+                className={styles.isPassengerCardholderContainer}
+              > */}
+              <div
+                // item
+                className={styles.isPassengerCardholderTitleContainer}
               >
-                <Grid item>
-                  <Typography
-                    // variant="body1"
-                    style={{
-                      //   marginTop: "7px",
-                      color: riderDetails ? "white" : "#757575",
-                      fontSize: "15px",
-                    }}
-                    className={classes.paymentTexts}
-                    // style={{}}
-                  >
-                    Is passenger a cardholder?
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <AntSwitch
+                <span
+                  // variant="body1"
+                  // style={{
+                  //   //   marginTop: "7px",
+                  //   color: riderDetails ? "white" : "#757575",
+                  //   fontSize: "15px",
+                  // }}
+                  // className={classes.paymentTexts}
+                  className={
+                    riderDetails
+                      ? styles.isPassengerCardholderTitleWhiteSelf
+                      : styles.isPassengerCardholderTitleGreySelf
+                  }
+                  // style={{}}
+                >
+                  Is passenger a cardholder?
+                </span>
+              </div>
+              <div
+                // item
+                className={styles.isPassengerCardholderSwitchContainer}
+              >
+                {/* <AntSwitch
+                  // checked={riderDetails}
+                  // onClick={() => setRiderDetails(!riderDetails)}
+                  color="primary"
+                /> */}
+
+                {/* <div className={styles.switchContainer}>
+                  <input
+                    type="checkbox"
+                    name="switch"
+                    className={styles.switchSelf}
+                    id="switch"
                     checked={riderDetails}
                     onClick={() => setRiderDetails(!riderDetails)}
-                    color="primary"
                   />
-                </Grid>
-              </Grid>
-            </Grid>
+                  <label for="switch"></label>
+                </div> */}
+
+                <Switch
+                  checked={riderDetails}
+                  onClick={() => setRiderDetails(!riderDetails)}
+                  numberToIdentify={4}
+                />
+              </div>
+              {/* </div> */}
+            </div>
             {!riderDetails && (
-              <Grid item style={{ paddingBottom: "20px" }}>
-                <Grid item style={{ paddingBottom: "13px" }}>
-                  <Typography
-                    style={{ fontSize: "15px" }}
-                    className={classes.paymentTexts}
+              <div
+                // item
+                // style={{ paddingBottom: "20px" }}
+                className={styles.passengerDetailWrapper}
+              >
+                <div
+                  // item
+                  // style={{ paddingBottom: "13px" }}
+                  className={styles.passengerDetailTitleContainer}
+                >
+                  <span
+                    // style={{ fontSize: "15px" }}
+                    // className={classes.paymentTexts}
+                    className={styles.passengerDetailTitleSelf}
                   >
                     Passenger Detail
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Grid
+                  </span>
+                </div>
+                <div
+                  // item
+                  className={styles.cardholderInformationInputsWrapper}
+                >
+                  {/* <Grid
                     container
                     direction="row"
                     justify="space-between"
                     spacing={2}
                     style={{ marginBottom: "8px" }}
+                  > */}
+                  <div
+                    // item
+                    // xs={6}
+                    className={
+                      styles.cardholderInformationInputSelfContainerJustForFirstAndLastName
+                    }
                   >
-                    <Grid item xs={6}>
-                      <CustomFormInputForPayment
-                        variant="standard"
-                        name="greetClientInfo.firstName"
-                        autoComplete="off"
-                        placeholder="First Name"
-                        className={classes.inputPlaceholderFontSize}
-                        defaultValue={formSummary.greetClientInfo.firstName}
-                        style={{
-                          width: "100%",
-                          background: "transparent",
-                        }}
-                      />
-                    </Grid>
-                    <Grid item xs={6}>
-                      <CustomFormInputForPayment
-                        variant="standard"
-                        name="greetClientInfo.lastName"
-                        autoComplete="off"
-                        className={classes.inputPlaceholderFontSize}
-                        defaultValue={formSummary.greetClientInfo.lastName}
-                        placeholder="Last Name"
-                        style={{ width: "100%", background: "transparent" }}
-                      />
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item>
-                  <Grid
+                    <input
+                      // variant="standard"
+                      name="greetClientInfo.firstName"
+                      autoComplete="off"
+                      placeholder="First Name"
+                      // className={classes.inputPlaceholderFontSize}
+                      defaultValue={formSummary.greetClientInfo.firstName}
+                      // style={{
+                      //   width: "100%",
+                      //   background: "transparent",
+                      // }}
+                      className={styles.cardholderInformationInputSelf}
+                    />
+                  </div>
+                  <div
+                    // item
+                    // xs={6}
+                    className={styles.cardholderInformationInputSelfContainer2}
+                  >
+                    <input
+                      // variant="standard"
+                      name="greetClientInfo.lastName"
+                      autoComplete="off"
+                      // className={classes.inputPlaceholderFontSize}
+                      defaultValue={formSummary.greetClientInfo.lastName}
+                      placeholder="Last Name"
+                      // style={{ width: "100%", background: "transparent" }}
+                      className={styles.cardholderInformationInputSelf}
+                    />
+                  </div>
+                  {/* </Grid> */}
+                </div>
+                <div
+                  // item
+                  className={styles.cardholderInformationInputsWrapper}
+                >
+                  {/* <Grid
                     container
                     direction="row"
                     justify="space-between"
                     spacing={2}
+                  > */}
+                  <div
+                    // item
+                    // xs={6}
+                    className={styles.cardholderInformationInputSelfContainer1}
                   >
-                    <Grid item xs={6}>
-                      <CustomFormInputForPayment
-                        name="greetClientInfo.email"
-                        variant="standard"
-                        autoComplete="off"
-                        placeholder="Email"
-                        className={classes.inputPlaceholderFontSize}
-                        defaultValue={formSummary.greetClientInfo.email}
-                        style={{ width: "100%", background: "transparent" }}
-                      />
-                    </Grid>
-                    <Grid item xs={6}>
-                      <CustomFormInputForPayment
-                        variant="standard"
-                        name="greetClientInfo.phoneNumber"
-                        autoComplete="off"
-                        defaultValue={formSummary.greetClientInfo.phoneNumber}
-                        placeholder="Phone Number"
-                        className={classes.inputPlaceholderFontSize}
-                        style={{ width: "100%", background: "transparent" }}
-                      />
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
+                    <input
+                      name="greetClientInfo.email"
+                      // variant="standard"
+                      autoComplete="off"
+                      placeholder="Email"
+                      // className={classes.inputPlaceholderFontSize}
+                      defaultValue={formSummary.greetClientInfo.email}
+                      // style={{ width: "100%", background: "transparent" }}
+                      className={styles.cardholderInformationInputSelf}
+                    />
+                  </div>
+                  <div
+                    // item
+                    // xs={6}
+                    className={styles.cardholderInformationInputSelfContainer2}
+                  >
+                    <input
+                      // variant="standard"
+                      name="greetClientInfo.phoneNumber"
+                      autoComplete="off"
+                      defaultValue={formSummary.greetClientInfo.phoneNumber}
+                      placeholder="Phone Number"
+                      // className={classes.inputPlaceholderFontSize}
+                      // style={{ width: "100%", background: "transparent" }}
+                      className={styles.cardholderInformationInputSelf}
+                    />
+                  </div>
+                  {/* </Grid> */}
+                </div>
+              </div>
             )}
-            <Grid item>
-              <Grid item style={{ paddingBottom: "13px" }}>
-                <Typography
-                  style={{ fontSize: "15px" }}
-                  className={classes.paymentTexts}
+            <div
+              // item
+              className={styles.cardholderInformationWrapper}
+            >
+              <div
+                // item
+                // style={{ paddingBottom: "13px" }}
+                className={styles.cardholderInformationTitleContainer}
+              >
+                <span
+                  // style={{ fontSize: "15px" }}
+                  // className={classes.paymentTexts}
+                  className={styles.cardholderInformationTitleSelf}
                 >
                   Cardholder Information
-                </Typography>
-              </Grid>
-              <Grid
-                container
-                direction="row"
-                justify="space-between"
-                spacing={2}
+                </span>
+              </div>
+              <div
+                // container
+                // direction="row"
+                // justify="space-between"
+                // spacing={2}
+                className={styles.cardholderInformationInputsWrapper}
               >
-                <Grid item xs={6}>
-                  <CustomFormInputForPayment
-                    variant="standard"
+                <div
+                  // item
+                  // xs={6}
+
+                  className={
+                    styles.cardholderInformationInputSelfContainerJustForFirstAndLastName
+                  }
+                >
+                  <input
+                    // variant="standard"
                     name="client.firstName"
                     autoComplete="off"
-                    className={classes.inputPlaceholderFontSize}
+                    // className={classes.inputPlaceholderFontSize}
                     defaultValue={formSummary.client.firstName}
-                    style={{
-                      fontSize: "14px",
-                      width: "100%",
-                      background: "transparent",
-                    }}
+                    // style={{
+                    //   fontSize: "14px",
+                    //   width: "100%",
+                    //   background: "transparent",
+                    // }}
                     placeholder="First Name"
                     error={errors.client?.firstName ? true : false}
+                    className={styles.cardholderInformationInputSelf}
                   />
                   {errors.client?.firstName && (
                     <p className={classes.error}>
                       {errors.client?.firstName.message}
                     </p>
                   )}
-                </Grid>
-                <Grid item xs={6}>
-                  <CustomFormInputForPayment
-                    variant="standard"
+                </div>
+                <div
+                  // item
+                  // xs={6}
+                  className={styles.cardholderInformationInputSelfContainer}
+                >
+                  <input
+                    // variant="standard"
                     name="client.lastName"
                     autoComplete="off"
                     placeholder="Last Name"
-                    className={classes.inputPlaceholderFontSize}
+                    // className={classes.inputPlaceholderFontSize}
                     defaultValue={formSummary.client.lastName}
-                    style={{ width: "100%", background: "transparent" }}
+                    // style={{ width: "100%", background: "transparent" }}
                     error={errors.client?.lastName ? true : false}
+                    className={styles.cardholderInformationInputSelf}
                   />
                   {errors.client?.lastName && (
                     <p className={classes.error}>
                       {errors.client?.lastName.message}
                     </p>
                   )}
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Grid
-                container
-                direction="row"
-                justify="space-between"
-                spacing={2}
+                </div>
+              </div>
+
+              <div
+                // item
+                className={styles.cardholderInformationInputsWrapper}
               >
-                <Grid item xs={6}>
-                  <CustomFormInputForPayment
+                {/* <Grid
+                  container
+                  direction="row"
+                  justify="space-between"
+                  spacing={2}
+                > */}
+                <div
+                  // item
+                  // xs={6}
+                  className={styles.cardholderInformationInputSelfContainer1}
+                >
+                  <input
                     name="client.email"
-                    variant="standard"
+                    // variant="standard"
                     autoComplete="off"
-                    className={classes.inputPlaceholderFontSize}
+                    // className={classes.inputPlaceholderFontSize}
                     placeholder="Email"
-                    style={{ width: "100%", background: "transparent" }}
+                    // style={{ width: "100%", background: "transparent" }}
                     defaultValue={formSummary.client.email}
                     error={errors.client?.email ? true : false}
+                    className={styles.cardholderInformationInputSelf}
                   />
                   {errors.client?.email && (
                     <p className={classes.error}>
                       {errors.client?.email.message}
                     </p>
                   )}
-                </Grid>
-                <Grid item xs={6}>
-                  <CustomFormInputForPayment
-                    variant="standard"
+                </div>
+                <div
+                  // item
+                  // xs={6}
+                  className={styles.cardholderInformationInputSelfContainer2}
+                >
+                  <input
+                    // variant="standard"
                     name="client.phoneNumber"
                     autoComplete="off"
-                    className={classes.inputPlaceholderFontSize}
+                    // className={classes.inputPlaceholderFontSize}
                     defaultValue={formSummary.client.phoneNumber}
                     placeholder="Phone Number"
-                    style={{ width: "100%", background: "transparent" }}
+                    // style={{ width: "100%", background: "transparent" }}
                     error={errors.client?.phoneNumber ? true : false}
+                    className={styles.cardholderInformationInputSelf}
                   />
                   {errors.client?.phoneNumber && (
                     <p className={classes.error}>
                       {errors.client?.phoneNumber.message}
                     </p>
                   )}
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <CustomFormInputForPayment
-                name="client.address"
-                variant="standard"
-                autoComplete="off"
-                className={classes.inputPlaceholderFontSize}
-                style={{ height: "100%", background: "transparent" }}
-                placeholder="Address"
-                defaultValue={formSummary.client.address}
-                fullWidth
-                error={errors.client?.address ? true : false}
-              />
-            </Grid>
-            {errors.client?.address && (
-              <p style={{ marginLeft: "10px" }} className={classes.error}>
-                {errors.client?.address.message}
-              </p>
-            )}
-            <Grid item>
-              <Autocomplete
-                id="combo-box-demo"
-                options={states}
-                defaultValue={null}
-                autoComplete="off"
-                autoHighlight
-                disablePortal
-                className={classes.mainAutocompleteClass}
-                InputProps={{
-                  classes: {
-                    root: classes.inputRootAutocomplete2,
-                  },
-                }}
-                classes={{
-                  popupIndicator: classes.popupIndicator,
-                  option: classes.option,
-                  paper: classes.selectedOption,
-                }}
-                getOptionLabel={(option) => option.name}
-                renderOption={(option) => (
-                  <div style={{ fontSize: "14px" }}>
-                    <span style={{ fontSize: "14px" }}>{option.code}</span>
-                    {option.name} ({option.code})
-                  </div>
-                )}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    fullWidth
-                    className={classes.inputPlaceholderFontSize}
-                    placeholder="State"
-                    // variant="standard"
-                    style={{ background: "transparent" }}
-                    autoComplete="off"
-                    InputProps={{
-                      ...params.InputProps,
-                      style: { inputStyle },
-                      classes: {
-                        root: classes.inputRootAutocomplete,
-                        underline: classes.noBorder,
-                        input: classes.input,
-                      },
-                      // disableUnderline: true,
-                    }}
-                  />
-                )}
-                onChange={(event, newValue) => {
-                  newValue ? setStatesId(newValue.id) : setStatesId(null)
-                }}
-                name="stateId"
-              />
-              {statesIdError && <p className={classes.error}>Required</p>}
-            </Grid>
-            <Grid item>
-              <Grid
-                container
-                direction="row"
-                justify="space-between"
-                spacing={2}
+                </div>
+                {/* </Grid> */}
+              </div>
+              <div
+                // item
+                className={styles.cardholderInformationInputsWrapper}
               >
-                <Grid item xs={6}>
-                  <Autocomplete
+                <input
+                  name="client.address"
+                  // variant="standard"
+                  autoComplete="off"
+                  // className={classes.inputPlaceholderFontSize}
+                  // style={{ height: "100%", background: "transparent" }}
+                  placeholder="Address"
+                  defaultValue={formSummary.client.address}
+                  // fullWidth
+                  error={errors.client?.address ? true : false}
+                  className={styles.cardholderInformationInputWithFullWidthSelf}
+                />
+              </div>
+              {errors.client?.address && (
+                <p style={{ marginLeft: "10px" }} className={classes.error}>
+                  {errors.client?.address.message}
+                </p>
+              )}
+              <div
+                // item
+                className={styles.cardholderInformationInputsWrapper}
+              >
+                <input
+                  // {...params}
+                  // fullWidth
+                  // className={classes.inputPlaceholderFontSize}
+                  placeholder="State"
+                  // variant="standard"
+                  // style={{ background: "transparent" }}
+                  autoComplete="off"
+                  // InputProps={{
+                  //   ...params.InputProps,
+                  //   style: { inputStyle },
+                  //   classes: {
+                  //     root: classes.inputRootAutocomplete,
+                  //     underline: classes.noBorder,
+                  //     input: classes.input,
+                  //   },
+                  //   // disableUnderline: true,
+                  // }}
+                  onChange={(event, newValue) => {
+                    // console.log(event)
+                    event.target.value
+                      ? extractStateId(event.target.value)
+                      : setStatesId(null)
+                    // newValue ? setStatesId(newValue.id) : setStatesId(null)
+                  }}
+                  list="states-list"
+                  className={styles.cardholderInformationInputWithFullWidthSelf}
+                />
+
+                <datalist id="states-list">
+                  {/* id="combo-box-demo"
+                  options={states}
+                  defaultValue={null}
+                  autoComplete="off"
+                  autoHighlight
+                  disablePortal
+                  className={classes.mainAutocompleteClass}
+                  InputProps={{
+                    classes: {
+                      root: classes.inputRootAutocomplete2,
+                    },
+                  }}
+                  classes={{
+                    popupIndicator: classes.popupIndicator,
+                    option: classes.option,
+                    paper: classes.selectedOption,
+                  }}
+                  getOptionLabel={(option) => option.name}
+                  renderOption={(option) => (
+                    <div style={{ fontSize: "14px" }}>
+                      <span style={{ fontSize: "14px" }}>{option.code}</span>
+                      {option.name} ({option.code})
+                    </div>
+                  )}
+                  renderInput={(params) => (
+                    
+                  )}
+                  
+                  name="stateId" */}
+                  {states.map((state) => (
+                    <option value={state.name} id={state.id} />
+                  ))}
+                </datalist>
+
+                {statesIdError && <p className={classes.error}>Required</p>}
+              </div>
+              <div
+                // item
+                className={styles.cardholderInformationInputsWrapper}
+              >
+                {/* <Grid
+                  container
+                  direction="row"
+                  justify="space-between"
+                  spacing={2}
+                > */}
+                <div
+                  // item
+                  // xs={6}
+                  className={styles.cardholderInformationInputSelfContainer1}
+                >
+                  {/* <Autocomplete
                     id="combo-box-demo"
                     options={cities}
                     key={statesId}
@@ -433,61 +583,145 @@ const PaymentUIComponent = ({
                       </div>
                     )}
                     renderInput={(params) => (
-                      <TextField
+                      <input
                         {...params}
-                        fullWidth
+                        // fullWidth
                         className={classes.inputPlaceholderFontSize}
                         placeholder="Cities"
-                        variant="standard"
-                        style={{ background: "transparent" }}
-                        InputProps={{
-                          ...params.InputProps,
-                          style: { inputStyle },
-                          classes: {
-                            root: classes.inputRootAutocomplete,
-                            underline: classes.noBorder,
-                            input: classes.input,
-                          },
-                          // disableUnderline: true,
-                        }}
+                        // variant="standard"
+                        // style={{ background: "transparent" }}
+                        // InputProps={{
+                        //   ...params.InputProps,
+                        //   style: { inputStyle },
+                        //   classes: {
+                        //     root: classes.inputRootAutocomplete,
+                        //     underline: classes.noBorder,
+                        //     input: classes.input,
+                        //   },
+                        //   // disableUnderline: true,
+                        // }}
+                        className={styles.cardholderInformationInputSelf}
                       />
                     )}
                     onChange={(event, newValue) => {
                       newValue ? setCitiesId(newValue.id) : setCitiesId(null)
                     }}
                     name="cityId"
+                  /> */}
+
+                  <input
+                    // {...params}
+                    // fullWidth
+                    // className={classes.inputPlaceholderFontSize}
+                    placeholder="Cities"
+                    // variant="standard"
+                    // style={{ background: "transparent" }}
+                    autoComplete="off"
+                    // InputProps={{
+                    //   ...params.InputProps,
+                    //   style: { inputStyle },
+                    //   classes: {
+                    //     root: classes.inputRootAutocomplete,
+                    //     underline: classes.noBorder,
+                    //     input: classes.input,
+                    //   },
+                    //   // disableUnderline: true,
+                    // }}
+                    list="cities-list"
+                    // className={
+                    //   styles.cardholderInformationInputWithFullWidthSelf
+                    // }
+                    onChange={(event, newValue) => {
+                      console.log(cities)
+                      newValue ? setCitiesId(newValue.id) : setCitiesId(null)
+                    }}
+                    className={styles.cardholderInformationInputSelf}
                   />
+
+                  <datalist id="cities-list">
+                    {/* id="combo-box-demo"
+                  options={states}
+                  defaultValue={null}
+                  autoComplete="off"
+                  autoHighlight
+                  disablePortal
+                  className={classes.mainAutocompleteClass}
+                  InputProps={{
+                    classes: {
+                      root: classes.inputRootAutocomplete2,
+                    },
+                  }}
+                  classes={{
+                    popupIndicator: classes.popupIndicator,
+                    option: classes.option,
+                    paper: classes.selectedOption,
+                  }}
+                  getOptionLabel={(option) => option.name}
+                  renderOption={(option) => (
+                    <div style={{ fontSize: "14px" }}>
+                      <span style={{ fontSize: "14px" }}>{option.code}</span>
+                      {option.name} ({option.code})
+                    </div>
+                  )}
+                  renderInput={(params) => (
+                    
+                  )}
+                  
+                  name="stateId" */}
+                    {cities.map((city) => (
+                      <option
+                        // onChange={(event, newValue) => {
+                        //   newValue
+                        //     ? setCitiesId(newValue.id)
+                        //     : setCitiesId(null)
+                        // }}
+                        value={city.name}
+                      />
+                    ))}
+                  </datalist>
+
                   {citiesIdError && <p className={classes.error}>Required</p>}
-                </Grid>
-                <Grid item xs={6}>
-                  <CustomFormInputForPayment
-                    variant="standard"
+                </div>
+                <div
+                  // item
+                  // xs={6}
+                  className={styles.cardholderInformationInputSelfContainer2}
+                >
+                  <input
+                    // variant="standard"
                     name="client.zip"
                     autoComplete="off"
-                    className={classes.inputPlaceholderFontSize}
+                    // className={classes.inputPlaceholderFontSize}
                     placeholder="ZIP"
-                    style={{ width: "100%", background: "transparent" }}
+                    // style={{ width: "100%", background: "transparent" }}
                     defaultValue={formSummary.client.zip}
                     error={errors.client?.address ? true : false}
+                    className={styles.cardholderInformationInputSelf}
                   />
                   {errors.client?.zip && (
                     <p className={classes.error}>
                       {errors.client?.zip.message}
                     </p>
                   )}
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Typography
-                style={{ fontSize: "15px" }}
-                className={classes.paymentTexts}
+                </div>
+                {/* </Grid> */}
+              </div>
+            </div>
+            <div className={styles.cardInformationWrapper}>
+              <div className={styles.cardInformationTitleContainer}>
+                <span
+                  // style={{ fontSize: "15px" }}
+                  // className={classes.paymentTexts}
+                  className={styles.cardInformationTitleSelf}
+                >
+                  Card information
+                </span>
+              </div>
+              <div
+                // item
+                className={styles.cardholderInformationInputsWrapper}
               >
-                Card information
-              </Typography>
-            </Grid>
-            <Grid item>
-              {/* <CustomMaskInput
+                {/* <CustomMaskInput
                 name="paymentInfo.cardNumber"
                 mask="9999-9999-9999-9999"
                 autoComplete="off"
@@ -517,31 +751,39 @@ const PaymentUIComponent = ({
                 )}
               </CustomMaskInput> */}
 
-              <Cleave
-                delimiter="-"
-                options={{
-                  creditCard: true,
-                  onCreditCardTypeChanged: handleType,
-                }}
-                name="paymentInfo.cardNumber"
-                error={errors.paymentInfo?.cardNumber ? true : false}
-                onChange={handleNum}
-                placeholder="Card number"
-                className="credit-card-input-by-bookinglane"
-              />
+                <Cleave
+                  delimiter="-"
+                  options={{
+                    creditCard: true,
+                    onCreditCardTypeChanged: handleType,
+                  }}
+                  name="paymentInfo.cardNumber"
+                  error={errors.paymentInfo?.cardNumber ? true : false}
+                  onChange={handleNum}
+                  placeholder="Card number"
+                  className="credit-card-input-by-bookinglane"
+                  className={styles.cardholderInformationInputWithFullWidthSelf}
+                />
 
-              {cardForPaymentSubmitError && (
-                <p className={classes.error}>Required</p>
-              )}
-            </Grid>
-            <Grid item>
-              <Grid
-                container
-                direction="row"
-                justify="space-between"
-                spacing={2}
+                {cardForPaymentSubmitError && (
+                  <p className={classes.error}>Required</p>
+                )}
+              </div>
+              <div
+                // item
+                className={styles.cardholderInformationInputsWrapper}
               >
-                <Grid item xs={6}>
+                {/* <Grid
+                  container
+                  direction="row"
+                  justify="space-between"
+                  spacing={2}
+                > */}
+                <div
+                  // item
+                  // xs={6}
+                  className={styles.cardholderInformationInputSelfContainer1}
+                >
                   <CustomMaskInput
                     name="paymentInfo.month"
                     mask="99/99"
@@ -549,24 +791,25 @@ const PaymentUIComponent = ({
                     defaultValue={`${formSummary.paymentInfo.month}/${formSummary.paymentInfo.year}`}
                   >
                     {() => (
-                      <TextField
-                        variant="standard"
-                        className={classes.inputPlaceholderFontSize}
+                      <input
+                        // variant="standard"
+                        // className={classes.inputPlaceholderFontSize}
                         placeholder="mm/yy"
                         autoComplete="off"
-                        fullWidth
+                        // fullWidth
                         error={errors.paymentInfo?.month ? true : false}
-                        style={{ background: "transparent" }}
+                        // style={{ background: "transparent" }}
                         // inputProps={{ style: inputStyle }}
-                        InputProps={{
-                          // ...params.InputProps,
-                          classes: {
-                            root: classes.inputRootAutocompleteCardNumber,
-                            underline: classes.noBorder,
-                            input: classes.input,
-                          },
-                          // disableUnderline: true,
-                        }}
+                        // InputProps={{
+                        //   // ...params.InputProps,
+                        //   classes: {
+                        //     root: classes.inputRootAutocompleteCardNumber,
+                        //     underline: classes.noBorder,
+                        //     input: classes.input,
+                        //   },
+                        //   // disableUnderline: true,
+                        // }}
+                        className={styles.cardholderInformationInputSelf}
                       />
                     )}
                   </CustomMaskInput>
@@ -575,8 +818,12 @@ const PaymentUIComponent = ({
                       {errors.paymentInfo?.month.message}
                     </p>
                   )}
-                </Grid>
-                <Grid item xs={6}>
+                </div>
+                <div
+                  // item
+                  // xs={6}
+                  className={styles.cardholderInformationInputSelfContainer2}
+                >
                   <CustomMaskInput
                     name="paymentInfo.cvc"
                     type="date"
@@ -585,24 +832,25 @@ const PaymentUIComponent = ({
                     defaultValue={formSummary.paymentInfo.cvc}
                   >
                     {() => (
-                      <TextField
-                        variant="standard"
-                        className={classes.inputPlaceholderFontSize}
+                      <input
+                        // variant="standard"
+                        // className={classes.inputPlaceholderFontSize}
                         placeholder="CVV/CVC"
                         autoComplete="off"
-                        fullWidth
+                        // fullWidth
                         error={errors.paymentInfo?.cvc ? true : false}
-                        style={{ background: "transparent" }}
-                        // inputProps={{ style: inputStyle }}
-                        InputProps={{
-                          // ...params.InputProps,
-                          classes: {
-                            root: classes.inputRootAutocompleteCardNumber,
-                            underline: classes.noBorder,
-                            input: classes.input,
-                          },
-                          // disableUnderline: true,
-                        }}
+                        // style={{ background: "transparent" }}
+                        // // inputProps={{ style: inputStyle }}
+                        // InputProps={{
+                        //   // ...params.InputProps,
+                        //   classes: {
+                        //     root: classes.inputRootAutocompleteCardNumber,
+                        //     underline: classes.noBorder,
+                        //     input: classes.input,
+                        //   },
+                        //   // disableUnderline: true,
+                        // }}
+                        className={styles.cardholderInformationInputSelf}
                       />
                     )}
                   </CustomMaskInput>
@@ -611,74 +859,78 @@ const PaymentUIComponent = ({
                       {errors.paymentInfo?.cvc.message}
                     </p>
                   )}
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Checkbox
-                style={{ color: "#9e9e9e" }}
-                onClick={() => setChecked(!checked)}
-                className={classes.checkboxMain}
-                InputProps={{
-                  classes: {
-                    root: classes.checkbox,
-                  },
-                }}
-              />
-              <Link underline="always" style={{ color: "#BABABA" }}>
-                <TermsOfUse />
-              </Link>
-              <Link underline="always" style={{ color: "#BABABA" }}>
-                <PrivacyPolicy />
-              </Link>
-            </Grid>
-            <Grid item>
-              <Grid
-                container
-                direction="row"
-                alignItems="center"
-                justify="center"
-                spacing={1}
-                className={classes.buttonGroup}
+                </div>
+                {/* </Grid> */}
+              </div>
+            </div>
+            <div
+              // item
+              className={styles.checkboxWrapper}
+            >
+              <label className={styles.checkmarkContainer}>
+                <input type="checkbox" onClick={() => setChecked(!checked)} />
+                <span className={styles.checkmarkSelf}></span>
+              </label>
+              {/* <a underline="always" style={{ color: "#BABABA" }}> */}
+              <TermsOfUse />
+              {/* </a> */}
+              {/* <a underline="always" style={{ color: "#BABABA" }}> */}
+              <PrivacyPolicy />
+              {/* </a> */}
+            </div>
+            <div
+              // item
+              className={styles.buttonGroupBlock}
+            >
+              <div
+                // container
+                // direction="row"
+                // alignItems="center"
+                // justify="center"
+                // spacing={1}
+                // className={classes.buttonGroup}
+                className={styles.buttonGroupBlockContainer}
               >
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    onClick={back}
-                    startIcon={<BackArrowIcon />}
-                    className={classes.backButtonSelf}
-                    style={{
-                      height: "50px",
+                {/* <Grid item xs={6}> */}
+                <button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  onClick={back}
+                  startIcon={<BackArrowIcon />}
+                  className={classes.backButtonSelf}
+                  style={{
+                    height: "50px",
 
-                      textTransform: "none",
-                    }}
-                  >
-                    Back
-                  </Button>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    type="submit"
-                    color="primary"
-                    className={classes.payButtonSelf}
-                    style={{
-                      height: "50px",
+                    textTransform: "none",
+                  }}
+                  className={styles.buttonBackSelf}
+                >
+                  Back
+                </button>
+                {/* </Grid> */}
+                {/* <Grid item xs={6}> */}
+                <button
+                  variant="contained"
+                  fullWidth
+                  type="submit"
+                  color="primary"
+                  className={classes.payButtonSelf}
+                  style={{
+                    height: "50px",
 
-                      textTransform: "none",
-                    }}
-                    disabled={!checked}
-                  >
-                    Pay ${total}
-                  </Button>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+                    textTransform: "none",
+                  }}
+                  disabled={!checked}
+                  className={styles.buttonNextSelf}
+                >
+                  Pay ${total}
+                </button>
+                {/* </Grid> */}
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
     </FormProvider>
   )

@@ -1,0 +1,56 @@
+@use "../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
+
+@use "../FleetForm/FleetForm.module.scss" as *;
+
+@include car-descriptions;
+.previewWrapper {
+  @include whole-app-background;
+  width: 100%;
+}
+
+.reservationDetailsItem {
+}
+.reservationDetailsItemContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.reservationDetailsItemTitleContainer {
+}
+.reservationDetailsItemTitleSelf {
+}
+.reservationDetailsItemPointedLineContainer {
+  flex-grow: 1;
+}
+.reservationDetailsItemPointedLineSelf {
+  margin-top: 12px;
+  background-color: transparent;
+  margin-left: 3px;
+  margin-right: 3px;
+  border-bottom: 2px dotted black;
+}
+
+.reservationDetailsItemValueContainer {
+  display: inline;
+  max-width: 60%;
+  text-align: right;
+}
+.reservationDetailsItemValueSelf {
+  display: inline;
+  // fontSize: "16px",
+  width: 100%;
+}
+
+.notesTextFieldContainer {
+  width: 100%;
+}
+.notesTextFieldSelf {
+  width: 100%;
+  // display: block;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 0;
+}
+
+@include buttons-group;

@@ -382,49 +382,48 @@ const GoogleMap = React.memo(
                                   </span>
                                 )}
                                 {/* </div> */}
-                              </div>
 
-                              <div className={styles.dropDown}>
-                                {loading && (
-                                  <div
-                                    // style={{
-                                    //   alignItems: "center",
-                                    //   color: "green",
-                                    // }}
-                                    className={styles.dropDownLoadingText}
-                                  >
-                                    Loading...
-                                  </div>
-                                )}
-                                {copiedSuggestions.map((suggestion, id) => {
-                                  // console.log(copiedSuggestions)
-
-                                  // inline style for demonstration purpose
-                                  // const style = suggestion.active
-                                  //   ? {
-                                  //       backgroundColor: "#bababa",
-                                  //       cursor: "pointer",
-                                  //       textTransform: "none",
-                                  //       justifyContent: "center",
-
-                                  //       width: "340px",
-                                  //     }
-                                  //   : {
-                                  //       backgroundColor: "white",
-                                  //       cursor: "pointer",
-                                  //       textTransform: "none",
-                                  //       width: "340px",
-
-                                  //       justifyContent: "center",
-                                  //     }
-
-                                  return (
+                                <div className={styles.dropDown}>
+                                  {loading && (
                                     <div
-                                      key={`${id}${suggestion.description}`}
-                                      {...getSuggestionItemProps(suggestion)}
-                                      className={styles.itemInsideDropDown}
+                                      // style={{
+                                      //   alignItems: "center",
+                                      //   color: "green",
+                                      // }}
+                                      className={styles.dropDownLoadingText}
                                     >
-                                      {/* <MenuItem
+                                      Loading...
+                                    </div>
+                                  )}
+                                  {copiedSuggestions.map((suggestion, id) => {
+                                    // console.log(copiedSuggestions)
+
+                                    // inline style for demonstration purpose
+                                    // const style = suggestion.active
+                                    //   ? {
+                                    //       backgroundColor: "#bababa",
+                                    //       cursor: "pointer",
+                                    //       textTransform: "none",
+                                    //       justifyContent: "center",
+
+                                    //       width: "340px",
+                                    //     }
+                                    //   : {
+                                    //       backgroundColor: "white",
+                                    //       cursor: "pointer",
+                                    //       textTransform: "none",
+                                    //       width: "340px",
+
+                                    //       justifyContent: "center",
+                                    //     }
+
+                                    return (
+                                      <div
+                                        key={`${id}${suggestion.description}`}
+                                        {...getSuggestionItemProps(suggestion)}
+                                        className={styles.itemInsideDropDown}
+                                      >
+                                        {/* <MenuItem
                                         onMouseEnter={(e) => (
                                           (e.target.style.backgroundColor =
                                             "black"),
@@ -442,11 +441,12 @@ const GoogleMap = React.memo(
                                           color: "black",
                                         }}
                                       > */}
-                                      {suggestion.description}
-                                      {/* </MenuItem> */}
-                                    </div>
-                                  )
-                                })}
+                                        {suggestion.description}
+                                        {/* </MenuItem> */}
+                                      </div>
+                                    )
+                                  })}
+                                </div>
                               </div>
                             </>
                           )

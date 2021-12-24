@@ -23,6 +23,7 @@ import { setGateMeetingRedux } from "../../../../Redux/gate-meeting-reducer"
 import Error from "../../../Helpers/Error"
 import { setResetWidgetInputs } from "../../../../Redux/reset-widget-inputs-reducer"
 import { useStyles } from "./FleetFormStyles"
+import styles from "./FleetForm.module.scss"
 
 const FleetForm = ({
   cars,
@@ -56,6 +57,7 @@ const FleetForm = ({
   const isiPad = useMediaQuery("(max-width:1024px)")
 
   const carTextColor = "white"
+  const car = [cars[0], cars[1]]
 
   const ifThereisError = () => {
     if (error) {
@@ -63,466 +65,698 @@ const FleetForm = ({
     } else {
       if (!isFetching) {
         return (
-          <Grid
-            container
-            justify="center"
-            style={
-              {
-                // height: isiPad ? "100%" : "89%",
-                // paddingTop: isMobile ? "0px" : "0px",
-              }
-            }
+          <div
+            // container
+            // justify="center"
+            // style={
+            //   {
+            //     // height: isiPad ? "100%" : "89%",
+            //     // paddingTop: isMobile ? "0px" : "0px",
+            //   }
+            // }
+            className={styles.mainWrapper}
           >
-            <Grid
-              container
-              direction="column"
-              spacing={1}
-              className={classes.contentContainer}
+            <div
+              // container
+              // direction="column"
+              // spacing={1}
+              // className={classes.contentContainer}
+              className={styles.contentContainer}
             >
-              <Grid item>
+              <div
+                // item
+                className={styles.pageTitleContainer}
+              >
                 {/* <AppBar
               position="sticky"
               color=" #101020"
               style={{ top: '100px', bottom: '0' }}
             > */}
-                <Typography
-                  style={{
-                    fontFamily: "Roboto",
-                    fontWeight: 500,
-                    color: "white",
-                    fontSize: "22px",
-                    lineHeight: "36px",
-                  }}
+                <span
+                  // style={{
+                  //   fontFamily: "Roboto",
+                  //   fontWeight: 500,
+                  //   color: "white",
+                  //   fontSize: "22px",
+                  //   lineHeight: "36px",
+                  // }}
+                  className={styles.pageTitle}
                 >
                   Select vehicle
-                </Typography>
+                </span>
                 {/* </AppBar> */}
-              </Grid>
-              <Grid
-                item
-                className={classes.carContainer}
-                style={{ paddingBottom: "10px" }}
+              </div>
+              <div
+                // item
+                // className={classes.carContainer}
+                // style={{ paddingBottom: "10px" }}
+                className={styles.carListContainer}
               >
-                <Grid container direction="column" spacing={2} flexGrow={1}>
-                  {console.log(typeof cars)}
-                  {cars.map((car, index) => (
-                    <Grid item key={`${car.id}${car.name}`}>
-                      <ListItem
-                        className={classes.root}
-                        onClick={() => {
-                          handleClick(car.id)
-                        }}
-                        selected={car.id === carCard}
-                        classes={{
-                          root: classes.listRoot,
-                          selected: car.id && classes.active,
-                        }}
+                {/* <div
+                  // container
+                  // direction="column"
+                  // spacing={2}
+                  // flexGrow={1}
+                  className={styles.carContainer}
+                > */}
+                {console.log(typeof cars)}
+                {cars.map((car, index) => (
+                  <div
+                    // item
+                    key={`${car?.id}${car?.name}`}
+                  >
+                    <div
+                      className={classes.root}
+                      onClick={() => {
+                        handleClick(car?.id)
+                      }}
+                      selected={car?.id === carCard}
+                      classes={{
+                        root: classes.listRoot,
+                        selected: car?.id && classes.active,
+                      }}
+                      className={styles.carContainer}
+
+                      // style={{
+                      //   opacity: "0.5",
+                      //   "&:hover": { opacity: "1" },
+                      // }}
+                    >
+                      {/* <div
+                        // container
+                        // direction="row"
+                        // justify="space-between"
+                        // alignItems="center"
+                        className={styles.carSelf}
+                      > */}
+                      <div
+                        // item
                         // style={{
-                        //   opacity: "0.5",
-                        //   "&:hover": { opacity: "1" },
+                        //   marginLeft: "11px",
+                        //   marginBottom: "-2px",
+                        //   width: "48.70%",
                         // }}
+                        className={styles.carImageBlock}
                       >
-                        <Grid
-                          container
-                          direction="row"
-                          justify="space-between"
-                          alignItems="center"
+                        <Carousel
+                          autoPlay={false}
+                          animation="slide"
+                          navButtonsProps={{
+                            style: {
+                              width: "1em",
+                              height: "1em",
+                            },
+                          }}
+                          indicatorIconButtonProps={{
+                            style: {
+                              "&:hover": {
+                                "&$button": {
+                                  backgroundColor: "#10B7EC",
+                                  filter: "brightness(120%)",
+                                  opacity: "0.4",
+                                },
+                              },
+                              marginTop: "-80px",
+
+                              // marginBottom: "-30px",
+                              color: "grey",
+                            },
+                          }}
+                          activeIndicatorIconButtonProps={{
+                            style: {
+                              color: "white",
+                              height: "10px",
+                            },
+                          }}
+                          indicatorContainerProps={{
+                            style: { height: "0px" },
+                          }}
                         >
-                          <Grid
-                            item
-                            style={{
-                              marginLeft: "11px",
-                              marginBottom: "-2px",
-                              width: "48.70%",
-                            }}
-                          >
-                            <Carousel
-                              autoPlay={false}
-                              animation="slide"
-                              navButtonsProps={{
-                                style: {
-                                  width: "1em",
-                                  height: "1em",
-                                },
-                              }}
-                              indicatorIconButtonProps={{
-                                style: {
-                                  "&:hover": {
-                                    "&$button": {
-                                      backgroundColor: "#10B7EC",
-                                      filter: "brightness(120%)",
-                                      opacity: "0.4",
-                                    },
-                                  },
-                                  marginTop: "-80px",
+                          {car?.imageUrls?.length !== 0 ? (
+                            car?.imageUrls?.map((url) => (
+                              <span
+                                key={url?.id}
+                                variant="outlined"
+                                color="primary"
+                                onClick={() => handleClickOpen(car?.id)}
+                              >
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    width: "75px",
+                                    height: "20px",
+                                    backgroundColor: "#AC8159",
+                                    color: "black",
+                                    fontSize: "13px",
+                                    paddingLeft: "12px",
+                                    borderTopLeftRadius: "8px",
+                                    paddingTop: "2px",
+                                  }}
+                                >
+                                  or similar
+                                </div>
+                                <AspectRatio
+                                  // ratio="560/315"
+                                  style={{
+                                    display: "block",
+                                    width: !isMobile ? "100%" : "100%",
+                                    height: !isMobile ? "112px" : "116px",
 
-                                  // marginBottom: "-30px",
-                                  color: "grey",
-                                },
-                              }}
-                              activeIndicatorIconButtonProps={{
-                                style: {
-                                  color: "white",
-                                  height: "10px",
-                                },
-                              }}
-                              indicatorContainerProps={{
-                                style: { height: "0px" },
-                              }}
-                            >
-                              {car.imageUrls.length !== 0 ? (
-                                car.imageUrls.map((url) => (
-                                  <span
-                                    key={url.id}
-                                    variant="outlined"
-                                    color="primary"
-                                    onClick={() => handleClickOpen(car.id)}
-                                  >
-                                    <div
-                                      style={{
-                                        position: "absolute",
-                                        width: "75px",
-                                        height: "20px",
-                                        backgroundColor: "#AC8159",
-                                        color: "black",
-                                        fontSize: "13px",
-                                        paddingLeft: "12px",
-                                        borderTopLeftRadius: "8px",
-                                        paddingTop: "2px",
-                                      }}
-                                    >
-                                      or similar
-                                    </div>
-                                    <AspectRatio
-                                      // ratio="560/315"
-                                      style={{
-                                        display: "block",
-                                        width: !isMobile ? "100%" : "100%",
-                                        height: !isMobile ? "112px" : "116px",
-
-                                        cursor: "zoom-in",
-                                      }}
-                                    >
-                                      <img
-                                        src={url.path}
-                                        style={{
-                                          width: "100%",
-                                          height: "100%",
-                                          // display: "block",
-                                          // width: !isMobile ? "170px" : "100%",
-                                          // height: !isMobile ? "127px" : "116px",
-                                          borderRadius: "9px",
-                                          // cursor: "zoom-in",
-                                        }}
-                                        alt="car"
-                                      />
-                                    </AspectRatio>
-                                  </span>
-                                ))
-                              ) : (
-                                <>
-                                  <span
-                                    style={{
-                                      position: "absolute",
-                                      width: "75px",
-                                      height: "20px",
-                                      backgroundColor: "#AC8159",
-                                      color: "black",
-                                      fontSize: "13px",
-                                      paddingLeft: "12px",
-                                      borderTopLeftRadius: "8px",
-                                      paddingTop: "2px",
-                                    }}
-                                  >
-                                    or similar
-                                  </span>
+                                    cursor: "zoom-in",
+                                  }}
+                                >
                                   <img
-                                    src={
-                                      "https://fl-1.cdn.flockler.com/embed/not-found.png"
-                                    }
+                                    src={url?.path}
                                     style={{
-                                      width: !isMobile ? "100%" : "100%",
-                                      height: !isMobile ? "112px" : "116px",
+                                      width: "100%",
+                                      height: "100%",
+                                      // display: "block",
+                                      // width: !isMobile ? "170px" : "100%",
+                                      // height: !isMobile ? "127px" : "116px",
                                       borderRadius: "9px",
+                                      // cursor: "zoom-in",
                                     }}
                                     alt="car"
                                   />
-                                </>
-                              )}
-                            </Carousel>
-
-                            {carModal && (
-                              <Dialog
-                                open={open}
-                                onClose={handleClose}
-                                aria-labelledby="alert-dialog-title"
-                                aria-describedby="alert-dialog-description"
-                              >
-                                <DialogActions>
-                                  <Carousel
-                                    autoPlay={false}
-                                    animation="slide"
-                                    swipe={true}
-                                    navButtonsAlwaysVisible={true}
-                                    navButtonsProps={{
-                                      style: {
-                                        width: "1em",
-                                        height: "1em",
-                                      },
-                                    }}
-                                    indicatorIconButtonProps={{
-                                      style: {
-                                        "&:hover": {
-                                          "& $button": {
-                                            backgroundColor: "#10B7EC",
-                                            filter: "brightness(120%)",
-                                            opacity: "0.4",
-                                          },
-                                        },
-                                      },
-                                    }}
-                                    activeIndicatorIconButtonProps={{
-                                      style: {
-                                        color: "#10B7EC",
-                                      },
-                                    }}
-                                    indicatorContainerProps={{
-                                      style: {},
-                                    }}
-                                  >
-                                    {carModal &&
-                                      result.imageUrls.map((url) => (
-                                        <AspectRatio
-                                          ratio="4/3"
-                                          style={{
-                                            width: !isMobile
-                                              ? "550px"
-                                              : "239px",
-                                            height: !isMobile
-                                              ? "400px"
-                                              : "170px",
-                                            display: "flex",
-                                            flexDirection: "row",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            // display: "block",
-                                            // width: !isMobile ? "170px" : "100%",
-                                            // height: !isMobile ? "107px" : "116px",
-                                            // // borderRadius: "8px",
-                                            // cursor: "zoom-in",
-                                            // width: "100%",
-                                            // height: "100%",
-                                            // userDrag: "none",
-                                            // userSelect: "none",
-                                            // mozUserSelect: "none",
-                                            // webkitUserDrag: "none",
-                                            // webkitUserSelect: "none",
-                                            // msUserSelect: "none",
-                                            // maxWidth: "500px",
-                                          }}
-                                        >
-                                          <img
-                                            src={url.path}
-                                            style={{
-                                              borderRadius: "8px",
-                                              maxWidth: "100%",
-                                              maxHeight: "100%",
-                                            }}
-                                            alt="car"
-                                            key={`${url.id}${url.path}`}
-                                          />
-                                        </AspectRatio>
-                                      ))}
-                                  </Carousel>
-                                </DialogActions>
-                              </Dialog>
-                            )}
-                          </Grid>
-                          <Grid
-                            item
-                            style={{ width: !isMobile ? "44.5%" : "43.70%" }}
-                          >
-                            <Grid
-                              container
-                              direction="row"
-                              spacing={2}
-                              className={
-                                !isMobile
-                                  ? classes.carInfoCont
-                                  : classes.carInfoContForMobile
-                              }
-                            >
-                              <Typography
-                                variant="body2"
+                                </AspectRatio>
+                              </span>
+                            ))
+                          ) : (
+                            <>
+                              <span
                                 style={{
-                                  fontSize: "15.5px",
-                                  color: carTextColor,
+                                  position: "absolute",
+                                  width: "75px",
+                                  height: "20px",
+                                  backgroundColor: "#AC8159",
+                                  color: "black",
+                                  fontSize: "13px",
+                                  paddingLeft: "12px",
+                                  borderTopLeftRadius: "8px",
+                                  paddingTop: "2px",
                                 }}
                               >
-                                {car.make} {car.model}
-                              </Typography>
+                                or similar
+                              </span>
+                              <img
+                                src={
+                                  "https://fl-1.cdn.flockler.com/embed/not-found.png"
+                                }
+                                style={{
+                                  width: !isMobile ? "100%" : "100%",
+                                  height: !isMobile ? "112px" : "116px",
+                                  borderRadius: "9px",
+                                }}
+                                alt="car"
+                              />
+                            </>
+                          )}
+                        </Carousel>
 
-                              {/* <Typography
+                        {carModal && (
+                          <Dialog
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="alert-dialog-title"
+                            aria-describedby="alert-dialog-description"
+                          >
+                            <DialogActions>
+                              <Carousel
+                                autoPlay={false}
+                                animation="slide"
+                                swipe={true}
+                                navButtonsAlwaysVisible={true}
+                                navButtonsProps={{
+                                  style: {
+                                    width: "1em",
+                                    height: "1em",
+                                  },
+                                }}
+                                indicatorIconButtonProps={{
+                                  style: {
+                                    "&:hover": {
+                                      "& $button": {
+                                        backgroundColor: "#10B7EC",
+                                        filter: "brightness(120%)",
+                                        opacity: "0.4",
+                                      },
+                                    },
+                                  },
+                                }}
+                                activeIndicatorIconButtonProps={{
+                                  style: {
+                                    color: "#10B7EC",
+                                  },
+                                }}
+                                indicatorContainerProps={{
+                                  style: {},
+                                }}
+                              >
+                                {carModal &&
+                                  result?.imageUrls?.map((url) => (
+                                    <AspectRatio
+                                      ratio="4/3"
+                                      style={{
+                                        width: !isMobile ? "550px" : "239px",
+                                        height: !isMobile ? "400px" : "170px",
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        // display: "block",
+                                        // width: !isMobile ? "170px" : "100%",
+                                        // height: !isMobile ? "107px" : "116px",
+                                        // // borderRadius: "8px",
+                                        // cursor: "zoom-in",
+                                        // width: "100%",
+                                        // height: "100%",
+                                        // userDrag: "none",
+                                        // userSelect: "none",
+                                        // mozUserSelect: "none",
+                                        // webkitUserDrag: "none",
+                                        // webkitUserSelect: "none",
+                                        // msUserSelect: "none",
+                                        // maxWidth: "500px",
+                                      }}
+                                    >
+                                      <img
+                                        src={url?.path}
+                                        style={{
+                                          borderRadius: "8px",
+                                          maxWidth: "100%",
+                                          maxHeight: "100%",
+                                        }}
+                                        alt="car"
+                                        key={`${url?.id}${url?.path}`}
+                                      />
+                                    </AspectRatio>
+                                  ))}
+                              </Carousel>
+                            </DialogActions>
+                          </Dialog>
+                        )}
+                      </div>
+                      <div
+                        // item
+                        // style={{ width: !isMobile ? "44.5%" : "43.70%" }}
+                        className={styles.carDescriptionTextBlock}
+                      >
+                        <div
+                          // container
+                          // direction="row"
+                          // spacing={2}
+                          // className={
+                          //   !isMobile
+                          //     ? classes.carInfoCont
+                          //     : classes.carInfoContForMobile
+                          // }
+                          className={styles.carDescriptionTextContainer}
+                        >
+                          <span
+                            // variant="body2"
+                            // style={{
+                            //   fontSize: "15.5px",
+                            //   color: carTextColor,
+                            // }}
+                            className={styles.carModel}
+                          >
+                            {car?.make} {car?.model}
+                          </span>
+
+                          {/* <Typography
                             variant='body2'
                             style={{ fontSize: '18px' }}
                           ></Typography> */}
 
-                              <Grid
-                                container
-                                justify="row"
-                                justify="space-between"
-                                alignItems="center"
+                          <div
+                            // container
+                            // justify="row"
+                            // justify="space-between"
+                            // alignItems="center"
+                            className={styles.detailedDescription}
+                          >
+                            <div
+                              // item
+                              className={
+                                styles.detailedDescriptionTitleContainer
+                              }
+                            >
+                              <span
+                                // style={{
+                                //   color: carTextColor,
+                                //   fontSize: "13px",
+                                //   fontWeight: "400",
+                                // }}
+                                className={styles.detailedDescriptionTitleSelf}
                               >
-                                <Grid item>
-                                  <Typography
-                                    style={{
-                                      color: carTextColor,
-                                      fontSize: "13px",
-                                      fontWeight: "400",
-                                    }}
-                                  >
-                                    Type
-                                  </Typography>
-                                </Grid>
-                                <Grid item style={{ flexGrow: 1 }}>
-                                  <Box
-                                    style={{
-                                      marginTop: "12px",
-                                      backgroundColor: "transparent",
-                                      marginLeft: "3px",
-                                      marginRight: "3px",
-                                      borderBottom: `2px dotted ${carTextColor}`,
-                                    }}
-                                  />
-                                </Grid>
-                                <Grid item>
-                                  <Typography
-                                    style={{
-                                      color: carTextColor,
-                                      fontSize: "13px",
-                                      fontWeight: "400",
-                                    }}
-                                  >
-                                    {car.type}
-                                  </Typography>
-                                </Grid>
-                              </Grid>
-
-                              <Grid
-                                container
-                                justify="row"
-                                justify="space-between"
-                                alignItems="center"
+                                Type
+                              </span>
+                            </div>
+                            <div
+                              // item
+                              // style={{ flexGrow: 1 }}
+                              className={
+                                styles.detailedDescriptionPointedLineContainer
+                              }
+                            >
+                              <div
+                                // style={{
+                                //   marginTop: "12px",
+                                //   backgroundColor: "transparent",
+                                //   marginLeft: "3px",
+                                //   marginRight: "3px",
+                                //   borderBottom: `2px dotted ${carTextColor}`,
+                                // }}
+                                className={
+                                  styles.detailedDescriptionPointedLineSelf
+                                }
+                              />
+                            </div>
+                            <div
+                              // item
+                              className={
+                                styles.detailedDescriptionValueContainer
+                              }
+                            >
+                              <span
+                                // style={{
+                                //   color: carTextColor,
+                                //   fontSize: "13px",
+                                //   fontWeight: "400",
+                                // }}
+                                className={styles.detailedDescriptionValueSelf}
                               >
-                                <Grid item>
-                                  <Typography
-                                    style={{
-                                      color: carTextColor,
-                                      fontSize: "13px",
-                                      fontWeight: "400",
-                                    }}
-                                  >
-                                    Capacity
-                                  </Typography>
-                                </Grid>
-                                <Grid item style={{ flexGrow: 1 }}>
-                                  <Box
-                                    style={{
-                                      marginTop: "12px",
-                                      backgroundColor: "transparent",
-                                      marginLeft: "3px",
-                                      marginRight: "3px",
-                                      borderBottom: `2px dotted ${carTextColor}`,
-                                    }}
-                                  />
-                                </Grid>
-                                <Grid item>
-                                  <Typography
-                                    style={{
-                                      color: carTextColor,
-                                      fontSize: "13px",
-                                      fontWeight: "400",
-                                    }}
-                                  >
-                                    {car.capacity}
-                                  </Typography>
-                                </Grid>
-                              </Grid>
+                                {car?.type}
+                              </span>
+                            </div>
+                          </div>
 
-                              <Grid container justify="row">
-                                <Grid item>
-                                  <Typography
-                                    style={{
-                                      color: carTextColor,
-                                      fontSize: "12px",
-                                      fontWeight: "400",
-                                    }}
-                                  >
-                                    Color
-                                  </Typography>
-                                </Grid>
-                                <Grid item style={{ flexGrow: 1 }}>
-                                  <Box
-                                    style={{
-                                      marginTop: "12px",
-                                      backgroundColor: "transparent",
-                                      marginLeft: "3px",
-                                      marginRight: "3px",
-                                      borderBottom: `2px dotted ${carTextColor}`,
-                                    }}
-                                  />
-                                </Grid>
-                                <Grid item>
-                                  <Typography
-                                    style={{
-                                      color: carTextColor,
-                                      fontSize: "13px",
-                                      fontWeight: "400",
-                                    }}
-                                  >
-                                    {car.color}
-                                  </Typography>
-                                </Grid>
-                              </Grid>
+                          <div
+                            // container
+                            // justify="row"
+                            // justify="space-between"
+                            // alignItems="center"
+                            className={styles.detailedDescription}
+                          >
+                            <div
+                              // item
+                              className={
+                                styles.detailedDescriptionTitleContainer
+                              }
+                            >
+                              <span
+                                // style={{
+                                //   color: carTextColor,
+                                //   fontSize: "13px",
+                                //   fontWeight: "400",
+                                // }}
+                                className={styles.detailedDescriptionTitleSelf}
+                              >
+                                Capacity
+                              </span>
+                            </div>
+                            <div
+                              // item
+                              // style={{ flexGrow: 1 }}
+                              className={
+                                styles.detailedDescriptionPointedLineContainer
+                              }
+                            >
+                              <div
+                                // style={{
+                                //   marginTop: "12px",
+                                //   backgroundColor: "transparent",
+                                //   marginLeft: "3px",
+                                //   marginRight: "3px",
+                                //   borderBottom: `2px dotted ${carTextColor}`,
+                                // }}
+                                className={
+                                  styles.detailedDescriptionPointedLineSelf
+                                }
+                              />
+                            </div>
+                            <div
+                              // item
+                              className={
+                                styles.detailedDescriptionValueContainer
+                              }
+                            >
+                              <span
+                                // style={{
+                                //   color: carTextColor,
+                                //   fontSize: "13px",
+                                //   fontWeight: "400",
+                                // }}
+                                className={styles.detailedDescriptionValueSelf}
+                              >
+                                {car?.capacity}
+                              </span>
+                            </div>
+                          </div>
 
-                              <Grid container justify="row" alignItems="center">
-                                <Grid item>
-                                  <Typography
-                                    style={{
-                                      color: carTextColor,
-                                      fontSize: "12px",
-                                      fontWeight: "400",
-                                    }}
-                                  >
-                                    Amount
-                                  </Typography>
-                                </Grid>
-                                <Grid item style={{ flexGrow: 1 }}>
-                                  <Box
-                                    style={{
-                                      marginTop: "8px",
-                                      backgroundColor: "transparent",
-                                      marginLeft: "3px",
-                                      marginRight: "3px",
-                                      borderBottom: `2px dotted ${carTextColor}`,
-                                    }}
-                                  />
-                                </Grid>
-                                <Grid item>
-                                  <Typography
-                                    style={{
-                                      color: carTextColor,
-                                      fontSize: "16px",
-                                      fontWeight: "500",
-                                    }}
-                                  >
-                                    {gateMeeting
-                                      ? `$${round(car.price, 2)}`
-                                      : `$${round(car.price, 2)}`}
-                                  </Typography>
-                                </Grid>
+                          <div
+                            // container
+                            // justify="row"
+                            // justify="space-between"
+                            // alignItems="center"
+                            className={styles.detailedDescription}
+                          >
+                            <div
+                              // item
+                              className={
+                                styles.detailedDescriptionTitleContainer
+                              }
+                            >
+                              <span
+                                // style={{
+                                //   color: carTextColor,
+                                //   fontSize: "13px",
+                                //   fontWeight: "400",
+                                // }}
+                                className={styles.detailedDescriptionTitleSelf}
+                              >
+                                Color
+                              </span>
+                            </div>
+                            <div
+                              // item
+                              // style={{ flexGrow: 1 }}
+                              className={
+                                styles.detailedDescriptionPointedLineContainer
+                              }
+                            >
+                              <div
+                                // style={{
+                                //   marginTop: "12px",
+                                //   backgroundColor: "transparent",
+                                //   marginLeft: "3px",
+                                //   marginRight: "3px",
+                                //   borderBottom: `2px dotted ${carTextColor}`,
+                                // }}
+                                className={
+                                  styles.detailedDescriptionPointedLineSelf
+                                }
+                              />
+                            </div>
+                            <div
+                              // item
+                              className={
+                                styles.detailedDescriptionValueContainer
+                              }
+                            >
+                              <span
+                                // style={{
+                                //   color: carTextColor,
+                                //   fontSize: "13px",
+                                //   fontWeight: "400",
+                                // }}
+                                className={styles.detailedDescriptionValueSelf}
+                              >
+                                {car?.color}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div
+                            // container
+                            // justify="row"
+                            // justify="space-between"
+                            // alignItems="center"
+                            className={styles.detailedDescription}
+                          >
+                            <div
+                              // item
+                              className={
+                                styles.detailedDescriptionTitleContainer
+                              }
+                            >
+                              <span
+                                // style={{
+                                //   color: carTextColor,
+                                //   fontSize: "13px",
+                                //   fontWeight: "400",
+                                // }}
+                                className={styles.detailedDescriptionTitleSelf}
+                              >
+                                Amount
+                              </span>
+                            </div>
+                            <div
+                              // item
+                              // style={{ flexGrow: 1 }}
+                              className={
+                                styles.detailedDescriptionPointedLineContainer
+                              }
+                            >
+                              <div
+                                // style={{
+                                //   marginTop: "12px",
+                                //   backgroundColor: "transparent",
+                                //   marginLeft: "3px",
+                                //   marginRight: "3px",
+                                //   borderBottom: `2px dotted ${carTextColor}`,
+                                // }}
+                                className={
+                                  styles.detailedDescriptionPointedLineSelf
+                                }
+                              />
+                            </div>
+                            <div
+                              // item
+                              className={
+                                styles.detailedDescriptionValueContainer
+                              }
+                            >
+                              <span
+                                // style={{
+                                //   color: carTextColor,
+                                //   fontSize: "13px",
+                                //   fontWeight: "400",
+                                // }}
+                                className={styles.detailedDescriptionValueSelf}
+                              >
+                                {gateMeeting
+                                  ? `$${round(car?.price, 2)}`
+                                  : `$${round(car?.price, 2)}`}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* <Grid
+                              container
+                              justify="row"
+                              justify="space-between"
+                              alignItems="center"
+                            >
+                              <Grid item>
+                                <Typography
+                                  style={{
+                                    color: carTextColor,
+                                    fontSize: "13px",
+                                    fontWeight: "400",
+                                  }}
+                                >
+                                  Capacity
+                                </Typography>
                               </Grid>
-                              {/* <Grid item xs={8}>
+                              <Grid item style={{ flexGrow: 1 }}>
+                                <Box
+                                  style={{
+                                    marginTop: "12px",
+                                    backgroundColor: "transparent",
+                                    marginLeft: "3px",
+                                    marginRight: "3px",
+                                    borderBottom: `2px dotted ${carTextColor}`,
+                                  }}
+                                />
+                              </Grid>
+                              <Grid item>
+                                <Typography
+                                  style={{
+                                    color: carTextColor,
+                                    fontSize: "13px",
+                                    fontWeight: "400",
+                                  }}
+                                >
+                                  {car.capacity}
+                                </Typography>
+                              </Grid>
+                            </Grid>
+
+                            <Grid container justify="row">
+                              <Grid item>
+                                <Typography
+                                  style={{
+                                    color: carTextColor,
+                                    fontSize: "12px",
+                                    fontWeight: "400",
+                                  }}
+                                >
+                                  Color
+                                </Typography>
+                              </Grid>
+                              <Grid item style={{ flexGrow: 1 }}>
+                                <Box
+                                  style={{
+                                    marginTop: "12px",
+                                    backgroundColor: "transparent",
+                                    marginLeft: "3px",
+                                    marginRight: "3px",
+                                    borderBottom: `2px dotted ${carTextColor}`,
+                                  }}
+                                />
+                              </Grid>
+                              <Grid item>
+                                <Typography
+                                  style={{
+                                    color: carTextColor,
+                                    fontSize: "13px",
+                                    fontWeight: "400",
+                                  }}
+                                >
+                                  {car.color}
+                                </Typography>
+                              </Grid>
+                            </Grid> */}
+
+                          {/* <Grid container justify="row" alignItems="center">
+                              <Grid item>
+                                <Typography
+                                  style={{
+                                    color: carTextColor,
+                                    fontSize: "12px",
+                                    fontWeight: "400",
+                                  }}
+                                >
+                                  Amount
+                                </Typography>
+                              </Grid>
+                              <Grid item style={{ flexGrow: 1 }}>
+                                <Box
+                                  style={{
+                                    marginTop: "8px",
+                                    backgroundColor: "transparent",
+                                    marginLeft: "3px",
+                                    marginRight: "3px",
+                                    borderBottom: `2px dotted ${carTextColor}`,
+                                  }}
+                                />
+                              </Grid>
+                              <Grid item>
+                                <Typography
+                                  style={{
+                                    color: carTextColor,
+                                    fontSize: "16px",
+                                    fontWeight: "500",
+                                  }}
+                                >
+                                  {gateMeeting
+                                    ? `$${round(car.price, 2)}`
+                                    : `$${round(car.price, 2)}`}
+                                </Typography>
+                              </Grid>
+                            </Grid> */}
+                          {/* <Grid item xs={8}>
                             <Paper className={classes.priceBox}>
                               <Grid container justify="center">
                                 <Typography variant="body2">
@@ -531,95 +765,106 @@ const FleetForm = ({
                               </Grid>
                             </Paper>
                           </Grid> */}
-                            </Grid>
-                          </Grid>
-                        </Grid>
-                      </ListItem>
-                    </Grid>
-                  ))}
-                  {Object.keys(cars).length === 0 && (
-                    <div
-                      style={{
-                        color: "grey",
-                        fontSize: "26px",
-                        marginLeft: "7px",
-                      }}
-                    >
-                      No cars
+                        </div>
+                        {/* </div> */}
+                      </div>
                     </div>
-                  )}
-                </Grid>
-              </Grid>
-            </Grid>
-            <AppBar
-              position="sticky"
-              color="primary"
-              className={classes.appBar}
-              style={{
-                top: "auto",
-                bottom: "3px",
-              }}
+                  </div>
+                ))}
+                {Object.keys(cars).length === 0 && (
+                  <div
+                    style={{
+                      color: "grey",
+                      fontSize: "26px",
+                      marginLeft: "7px",
+                    }}
+                  >
+                    No cars
+                  </div>
+                )}
+                {/* </div> */}
+              </div>
+            </div>
+            <div
+              // position="sticky"
+              // color="primary"
+              // className={classes.appBar}
+              // style={{
+              //   top: "auto",
+              //   bottom: "3px",
+              // }}
+              className={styles.buttonsGroupForPositioning}
             >
-              <Grid
-                container
-                direction="row"
-                alignItems="center"
-                justify="center"
-                spacing={1}
-                className={classes.buttonGroup}
+              <div
+                // container
+                // direction="row"
+                // alignItems="center"
+                // justify="center"
+                // spacing={1}
+                className={styles.buttonGroupBlockContainer}
                 // style={{
                 //   paddingBottom: "14px",
                 //   paddingLeft: "16px",
                 //   paddingRight: "0px",
                 // }}
               >
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    onClick={() => {
-                      back()
-                      setGateMeetingRedux(false)
-                      setResetWidgetInputs(false)
-                      setIsAirportPickupIncluded(false)
-                    }}
-                    startIcon={<BackArrowIcon />}
-                    className={classes.backButtonSelf}
-                    style={{
-                      height: "50px",
+                {/* <div
+                // item
+                // xs={6}
+                className={styles.buttonBackContainer}
+              > */}
+                <button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  onClick={() => {
+                    back()
+                    setGateMeetingRedux(false)
+                    setResetWidgetInputs(false)
+                    setIsAirportPickupIncluded(false)
+                  }}
+                  startIcon={<BackArrowIcon />}
+                  className={classes.backButtonSelf}
+                  // style={{
+                  //   height: "50px",
 
-                      textTransform: "none",
-                    }}
-                  >
-                    Back
-                  </Button>
-                </Grid>
+                  //   textTransform: "none",
+                  // }}
+                  className={styles.buttonBackSelf}
+                >
+                  Back
+                </button>
+                {/* </div> */}
 
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => {
-                      next()
-                      setCarId(carCard)
-                    }}
-                    color="primary"
-                    endIcon={<ForwardArrowIcon />}
-                    className={classes.nextButtonSelf}
-                    disabled={carCard ? false : true}
-                    style={{
-                      height: "50px",
-                      // paddingTop: "7px",
-                      textTransform: "none",
-                    }}
-                  >
-                    Next
-                  </Button>
-                </Grid>
-              </Grid>
-            </AppBar>
-          </Grid>
+                {/* <div
+                // item
+                // xs={6}
+                className={styles.buttonNextContainer}
+              > */}
+                <button
+                  variant="contained"
+                  fullWidth
+                  onClick={() => {
+                    next()
+                    setCarId(carCard)
+                  }}
+                  color="primary"
+                  endIcon={<ForwardArrowIcon />}
+                  className={classes.nextButtonSelf}
+                  disabled={carCard ? false : true}
+                  // style={{
+                  //   height: "50px",
+                  //   // paddingTop: "7px",
+                  //   textTransform: "none",
+                  // }}
+                  className={styles.buttonNextSelf}
+                >
+                  Next
+                </button>
+                {/* </div> */}
+              </div>
+            </div>
+          </div>
         )
       }
     }

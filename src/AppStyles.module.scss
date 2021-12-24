@@ -1,3 +1,5 @@
+@use "./Components/MAINCSSFORWHOLECOMPONENTS/_AppBackgroundColor.module.scss" as *;
+
 body,
 html {
   font-family: "Vazir", sans-serif;
@@ -60,15 +62,41 @@ $main-icon-color: white;
   transform: translateY(0);
   -webkit-transform: translateY(0);
   transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 .cardContainerHidden {
   position: relative;
   visibility: hidden;
   opacity: 0.5;
-  transition: 0.3s;
-  -webkit-transition: 0.6s;
   transform: translateY(100%);
   -webkit-transform: translateY(100%);
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+.contentContainer {
+  width: 356px;
+  height: 60vh;
+  overflow-y: scroll;
+  padding-right: 0px;
+  @include whole-app-background;
+  &::-webkit-scrollbar {
+    width: 0.15em;
+    // top: 100px;
+    border-radius: 3px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    // margin-top: 84px;
+    // marginBottom: "300px",
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #c7c7c7;
+    // borderRadius: "40px",
+    border-radius: 2px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #bfaf82;
+  }
 }
 .divForStickyHeader {
   position: sticky;

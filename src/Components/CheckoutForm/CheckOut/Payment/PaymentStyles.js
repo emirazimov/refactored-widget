@@ -2,13 +2,13 @@ import { makeStyles } from "@material-ui/styles"
 
 const useStyles = makeStyles((theme) => ({
   contentContainer: {
-    padding: theme.spacing(2),
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(2.2),
+    // padding: theme.spacing(2),
+    // paddingTop: theme.spacing(1),
+    // paddingBottom: theme.spacing(2.2),
     backgroundColor: "black",
   },
   buttonGroup: {
-    paddingTop: theme.spacing(0),
+    // paddingTop: theme.spacing(0),
   },
   error: {
     color: "#db5858",

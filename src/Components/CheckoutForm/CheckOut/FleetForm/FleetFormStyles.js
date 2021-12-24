@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
     // "&$selected": { backgroundColor: "white" },
   },
   contentContainer: {
-    padding: theme.spacing(2),
-    paddingRight: theme.spacing(1),
+    // padding: theme.spacing(2),
+    // paddingRight: theme.spacing(1),
     height: "100%",
     flexwrap: "nowrap",
     backgroundColor: "black",
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   priceBox: {
     backgroundColor: "#851EDF",
-    padding: theme.spacing(1),
+    // padding: theme.spacing(1),
   },
   buttonGroup: {
     // bottom: 15,
@@ -52,19 +52,19 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
   },
   carInfoCont: {
-    [theme.breakpoints.down("xs")]: {
-      alignItems: "center",
-      padding: theme.spacing(0),
-    },
+    // [theme.breakpoints.down("xs")]: {
+    //   alignItems: "center",
+    //   padding: theme.spacing(0),
+    // },
     margin: "0px",
     marginTop: "-10px",
     width: "143px",
   },
   carInfoContForMobile: {
-    [theme.breakpoints.down("xs")]: {
-      alignItems: "center",
-      padding: theme.spacing(0),
-    },
+    // [theme.breakpoints.down("xs")]: {
+    //   alignItems: "center",
+    //   padding: theme.spacing(0),
+    // },
     margin: "0px",
     marginTop: "-10px",
     width: "100%",

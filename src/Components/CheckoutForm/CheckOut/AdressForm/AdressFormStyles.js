@@ -3,29 +3,29 @@ import { withStyles } from "@material-ui/styles"
 import Switch from "@material-ui/core/Switch"
 
 const useStyles = makeStyles((theme) => ({
-  contentContainer: {
-    padding: theme.spacing(2),
-    paddingTop: "0px",
-    paddingBottom: "0px",
-    background: "black",
-  },
+  // contentContainer: {
+  //   padding: theme.spacing(2),
+  //   paddingTop: "0px",
+  //   paddingBottom: "0px",
+  //   background: "black",
+  // },
 
-  carItem: {
-    backgroundColor: "black",
-    marginTop: theme.spacing(1),
-    padding: 0,
-    width: "100%",
-    height: "80%",
-    boxShadow: "4px 5px 30px rgba(0, 0, 0, 0.1)",
-    cursor: "pointer",
-    border: "none",
-    borderRadius: "10px",
-    "&:hover": {
-      // backgroundColor: "#AC8159",
-      color: "white",
-      transition: "300ms",
-    },
-  },
+  // carItem: {
+  //   backgroundColor: "black",
+  //   marginTop: theme.spacing(1),
+  //   padding: 0,
+  //   width: "100%",
+  //   height: "80%",
+  //   boxShadow: "4px 5px 30px rgba(0, 0, 0, 0.1)",
+  //   cursor: "pointer",
+  //   border: "none",
+  //   borderRadius: "10px",
+  //   "&:hover": {
+  //     // backgroundColor: "#AC8159",
+  //     color: "white",
+  //     transition: "300ms",
+  //   },
+  // },
   carFont: {
     textTransform: "uppercase",
     fontSize: "11px",
@@ -65,8 +65,8 @@ const useStyles = makeStyles((theme) => ({
     msUserSelect: "none",
   },
   carItemContainer: {
-    paddingTop: theme.spacing(1.2),
-    paddingBottom: theme.spacing(1.2),
+    // paddingTop: theme.spacing(1.2),
+    // paddingBottom: theme.spacing(1.2),
 
     "&:hover": {
       color: "white",

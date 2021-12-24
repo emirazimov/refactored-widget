@@ -1,19 +1,52 @@
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
 @use "../../../../../../../../global" as *;
-.flightNumberInput {
-  @include airlines_icon;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
 
-  @include main-inputs-size-and-background-styles-etc;
+.mainWrapper {
+  @include whole-app-background;
+  @include side-paddings-for-whole-widget-page;
+  width: auto;
+}
+.underMapOptionsContainerForAirlines {
+  width: 100%;
+}
+.underMapOptionsWrapper {
+  width: 100%;
+}
+.underMapOptionsContainer {
+  width: 100%;
+}
+
+.airlinesItem {
+  width: 100%;
+  display: flex;
 }
 .airLinesInput {
   @include ticket_icon;
   @include main-inputs-size-and-background-styles-etc;
+  @include addressform-inputs-with-icons;
+  // text-indent: 38px;
+  // padding: 0;
+}
+.flightNumberContainer {
+  width: 100%;
+}
+.flightNumberItem {
+  width: 100%;
+  display: flex;
+}
+.flightNumberInput {
+  @include airlines_icon;
+
+  @include main-inputs-size-and-background-styles-etc;
+  @include addressform-inputs-with-icons;
 }
 .dateTimeBlockContainer {
-  // width: 100%;
-  // display: flex;
-  // flex-direction: row;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   @include globals_styles;
   // @import "https://bookinglane-widgets.s3.us-east-2.amazonaws.com/just-for-test/_global.scss/globals_styles";
 }
@@ -54,6 +87,7 @@
 }
 
 .datePickerSelfInput {
+  // padding: 0;
 }
 
 .timePicker {
@@ -67,6 +101,7 @@
 .timePickerInput {
   @include clock_icon;
   @include main-inputs-size-and-background-styles-etc;
+  @include addressform-inputs-with-icons;
 }
 
 .toggleButtonsContainer {
@@ -87,6 +122,43 @@
   width: 32px;
   height: 23px;
 }
+.safetySeatWrapper,
+.hourlyWrapper,
+.meetAndGreetWrapper {
+}
+.hourlyIconSelf {
+  @include clock_icon;
+  // background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2C6.47768 2 2 6.47768 2 12C2 17.5223 6.47768 22 12 22C17.5223 22 22 17.5223 22 12C22 6.47768 17.5223 2 12 2ZM12 20.3036C7.41518 20.3036 3.69643 16.5848 3.69643 12C3.69643 7.41518 7.41518 3.69643 12 3.69643C16.5848 3.69643 20.3036 7.41518 20.3036 12C20.3036 16.5848 16.5848 20.3036 12 20.3036Z' fill='#{$main-color}'/%3E%3Cpath d='M15.899 14.8267L12.716 12.5254V7.00084C12.716 6.90262 12.6356 6.82227 12.5374 6.82227H11.4637C11.3655 6.82227 11.2852 6.90262 11.2852 7.00084V13.1482C11.2852 13.2062 11.3119 13.2598 11.3588 13.2932L15.0508 15.9852C15.1311 16.0432 15.2427 16.0254 15.3008 15.9473L15.9392 15.0767C15.9972 14.9941 15.9794 14.8825 15.899 14.8267Z' fill='#{$main-color}'/%3E%3C/svg%3E%0A")
+  //   no-repeat left;
+  width: 24px;
+  height: 24px;
+}
+.safetySeatIconSelf {
+  @include safety_seat_icon;
+  width: 24px;
+  height: 24px;
+}
+.meetAndGreetIconSelf {
+  @include meet_and_greet_icon;
+  width: 24px;
+  height: 24px;
+}
+.safetySeatContainer,
+.hourlyRowContainer,
+.meetAndGreetContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.safetySeatIconAndNameContainer,
+.hourlyIconAndNameContainer,
+.meetAndGreetIconAndNameContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 // . {
 // }
 // date_picker_icon

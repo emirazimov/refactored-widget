@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button"
 import Grid from "@material-ui/core/Grid"
 import InputAdornment from "@material-ui/core/InputAdornment"
 
-import Switch from "@material-ui/core/Switch"
+// import Switch from "@material-ui/core/Switch"
 import Typography from "@material-ui/core/Typography"
 
 import * as yup from "yup"
@@ -49,6 +49,7 @@ import { AntSwitch, useStyles } from "./AdressFormStyles"
 import styles from "./AdressFormStyles/AdressForm.module.scss"
 import { StylesProvider } from "@material-ui/core/styles"
 import "./AdressFormStyles/AdressFormDatePickerSeparatedStyles.scss"
+import { Switch } from "../../../Helpers/Switch/Switch"
 {
   /*компонента перед экспортом обернута в react.memo*/
 }
@@ -127,10 +128,111 @@ const AdressFormwithoutReactMemo = ({
   const classes = useStyles()
   const isMobile = useMediaQuery("(max-width:530px)")
 
+  const MeetAndGreetSwitchBlock = (
+    <>
+      <div
+        item
+        style={{
+          width: "100%",
+          marginTop: "8px",
+          marginBottom: "8px",
+        }}
+        className={styles.meetAndGreetWrapper}
+      >
+        <div
+          // container
+          // direction="row"
+          // alignItems="center"
+          // justify="space-between"
+          className={styles.meetAndGreetContainer}
+        >
+          <div
+            // container
+            // direction="row"
+            // alignItems="center"
+            // style={{ paddingLeft: "8px" }}
+            className={styles.meetAndGreetIconAndNameContainer}
+          >
+            <span className={styles.meetAndGreetIconSelf}></span>
+            <h3
+              // className={classes.swichesTextColor}
+              // style={{
+              //   fontSize: "15px",
+              //   marginLeft: "7px",
+              // }}
+              className={styles.meetAndGreetIconAndNameTitle}
+            >
+              {"Meet & Greet/Luggage Assist"}
+            </h3>
+          </div>
+
+          <div className={styles.meetAndGreetSwitch}>
+            {/* <AntSwitch
+                            onClick={() => {
+                              if (gateMeeting == false) {
+                                // setIsGateMeeting(true)
+                                setGateMeetingRedux(true)
+                                setIsGateMeeting(true)
+                                setIsAirportPickupIncludedLocalState(true)
+                                console.log("true")
+                              } else {
+                                // setIsGateMeeting(false)
+                                setGateMeetingRedux(false)
+                                setIsGateMeeting(false)
+                                setIsAirportPickupIncludedLocalState(false)
+                                console.log("false")
+                              }
+                              // setIsGateMeeting(!isGateMeeting)
+                              // setTimeout(() => {
+                              //   console.log(isGateMeeting)
+                              //   if (isGateMeeting == true) {
+                              //     setGateMeetingRedux(true)
+                              //   } else {
+                              //     setGateMeetingRedux(false)
+                              //   }
+                              // }, 1500)
+                            }}
+                            color="primary"
+                          /> */}
+            <Switch
+              checked={gateMeeting}
+              onClick={() => {
+                if (gateMeeting == false) {
+                  // setIsGateMeeting(true)
+                  setGateMeetingRedux(true)
+                  setIsGateMeeting(true)
+                  setIsAirportPickupIncludedLocalState(true)
+                  console.log("true")
+                } else {
+                  // setIsGateMeeting(false)
+                  setGateMeetingRedux(false)
+                  setIsGateMeeting(false)
+                  setIsAirportPickupIncludedLocalState(false)
+                  console.log("false")
+                }
+                // setIsGateMeeting(!isGateMeeting)
+                // setTimeout(() => {
+                //   console.log(isGateMeeting)
+                //   if (isGateMeeting == true) {
+                //     setGateMeetingRedux(true)
+                //   } else {
+                //     setGateMeetingRedux(false)
+                //   }
+                // }, 1500)
+              }}
+              numberToIdentify={1}
+            />
+          </div>
+        </div>
+      </div>
+      <Luggage luggage={luggage} setLuggage={setLuggage} />
+    </>
+  )
+
   return (
     <div className={styles.mainWrapper}>
-      <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <FormProvider {...methods} style={{ width: "100%" }}>
+        <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
           <div className={styles.mapAndDirectionsWrapper}>
             <GoogleMap
               setDestinations={setDestinations}
@@ -154,7 +256,7 @@ const AdressFormwithoutReactMemo = ({
                     className={styles.underMapOptionsContainerForAirlines}
                   >
                     <div className={styles.airlinesItem}>
-                      <Autocomplete
+                      {/* <Autocomplete
                         id="combo-box-demo"
                         options={airlines}
                         defaultValue={null}
@@ -216,7 +318,85 @@ const AdressFormwithoutReactMemo = ({
                             : setAirlineId(null)
                         }}
                         name="airlines"
+                      /> */}
+
+                      <input
+                        // {...params}
+                        // fullWidth
+                        // className={classes.inputPlaceholderFontSize}
+                        placeholder="Airlines"
+                        // variant="standard"
+                        // style={{ background: "transparent" }}
+                        autoComplete="off"
+                        // InputProps={{
+                        //   ...params.InputProps,
+                        //   style: { inputStyle },
+                        //   classes: {
+                        //     root: classes.inputRootAutocomplete,
+                        //     underline: classes.noBorder,
+                        //     input: classes.input,
+                        //   },
+                        //   // disableUnderline: true,
+                        // }}
+                        list="airlines-list"
+                        // className={
+                        //   styles.cardholderInformationInputWithFullWidthSelf
+                        // }
+                        // onChange={(event, newValue) => {
+                        //   console.log(cities)
+                        //   newValue
+                        //     ? setCitiesId(newValue.id)
+                        //     : setCitiesId(null)
+                        // }}
+                        onChange={(event, newValue) => {
+                          newValue
+                            ? setAirlineId(newValue.id)
+                            : setAirlineId(null)
+                        }}
+                        className={styles.airLinesInput}
                       />
+
+                      <datalist id="airlines-list">
+                        {/* id="combo-box-demo"
+                  options={states}
+                  defaultValue={null}
+                  autoComplete="off"
+                  autoHighlight
+                  disablePortal
+                  className={classes.mainAutocompleteClass}
+                  InputProps={{
+                    classes: {
+                      root: classes.inputRootAutocomplete2,
+                    },
+                  }}
+                  classes={{
+                    popupIndicator: classes.popupIndicator,
+                    option: classes.option,
+                    paper: classes.selectedOption,
+                  }}
+                  getOptionLabel={(option) => option.name}
+                  renderOption={(option) => (
+                    <div style={{ fontSize: "14px" }}>
+                      <span style={{ fontSize: "14px" }}>{option.code}</span>
+                      {option.name} ({option.code})
+                    </div>
+                  )}
+                  renderInput={(params) => (
+                    
+                  )}
+                  
+                  name="stateId" */}
+                        {airlines.map((airline) => (
+                          <option
+                            // onChange={(event, newValue) => {
+                            //   newValue
+                            //     ? setCitiesId(newValue.id)
+                            //     : setCitiesId(null)
+                            // }}
+                            value={airline.name}
+                          />
+                        ))}
+                      </datalist>
                     </div>
                     <div className={styles.flightNumberContainer}>
                       <div className={styles.flightNumberItem}>
@@ -546,150 +726,10 @@ const AdressFormwithoutReactMemo = ({
                 </div>
               </div>
               {(isAirline || formData.isAirportPickupIncluded) &&
-                (formData.bookingType === 3 || bookingType === 3) && (
-                  <>
-                    <div
-                      item
-                      style={{
-                        width: "100%",
-                        marginTop: "8px",
-                        marginBottom: "8px",
-                      }}
-                      className={styles.meetAndGreetContainer}
-                    >
-                      <div
-                        // container
-                        // direction="row"
-                        // alignItems="center"
-                        // justify="space-between"
-                        className={styles.meetAndGreetRow}
-                      >
-                        <div
-                          // container
-                          // direction="row"
-                          // alignItems="center"
-                          // style={{ paddingLeft: "8px" }}
-                          className={styles.meetAndGreetIconAndNameContainer}
-                        >
-                          <MeetAndGreetIconBlack />
-                          <h3
-                            // className={classes.swichesTextColor}
-                            // style={{
-                            //   fontSize: "15px",
-                            //   marginLeft: "7px",
-                            // }}
-                            className={styles.meetAndGreetIconAndNameTitle}
-                          >
-                            {"Meet & Greet/Luggage Assist"}
-                          </h3>
-                        </div>
-
-                        <div className={styles.meetAndGreetSwitch}>
-                          <AntSwitch
-                            onClick={() => {
-                              if (gateMeeting == false) {
-                                // setIsGateMeeting(true)
-                                setGateMeetingRedux(true)
-                                setIsGateMeeting(true)
-                                setIsAirportPickupIncludedLocalState(true)
-                                console.log("true")
-                              } else {
-                                // setIsGateMeeting(false)
-                                setGateMeetingRedux(false)
-                                setIsGateMeeting(false)
-                                setIsAirportPickupIncludedLocalState(false)
-                                console.log("false")
-                              }
-                              // setIsGateMeeting(!isGateMeeting)
-                              // setTimeout(() => {
-                              //   console.log(isGateMeeting)
-                              //   if (isGateMeeting == true) {
-                              //     setGateMeetingRedux(true)
-                              //   } else {
-                              //     setGateMeetingRedux(false)
-                              //   }
-                              // }, 1500)
-                            }}
-                            color="primary"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <Luggage luggage={luggage} setLuggage={setLuggage} />
-                  </>
-                )}
-              {destinations[1]?.rideCheckPoint.match(/(^|\W)Airport($|\W)/) && (
-                <>
-                  <div
-                    item
-                    style={{
-                      width: "100%",
-                      marginTop: "8px",
-                      marginBottom: "8px",
-                    }}
-                    className={styles.meetAndGreetContainer}
-                  >
-                    <div
-                      // container
-                      // direction="row"
-                      // alignItems="center"
-                      // justify="space-between"
-                      className={styles.meetAndGreetRow}
-                    >
-                      <div
-                        // container
-                        // direction="row"
-                        // alignItems="center"
-                        // style={{ paddingLeft: "8px" }}
-                        className={styles.meetAndGreetIconAndNameContainer}
-                      >
-                        <MeetAndGreetIconBlack />
-                        <h3
-                          // className={classes.swichesTextColor}
-                          // style={{
-                          //   fontSize: "15px",
-                          //   marginLeft: "7px",
-                          // }}
-                          className={styles.meetAndGreetIconAndNameTitle}
-                        >
-                          {"Meet & Greet/Luggage Assist"}
-                        </h3>
-                      </div>
-
-                      <div className={styles.meetAndGreetSwitch}>
-                        <AntSwitch
-                          onClick={() => {
-                            if (gateMeeting == false) {
-                              // setIsGateMeeting(true)
-                              setGateMeetingRedux(true)
-                              setIsGateMeeting(true)
-                              setIsAirportPickupIncludedLocalState(true)
-                              console.log("true")
-                            } else {
-                              // setIsGateMeeting(false)
-                              setGateMeetingRedux(false)
-                              setIsGateMeeting(false)
-                              setIsAirportPickupIncludedLocalState(false)
-                              console.log("false")
-                            }
-                            // setIsGateMeeting(!isGateMeeting)
-                            // setTimeout(() => {
-                            //   console.log(isGateMeeting)
-                            //   if (isGateMeeting == true) {
-                            //     setGateMeetingRedux(true)
-                            //   } else {
-                            //     setGateMeetingRedux(false)
-                            //   }
-                            // }, 1500)
-                          }}
-                          color="primary"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <Luggage luggage={luggage} setLuggage={setLuggage} />
-                </>
-              )}
+                (formData.bookingType === 3 || bookingType === 3) &&
+                MeetAndGreetSwitchBlock}
+              {destinations[1]?.rideCheckPoint.match(/(^|\W)Airport($|\W)/) &&
+                MeetAndGreetSwitchBlock}
               {(isBoosterSeatExistOnBackend || isSafetySeatExistOnBackend) && (
                 <div
                   // item
@@ -707,7 +747,7 @@ const AdressFormwithoutReactMemo = ({
                       // item
                       className={styles.safetySeatIconAndNameContainer}
                     >
-                      <SafetySeatIcon />
+                      <span className={styles.safetySeatIconSelf}></span>
                       <h3
                         // className={classes.swichesTextColor}
                         // style={{
@@ -719,13 +759,20 @@ const AdressFormwithoutReactMemo = ({
                         Safety Seat
                       </h3>
                     </div>
-                    <AntSwitch
+                    {/* <AntSwitch
                       color="primary"
                       // disabled={disableHourly}
                       checked={safetySeat}
                       onClick={() => {
                         setSafetySeat(!safetySeat)
                       }}
+                    /> */}
+                    <Switch
+                      checked={safetySeat}
+                      onClick={() => {
+                        setSafetySeat(!safetySeat)
+                      }}
+                      numberToIdentify={2}
                     />
                   </div>
                 </div>
@@ -764,7 +811,7 @@ const AdressFormwithoutReactMemo = ({
                   // direction="row"
                   // justify="space-between"
                   // alignItems="center"
-                  className={styles.hourlyRow}
+                  className={styles.hourlyRowContainer}
                 >
                   <div
                     // container
@@ -773,7 +820,7 @@ const AdressFormwithoutReactMemo = ({
                     // style={{ paddingLeft: "-12px" }}
                     className={styles.hourlyIconAndNameContainer}
                   >
-                    <HourlyIcon></HourlyIcon>
+                    <span className={styles.hourlyIconSelf}></span>
                     <h3
                       // className={classes.swichesTextColor}
                       // style={{ fontSize: "14px" }}
@@ -782,8 +829,7 @@ const AdressFormwithoutReactMemo = ({
                       Hourly
                     </h3>
                   </div>
-
-                  <AntSwitch
+                  {/* <AntSwitch
                     color="primary"
                     // disabled={disableHourly}
                     checked={hourly}
@@ -817,6 +863,40 @@ const AdressFormwithoutReactMemo = ({
                       // setHourlyRedux()
                       // hourly ? setBookingType(2) : setBookingType(1)
                     }}
+                  /> */}
+                  <Switch
+                    checked={hourly}
+                    onClick={() => {
+                      // if (hourly == false) {
+                      //   // // setIsGateMeeting(true)
+                      //   // setGateMeetingRedux(true)
+                      //   setHourly(true)
+                      //   // hourly = true
+                      //   console.log("true")
+                      //   console.log(hourly)
+                      // } else {
+                      //   // setIsGateMeeting(false)
+                      //   // setGateMeetingRedux(false)
+                      //   setHourly(true)
+                      //   // hourly = false
+                      //   console.log("false")
+                      //   console.log(hourly)
+                      // }
+                      if (!hourlyAndSeatsRedux) {
+                        // setIsGateMeeting(true)
+                        setHourlyRedux(true)
+                        // console.log("true")
+                      } else {
+                        // setIsGateMeeting(false)
+                        setHourlyRedux(false)
+                        // console.log("false")
+                      }
+                      setHourly(!hourly)
+
+                      // setHourlyRedux()
+                      // hourly ? setBookingType(2) : setBookingType(1)
+                    }}
+                    numberToIdentify={3}
                   />
                 </div>
               </div>

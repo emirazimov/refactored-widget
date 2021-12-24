@@ -16,27 +16,27 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "15.5px",
     // borderRadius: "20px",
     zIndex: "10",
-    [theme.breakpoints.down("769")]: {
-      width: "95.7%",
-    },
-    [theme.breakpoints.down("730")]: {
-      width: "95.3%",
-    },
-    [theme.breakpoints.down("700")]: {
-      width: "95%",
-    },
-    [theme.breakpoints.down("600")]: {
-      width: "94%",
-    },
-    [theme.breakpoints.down("500")]: {
-      width: "93%",
-    },
-    [theme.breakpoints.down("400")]: {
-      width: "92%",
-    },
-    [theme.breakpoints.down("350")]: {
-      width: "91%",
-    },
+    // [theme.breakpoints.down("769")]: {
+    //   width: "95.7%",
+    // },
+    // [theme.breakpoints.down("730")]: {
+    //   width: "95.3%",
+    // },
+    // [theme.breakpoints.down("700")]: {
+    //   width: "95%",
+    // },
+    // [theme.breakpoints.down("600")]: {
+    //   width: "94%",
+    // },
+    // [theme.breakpoints.down("500")]: {
+    //   width: "93%",
+    // },
+    // [theme.breakpoints.down("400")]: {
+    //   width: "92%",
+    // },
+    // [theme.breakpoints.down("350")]: {
+    //   width: "91%",
+    // },
   },
   // mapContainer2: {
   //   width: "50%",
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #db5858",
   },
   destinationText: {
-    padding: theme.spacing(1),
+    // padding: theme.spacing(1),
     "& .MuiTextField-root": {
       background: "transparent",
     },

@@ -1,0 +1,131 @@
+@use "../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
+@use "../../../MAINCSSFORWHOLECOMPONENTS/FontColor.module" as *;
+@use "../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
+
+@mixin car-descriptions {
+  .carContainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .carImageBlock {
+    width: 50%;
+  }
+  .carDescriptionTextBlock {
+    width: 50%;
+  }
+  .carDescriptionTextContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .detailedDescription {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .detailedDescriptionTitleContainer {
+  }
+  .detailedDescriptionTitleSelf {
+  }
+  .detailedDescriptionPointedLineContainer {
+    flex-grow: 1;
+  }
+  .detailedDescriptionPointedLineSelf {
+    margin-top: 12px;
+    background-color: transparent;
+    margin-left: 3px;
+    margin-right: 3px;
+    border-bottom: 2px dotted black;
+  }
+  .detailedDescriptionValueContainer {
+  }
+  .detailedDescriptionValueSelf {
+  }
+}
+
+.mainWrapper {
+  @include whole-app-background;
+  @include side-paddings-for-whole-widget-page;
+  // width: 100%;
+  // height: 100%;
+
+  position: relative;
+  // padding-bottom: 45px;
+}
+.contentContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  // padding-bottom: 70px;
+}
+.pageTitleContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+.pageTitle {
+  @include global-title-styles;
+}
+.carListContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+// .detailedDescriptionTitleContainer {
+// }
+// .detailedDescriptionTitleSelf {
+// }
+// .detailedDescriptionPointedLineContainer {
+//   flex-grow: 1;
+// }
+// .detailedDescriptionPointedLineSelf {
+//   margin-top: 12px;
+//   background-color: transparent;
+//   margin-left: 3px;
+//   margin-right: 3px;
+//   border-bottom: 2px dotted black;
+// }
+// .detailedDescriptionValueContainer {
+// }
+// .detailedDescriptionValueSelf {
+// }
+
+@include car-descriptions;
+.buttonsGroupForPositioning {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+@mixin buttons-group {
+  .buttonGroupBlockContainer {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    flex-direction: row;
+  }
+  // .buttonBackContainer {
+  //   width: 50%;
+  //   height: 100%;
+  // }
+  .buttonBackSelf {
+    width: 100%;
+    height: 100%;
+  }
+  // .buttonNextContainer {
+  //   width: 50%;
+  //   height: 100%;
+  // }
+  .buttonNextSelf {
+    width: 100%;
+    height: 100%;
+  }
+}
+@include buttons-group;

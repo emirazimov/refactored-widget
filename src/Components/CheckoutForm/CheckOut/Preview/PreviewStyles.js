@@ -6,22 +6,22 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "8px",
   },
   contentContainer: {
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
     paddingTop: "8px",
     paddingBottom: "8px",
     overflow: "visible",
     backgroundColor: "black",
   },
   carInfoCont: {
-    [theme.breakpoints.down("xs")]: {
-      alignItems: "center",
-      // padding: theme.spacing(2),
-      paddingRight: "16px",
-    },
+    // [theme.breakpoints.down("xs")]: {
+    //   alignItems: "center",
+    //   // padding: theme.spacing(2),
+    //   paddingRight: "16px",
+    // },
   },
   priceBox: {
     backgroundColor: "#851EDF",
-    padding: theme.spacing(1),
+    // padding: theme.spacing(1),
   },
   notes: {
     height: "100%",

@@ -50,20 +50,20 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  main: {
-    position: "fixed",
-    bottom: "1px",
-    webkitUserSelect: "none",
-    mozUserSelect: "none",
-    msUserSelect: "none",
-    userSelect: "none",
-    "& .MuiDivider-root": {
-      background: "#c7c7c7",
-    },
-    "& .MuiPaper-root": {
-      background: "black",
-    },
-  },
+  // main: {
+  //   position: "fixed",
+  //   bottom: "1px",
+  //   webkitUserSelect: "none",
+  //   mozUserSelect: "none",
+  //   msUserSelect: "none",
+  //   userSelect: "none",
+  //   "& .MuiDivider-root": {
+  //     background: "#c7c7c7",
+  //   },
+  //   "& .MuiPaper-root": {
+  //     background: "black",
+  //   },
+  // },
   mainMobile: {
     position: "fixed",
     bottom: "-1px",
@@ -143,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
     // borderBottomRight: '0px',
     // borderBottomLeft: '0px',
 
-    bottom: "-1px",
+    // bottom: "-1px",
     overflowY: "scroll",
     "&::-webkit-scrollbar": {
       width: "0.15em",
@@ -163,10 +163,10 @@ const useStyles = makeStyles((theme) => ({
     "&::-webkit-scrollbar-thumb:hover": {
       background: "#bfaf82",
     },
-    [theme.breakpoints.down("xs")]: {
-      width: userScreenWidth,
-      height: userScreenHeight,
-    },
+    // [theme.breakpoints.down("xs")]: {
+    //   width: userScreenWidth,
+    //   height: userScreenHeight,
+    // },
     // left: '-20px',
   },
   contentIpad: {

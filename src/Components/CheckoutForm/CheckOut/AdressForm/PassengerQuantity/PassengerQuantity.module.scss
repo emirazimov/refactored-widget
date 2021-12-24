@@ -1,0 +1,25 @@
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_IconsForWholeAddressFormPage.scss"
+  as *;
+
+.passengerQuantityWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.passengerQuantityIconAndTitleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.passengerQuantityIcon {
+  @include passenger_icon;
+  width: 24px;
+  height: 24px;
+}
+.passengerCounterTitle {
+}
+.passengerQuantityCounterContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
