@@ -12,8 +12,13 @@
 @mixin addressform-inputs-with-icons {
   padding-left: 37px;
   padding-right: 35px;
+
   background-position-x: 2%;
 }
 @mixin payment-inputs-with-left-padding {
   padding-left: 11px;
+}
+
+@mixin margin-top-bottom-for-adressfrom-inputs {
+  margin-top: 15px;
 }

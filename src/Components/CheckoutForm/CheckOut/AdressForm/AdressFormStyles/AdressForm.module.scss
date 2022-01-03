@@ -1,11 +1,11 @@
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
-@use "../../../../../../../../global" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage' as *;
+// @use "../../../../../../../../global" as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module' as *;
 
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
-@use "../../FleetForm/FleetForm.module.scss" as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss' as *;
+@use '../../FleetForm/FleetForm.module.scss' as *;
 
 .mainWrapper {
   @include whole-app-background;
@@ -25,6 +25,7 @@
 .airlinesItem {
   width: 100%;
   display: flex;
+  @include margin-top-bottom-for-adressfrom-inputs;
 }
 .airLinesInput {
   @include ticket_icon;
@@ -35,6 +36,7 @@
 }
 .flightNumberContainer {
   width: 100%;
+  @include margin-top-bottom-for-adressfrom-inputs;
 }
 .flightNumberItem {
   width: 100%;
@@ -50,7 +52,8 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  @include globals_styles;
+  @include margin-top-bottom-for-adressfrom-inputs;
+  // @include globals_styles;
   // @import "https://bookinglane-widgets.s3.us-east-2.amazonaws.com/just-for-test/_global.scss/globals_styles";
 }
 .datePicker {
@@ -163,13 +166,14 @@
 }
 .safetySeatIconAndNameTitle,
 .hourlyIconAndNameTitle,
-.meetAndGreetIconAndNameTitle {
+.meetAndGreetIconAndNameTitle,
+.preferencesTitle {
   @include global_second_title_styles;
 }
 
-.carouselContainer {
-  height: 78px;
-}
+// .carouselContainer {
+//   height: 78px;
+// }
 
 .carouselButtonsDisabled {
   width: 30px;
@@ -189,6 +193,7 @@
   cursor: pointer;
 }
 .carItemContainer {
+  width: 60px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -203,17 +208,36 @@
     cursor: default;
   }
 }
+.carItemTitleContainer {
+  height: 30%;
+  display: flex;
+  align-items: center;
+}
 .carItemTitle {
   @include global_car_type_title;
+  margin: 0;
 }
 
-.carImage {
-  width: 70px;
-  height: 42px;
+.carImageContainer {
+  height: 70%;
+}
+.carImageStylesForBiggerTypeOfImage {
+  // width: 80%;
+  height: 50%;
   pointer-events: none;
   user-select: none;
 }
+.carImage {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
 @include buttons-group;
+.buttonGroupBlockContainer {
+  margin: 20px auto;
+}
 // . {
 // }
 // date_picker_icon

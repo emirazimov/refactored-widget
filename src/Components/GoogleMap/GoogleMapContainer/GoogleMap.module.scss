@@ -1,6 +1,6 @@
-@use "../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
-@use "../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
-@use "../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
+@use '../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module' as *;
+@use '../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
+@use '../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage' as *;
 
 .mapWithInputsWrapper {
   width: auto;
@@ -19,6 +19,7 @@
   width: 100%;
   position: relative;
   display: flex;
+  @include margin-top-bottom-for-adressfrom-inputs;
   // flex-direction: row;
 }
 .addLocationIcon {
@@ -67,7 +68,7 @@
 .dropDown {
   width: 100%;
   position: absolute;
-  top: 37px;
+  top: 42px;
   // border-radius: 10px;
   display: flex;
   flex-direction: column;

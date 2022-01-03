@@ -1,19 +1,19 @@
-import DateFnsUtils from "@date-io/date-fns"
-import { ListItem, TextField, useMediaQuery } from "@material-ui/core"
-import Button from "@material-ui/core/Button"
-import Grid from "@material-ui/core/Grid"
-import InputAdornment from "@material-ui/core/InputAdornment"
+import DateFnsUtils from '@date-io/date-fns'
+import { ListItem, TextField, useMediaQuery } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import InputAdornment from '@material-ui/core/InputAdornment'
 
 // import Switch from "@material-ui/core/Switch"
-import Typography from "@material-ui/core/Typography"
+import Typography from '@material-ui/core/Typography'
 
-import * as yup from "yup"
-import Autocomplete from "@material-ui/lab/Autocomplete"
-import { MuiPickersUtilsProvider } from "@material-ui/pickers"
-import React, { useState } from "react"
-import { FormProvider, useForm } from "react-hook-form"
-import { connect } from "react-redux"
-import { placesApi } from "../../../../api/api"
+import * as yup from 'yup'
+import Autocomplete from '@material-ui/lab/Autocomplete'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import React, { useState } from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
+import { connect } from 'react-redux'
+import { placesApi } from '../../../../api/api'
 import {
   ClockIcon,
   DateIcon,
@@ -24,32 +24,33 @@ import {
   RightArrowForAdressForm,
   SafetySeatIcon,
   Ticket,
-} from "../../../../assets/icons"
-import { getCarsByType } from "../../../../Redux/car-reducer"
-import GoogleMap from "../../../GoogleMap/GoogleMapContainer/GoogleMap"
-import { getCompanyCars } from "../../../../Redux/car-reducer"
+} from '../../../../assets/icons'
+import { getCarsByType } from '../../../../Redux/car-reducer'
+import GoogleMap from '../../../GoogleMap/GoogleMapContainer/GoogleMap'
+import { getCompanyCars } from '../../../../Redux/car-reducer'
 import {
   CustomFormInput,
   DateInputControl,
-} from "../CustomFormInput/CustomFormInput"
-import Hours from "./Hours/Hours"
-import PassengerQuantity from "./PassengerQuantity/PassengerQuantity"
-import { withStyles } from "@material-ui/styles"
+} from '../CustomFormInput/CustomFormInput'
+import Hours from './Hours/Hours'
+import PassengerQuantity from './PassengerQuantity/PassengerQuantity'
+import { withStyles } from '@material-ui/styles'
 
-import Carousel, { consts } from "react-elastic-carousel"
+import Carousel, { consts } from 'react-elastic-carousel'
 
-import "../index.css"
-import { setHourlyRedux } from "../../../../Redux/hourly-reducer"
-import { setGateMeetingRedux } from "../../../../Redux/gate-meeting-reducer"
-import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
-import SafetySeat from "./SafetySeat/SafetySeat"
-import ReactInputMask from "react-input-mask"
-import Luggage from "./Luggage/Luggage"
-import { AntSwitch, useStyles } from "./AdressFormStyles"
-import styles from "./AdressFormStyles/AdressForm.module.scss"
-import { StylesProvider } from "@material-ui/core/styles"
-import "./AdressFormStyles/AdressFormDatePickerSeparatedStyles.scss"
-import { Switch } from "../../../Helpers/Switch/Switch"
+import '../index.css'
+import { setHourlyRedux } from '../../../../Redux/hourly-reducer'
+import { setGateMeetingRedux } from '../../../../Redux/gate-meeting-reducer'
+import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
+import SafetySeat from './SafetySeat/SafetySeat'
+import ReactInputMask from 'react-input-mask'
+import Luggage from './Luggage/Luggage'
+import { AntSwitch, useStyles } from './AdressFormStyles'
+import styles from './AdressFormStyles/AdressForm.module.scss'
+import { StylesProvider } from '@material-ui/core/styles'
+import './AdressFormStyles/AdressFormDatePickerSeparatedStyles.scss'
+import { Switch } from '../../../Helpers/Switch/Switch'
+import './AdressFormStyles/AdressFormCarousel.scss'
 {
   /*компонента перед экспортом обернута в react.memo*/
 }
@@ -126,16 +127,16 @@ const AdressFormwithoutReactMemo = ({
   setValue,
 }) => {
   const classes = useStyles()
-  const isMobile = useMediaQuery("(max-width:530px)")
+  const isMobile = useMediaQuery('(max-width:530px)')
 
   const MeetAndGreetSwitchBlock = (
     <>
       <div
         item
         style={{
-          width: "100%",
-          marginTop: "8px",
-          marginBottom: "8px",
+          width: '100%',
+          marginTop: '8px',
+          marginBottom: '8px',
         }}
         className={styles.meetAndGreetWrapper}
       >
@@ -162,7 +163,7 @@ const AdressFormwithoutReactMemo = ({
               // }}
               className={styles.meetAndGreetIconAndNameTitle}
             >
-              {"Meet & Greet/Luggage Assist"}
+              {'Meet & Greet/Luggage Assist'}
             </h3>
           </div>
 
@@ -202,13 +203,13 @@ const AdressFormwithoutReactMemo = ({
                   setGateMeetingRedux(true)
                   setIsGateMeeting(true)
                   setIsAirportPickupIncludedLocalState(true)
-                  console.log("true")
+                  console.log('true')
                 } else {
                   // setIsGateMeeting(false)
                   setGateMeetingRedux(false)
                   setIsGateMeeting(false)
                   setIsAirportPickupIncludedLocalState(false)
-                  console.log("false")
+                  console.log('false')
                 }
                 // setIsGateMeeting(!isGateMeeting)
                 // setTimeout(() => {
@@ -231,8 +232,8 @@ const AdressFormwithoutReactMemo = ({
 
   return (
     <div className={styles.mainWrapper}>
-      <FormProvider {...methods} style={{ width: "100%" }}>
-        <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
+      <FormProvider {...methods} style={{ width: '100%' }}>
+        <form onSubmit={handleSubmit(onSubmit)} style={{ width: '100%' }}>
           <div className={styles.mapAndDirectionsWrapper}>
             <GoogleMap
               setDestinations={setDestinations}
@@ -324,10 +325,10 @@ const AdressFormwithoutReactMemo = ({
                         // {...params}
                         // fullWidth
                         // className={classes.inputPlaceholderFontSize}
-                        placeholder="Airlines"
+                        placeholder='Airlines'
                         // variant="standard"
                         // style={{ background: "transparent" }}
-                        autoComplete="off"
+                        autoComplete='off'
                         // InputProps={{
                         //   ...params.InputProps,
                         //   style: { inputStyle },
@@ -338,7 +339,7 @@ const AdressFormwithoutReactMemo = ({
                         //   },
                         //   // disableUnderline: true,
                         // }}
-                        list="airlines-list"
+                        list='airlines-list'
                         // className={
                         //   styles.cardholderInformationInputWithFullWidthSelf
                         // }
@@ -356,7 +357,7 @@ const AdressFormwithoutReactMemo = ({
                         className={styles.airLinesInput}
                       />
 
-                      <datalist id="airlines-list">
+                      <datalist id='airlines-list'>
                         {/* id="combo-box-demo"
                   options={states}
                   defaultValue={null}
@@ -401,12 +402,12 @@ const AdressFormwithoutReactMemo = ({
                     <div className={styles.flightNumberContainer}>
                       <div className={styles.flightNumberItem}>
                         <input
-                          name="flightNumber"
+                          name='flightNumber'
                           // variant="standard"
-                          placeholder="Flight number"
+                          placeholder='Flight number'
                           // className={classes.flightNumberInput}
                           className={styles.flightNumberInput}
-                          autoComplete="off"
+                          autoComplete='off'
                           // style={{
                           //   height: "100%",
                           //   // border: "none",
@@ -461,7 +462,7 @@ const AdressFormwithoutReactMemo = ({
                       {/* <ThemeProvider theme={materialTheme}> */}
                       <StylesProvider injectFirst>
                         <DateInputControl
-                          name="orderStartDate"
+                          name='orderStartDate'
                           // inputVariant="primary"
                           // label="Pick up Date"
                           // inputVariant="outlined"
@@ -478,7 +479,7 @@ const AdressFormwithoutReactMemo = ({
                           //   //     zIndex: "1000000000000000000",
                           //   //   },
                           // }}
-                          placeholder="Pick up Date"
+                          placeholder='Pick up Date'
                           defaultValue={
                             formData.dateForDefaultValue && !resetInputs
                               ? formData.dateForDefaultValue
@@ -531,10 +532,10 @@ const AdressFormwithoutReactMemo = ({
                       className={styles.timePicker}
                     >
                       <ReactInputMask
-                        name="orderStartTime"
-                        mask="71:98"
-                        autoComplete="off"
-                        maskChar="_"
+                        name='orderStartTime'
+                        mask='71:98'
+                        autoComplete='off'
+                        maskChar='_'
                         // alwaysShowMask={false}
                         formatChars={formatChars}
                         // mask={mask}
@@ -553,8 +554,8 @@ const AdressFormwithoutReactMemo = ({
                               <input
                                 {...inputProps}
                                 // variant="outlined"
-                                placeholder="hh:mm"
-                                autoComplete="off"
+                                placeholder='hh:mm'
+                                autoComplete='off'
                                 className={styles.timePickerInput}
                                 // fullWidth
                                 // style={{
@@ -646,7 +647,7 @@ const AdressFormwithoutReactMemo = ({
                                 // }}
                               />
                               <ToggleButtonGroup
-                                color="primary"
+                                color='primary'
                                 value={
                                   formData.timeForDefaultValueAMPM?.alignment ||
                                   formData.timeForDefaultValueAMPM?.ampm
@@ -664,7 +665,7 @@ const AdressFormwithoutReactMemo = ({
                                 className={styles.toggleButtonsContainer}
                               >
                                 <ToggleButton
-                                  value="AM"
+                                  value='AM'
                                   className={styles.toggleButtonAM}
                                   // style={{
                                   //   width: "26px",
@@ -678,7 +679,7 @@ const AdressFormwithoutReactMemo = ({
                                   AM
                                 </ToggleButton>
                                 <ToggleButton
-                                  value="PM"
+                                  value='PM'
                                   className={styles.toggleButtonAM}
                                   // style={{
                                   //   width: "26px",
@@ -701,7 +702,7 @@ const AdressFormwithoutReactMemo = ({
                 </MuiPickersUtilsProvider>
               </div>
               <div
-                style={{ width: "100%" }}
+                style={{ width: '100%' }}
                 className={styles.passengersQuantityBlock}
               >
                 <div
@@ -922,7 +923,7 @@ const AdressFormwithoutReactMemo = ({
                   // item
                   className={styles.preferencesTitleContainer}
                 >
-                  <h3 className={classes.preferencesTitle}>Preferences</h3>
+                  <h3 className={styles.preferencesTitle}>Preferences</h3>
                 </div>
                 <div
                   // item
@@ -933,7 +934,7 @@ const AdressFormwithoutReactMemo = ({
                     itemsToShow={3}
                     pagination={false}
                     transitionMs={300}
-                    className={styles.carouselContainer}
+                    // className={styles.carouselContainer}
                     // style={{ height: "78px" }}
                   >
                     {carTypes.map((car, indexOfEachCar) => (
@@ -945,7 +946,7 @@ const AdressFormwithoutReactMemo = ({
                         className={styles.carItemContainer}
                         onClick={() => handleClick(car.id)}
                         selected={car.id === carSelectionID}
-                        name="carsValidation"
+                        name='carsValidation'
                       >
                         <div
                           // item
@@ -962,61 +963,62 @@ const AdressFormwithoutReactMemo = ({
                         </div>
                         <div item className={styles.carImageContainer}>
                           <img
-                            alt="carImage"
+                            alt='carImage'
                             src={car.imageUrl}
                             className={
-                              indexOfEachCar !== 2
-                                ? classes.carImage
-                                : classes.carImageStylesForBiggerTypeOfImage
+                              indexOfEachCar == 2
+                                ? styles.carImageStylesForBiggerTypeOfImage
+                                : styles.carImage
                             }
                             item
                             className={styles.carImage}
                           />
+                          {console.log(indexOfEachCar == 2)}
                         </div>
                       </div>
                     ))}
                   </Carousel>
                 </div>
-                <div
+                {/* <div
                 // item
                 // className={classes.submitButton}
+                > */}
+                <div
+                  // container
+                  // direction="row"
+                  // alignItems="center"
+                  // justify="center"
+                  // spacing={1}
+                  className={styles.buttonGroupBlockContainer}
+                  // style={{
+                  //   paddingBottom: "14px",
+                  //   paddingLeft: "16px",
+                  //   paddingRight: "0px",
+                  // }}
                 >
-                  <div
-                    // container
-                    // direction="row"
-                    // alignItems="center"
-                    // justify="center"
-                    // spacing={1}
-                    className={styles.buttonGroupBlockContainer}
-                    // style={{
-                    //   paddingBottom: "14px",
-                    //   paddingLeft: "16px",
-                    //   paddingRight: "0px",
+                  <button
+                    // variant="contained"
+                    // fullWidth
+                    // onClick={() => {
+                    //   next()
+                    //   setCarId(carCard)
                     // }}
+                    // color="primary"
+                    // endIcon={<ForwardArrowIcon />}
+                    // className={classes.nextButtonSelf}
+                    // disabled={carCard ? false : true}
+                    // // style={{
+                    // //   height: "50px",
+                    // //   // paddingTop: "7px",
+                    // //   textTransform: "none",
+                    // // }}
+                    type='submit'
+                    className={styles.buttonNextSelf}
                   >
-                    <button
-                      // variant="contained"
-                      // fullWidth
-                      // onClick={() => {
-                      //   next()
-                      //   setCarId(carCard)
-                      // }}
-                      // color="primary"
-                      // endIcon={<ForwardArrowIcon />}
-                      // className={classes.nextButtonSelf}
-                      // disabled={carCard ? false : true}
-                      // // style={{
-                      // //   height: "50px",
-                      // //   // paddingTop: "7px",
-                      // //   textTransform: "none",
-                      // // }}
-                      type="submit"
-                      className={styles.buttonNextSelf}
-                    >
-                      Next
-                    </button>
-                  </div>
+                    Next
+                  </button>
                 </div>
+                {/* </div> */}
               </div>
             </div>
           </div>
