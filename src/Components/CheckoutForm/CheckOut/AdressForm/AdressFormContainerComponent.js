@@ -26,6 +26,7 @@ import { setHourlyRedux } from "../../../../Redux/hourly-reducer"
 import { setGateMeetingRedux } from "../../../../Redux/gate-meeting-reducer"
 // import { AdressFormHelpers } from "./adressFormHelpers"
 import AdressFormUIComponent from "./AdressFormUIComponent"
+import styles from "./AdressFormStyles/AdressForm.module.scss"
 import * as yup from "yup"
 
 const AdressFormContainerComponent = ({
@@ -303,20 +304,22 @@ const AdressFormContainerComponent = ({
   const [flightNumber, setFlightNumber] = useState(null)
 
   const myArrow = ({ type, onClick, isEdge }) => {
-    const pointer =
-      type === consts.PREV ? (
-        <LeftArrowForAdressForm />
-      ) : (
-        <RightArrowForAdressForm />
-      )
+    const pointer = type === consts.PREV ? "<" : ">"
+    // console.log(isEdge)
     return (
-      <Button
-        onClick={onClick}
+      <button
+        onClick={() => {
+          onClick()
+          console.log(type)
+        }}
         disabled={isEdge}
-        className={classes.carouselRoot}
+        className={
+          isEdge ? styles.carouselButtonsDisabled : styles.carouselButtonsActive
+        }
+        //  styles.carouselButtonsActive
       >
         {pointer}
-      </Button>
+      </button>
     )
   }
   const [safetySeat, setSafetySeat] = useState(false)

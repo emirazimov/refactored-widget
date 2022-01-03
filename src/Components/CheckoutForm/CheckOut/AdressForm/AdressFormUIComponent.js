@@ -933,55 +933,47 @@ const AdressFormwithoutReactMemo = ({
                     itemsToShow={3}
                     pagination={false}
                     transitionMs={300}
+                    className={styles.carouselContainer}
+                    // style={{ height: "78px" }}
                   >
                     {carTypes.map((car, indexOfEachCar) => (
-                      <>
-                        <ListItem
-                          className={classes.carItem}
-                          onClick={() => handleClick(car.id)}
-                          selected={car.id === carSelectionID}
-                          classes={{
-                            selected: classes.active,
-                            root: classes.listRoot,
-                          }}
-                          name="carsValidation"
+                      <div
+                        // container
+                        // direction="column"
+                        // // justify="center"
+                        // alignItems="center"
+                        className={styles.carItemContainer}
+                        onClick={() => handleClick(car.id)}
+                        selected={car.id === carSelectionID}
+                        name="carsValidation"
+                      >
+                        <div
+                          // item
+                          className={styles.carItemTitleContainer}
                         >
-                          <div
-                            // container
-                            // direction="column"
-                            // // justify="center"
-                            // alignItems="center"
-                            className={styles.carItemContainer}
+                          <h4
+                            // className={classes.carFont}
+                            // noWrap
+                            // variant="body2"
+                            className={styles.carItemTitle}
                           >
-                            <div
-                              // item
-                              className={styles.carItemTitleContainer}
-                            >
-                              <h4
-                                className={classes.carFont}
-                                // noWrap
-                                // variant="body2"
-                                className={styles.carItemTitle}
-                              >
-                                {car.name}
-                              </h4>
-                            </div>
-                            <div item className={styles.carImageContainer}>
-                              <img
-                                alt="carImage"
-                                src={car.imageUrl}
-                                className={
-                                  indexOfEachCar !== 2
-                                    ? classes.carImage
-                                    : classes.carImageStylesForBiggerTypeOfImage
-                                }
-                                item
-                                className={styles.carImage}
-                              />
-                            </div>
-                          </div>
-                        </ListItem>
-                      </>
+                            {car.name}
+                          </h4>
+                        </div>
+                        <div item className={styles.carImageContainer}>
+                          <img
+                            alt="carImage"
+                            src={car.imageUrl}
+                            className={
+                              indexOfEachCar !== 2
+                                ? classes.carImage
+                                : classes.carImageStylesForBiggerTypeOfImage
+                            }
+                            item
+                            className={styles.carImage}
+                          />
+                        </div>
+                      </div>
                     ))}
                   </Carousel>
                 </div>
@@ -989,31 +981,41 @@ const AdressFormwithoutReactMemo = ({
                 // item
                 // className={classes.submitButton}
                 >
-                  <Grid
+                  <div
                     // container
+                    // direction="row"
+                    // alignItems="center"
                     // justify="center"
-                    className={styles.buttonContainer}
+                    // spacing={1}
+                    className={styles.buttonGroupBlockContainer}
+                    // style={{
+                    //   paddingBottom: "14px",
+                    //   paddingLeft: "16px",
+                    //   paddingRight: "0px",
+                    // }}
                   >
                     <button
-                      type="submit"
-                      // color="primary"
                       // variant="contained"
                       // fullWidth
-                      // className={classes.buttonSelf}
-                      // style={{
-                      //   height: "40px",
-                      //   borderRadius: "25px",
+                      // onClick={() => {
+                      //   next()
+                      //   setCarId(carCard)
                       // }}
-                      className={styles.button}
+                      // color="primary"
+                      // endIcon={<ForwardArrowIcon />}
+                      // className={classes.nextButtonSelf}
+                      // disabled={carCard ? false : true}
+                      // // style={{
+                      // //   height: "50px",
+                      // //   // paddingTop: "7px",
+                      // //   textTransform: "none",
+                      // // }}
+                      type="submit"
+                      className={styles.buttonNextSelf}
                     >
-                      {/* <Typography
-                        variant="body2"
-                        className={classes.typographyForButton}
-                      > */}
-                      Next step
-                      {/* </Typography> */}
+                      Next
                     </button>
-                  </Grid>
+                  </div>
                 </div>
               </div>
             </div>

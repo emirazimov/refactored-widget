@@ -5,3 +5,16 @@ $font-color: white;
   font-weight: 600;
   color: $font-color;
 }
+
+@mixin global_second_title_styles {
+  font-size: 14px;
+  font-weight: 300;
+  color: $font-color;
+}
+
+@mixin global_car_type_title {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  color: $font-color;
+}

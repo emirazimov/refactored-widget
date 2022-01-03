@@ -899,11 +899,6 @@ const PaymentUIComponent = ({
                   onClick={back}
                   startIcon={<BackArrowIcon />}
                   className={classes.backButtonSelf}
-                  style={{
-                    height: "50px",
-
-                    textTransform: "none",
-                  }}
                   className={styles.buttonBackSelf}
                 >
                   Back
@@ -916,11 +911,6 @@ const PaymentUIComponent = ({
                   type="submit"
                   color="primary"
                   className={classes.payButtonSelf}
-                  style={{
-                    height: "50px",
-
-                    textTransform: "none",
-                  }}
                   disabled={!checked}
                   className={styles.buttonNextSelf}
                 >

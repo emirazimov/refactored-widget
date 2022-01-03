@@ -2066,11 +2066,6 @@ const PreviewUIComponent = ({
                 onClick={back}
                 startIcon={<BackArrowIcon />}
                 className={classes.backButtonSelf}
-                style={{
-                  height: "50px",
-                  paddingTop: "7px",
-                  textTransform: "none",
-                }}
                 className={styles.buttonBackSelf}
               >
                 Back
@@ -2088,11 +2083,6 @@ const PreviewUIComponent = ({
                 color="primary"
                 endIcon={<ForwardArrowIcon />}
                 className={classes.nextButtonSelf}
-                style={{
-                  height: "50px",
-                  paddingTop: "7px",
-                  textTransform: "none",
-                }}
                 className={styles.buttonNextSelf}
               >
                 Next

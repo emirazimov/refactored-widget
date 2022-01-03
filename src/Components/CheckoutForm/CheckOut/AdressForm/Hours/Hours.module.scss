@@ -1,6 +1,6 @@
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/MainCountersStyles.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
 // @use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
-
 .hoursCounterWrapper {
   width: 100%;
   display: flex;
@@ -21,7 +21,8 @@
   //   @include main-inputs-size-and-background-styles-etc;
 }
 .hoursCounterTitle {
-  font-size: 15px;
+  @include global-second-title-styles;
+  // font-size: 15px;
 }
 .hoursCounterPlusMinusContainer {
   display: flex;

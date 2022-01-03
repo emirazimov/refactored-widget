@@ -1,5 +1,6 @@
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_IconsForWholeAddressFormPage.scss"
   as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
 
 .boosterSeatCounterWrapper,
 .safetySeatCounterWrapper {
@@ -15,9 +16,12 @@
   flex-direction: row;
   align-items: center;
 }
-
-.passengerCounterTitle {
+.boosterSeatCounterTitle,
+.safetySeatCounterTitle {
+  @include global_second_title_styles;
 }
+// .passengerCounterTitle {
+// }
 .boosterSeatCounterContainer,
 .safetySeatCounterContainer {
   display: flex;
