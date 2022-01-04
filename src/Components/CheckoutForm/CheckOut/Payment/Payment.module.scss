@@ -3,6 +3,8 @@
 @use "../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
 @use "../../../MAINCSSFORWHOLECOMPONENTS/FontColor.module" as *;
 @use "../FleetForm/FleetForm.module.scss" as *;
+@use "../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+  as *;
 
 $green: #2ecc71;
 $lightgray: lightgray;
@@ -194,7 +196,7 @@ $background: grey;
   width: auto;
   // @include side-paddings-for-whole-widget-page;
   height: 100%;
-  padding: 0 15px;
+  @include side-paddings-for-whole-widget-page;
 
   //   width: 100%;
 }
@@ -202,6 +204,10 @@ $background: grey;
   //   width: 100%;
   width: 100%;
   height: 100%;
+}
+.paymentTitleContainer {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .paymentTitleSelf {
   @include global-title-styles;
@@ -214,11 +220,30 @@ $background: grey;
 .isPassengerCardholderTitleContainer {
 }
 .isPassengerCardholderTitleWhiteSelf {
+  font-size: 16px;
   color: $font-color;
 }
 .isPassengerCardholderTitleGreySelf {
   color: #757575;
 }
+
+.passengerDetailWrapper {
+}
+.passengerDetailTitleContainer,
+.cardholderInformationTitleContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.passengerDetailTitleSelf,
+.cardholderInformationTitleSelf {
+  font-size: 15px;
+  color: $font-color;
+}
+
+// cardholderInformationWrapper
+// cardholderInformationTitleContainer
+// cardholderInformationTitleSelf
+
 .cardholderInformationInputsWrapper {
   width: 100%;
   display: flex;
@@ -276,7 +301,19 @@ $background: grey;
   }
 }
 
-@include buttons-group;
+// @include buttons-group;
 .buttonGroupBlock {
   padding-bottom: 20px;
+}
+
+.buttonGroupBlockContainer {
+  @include buttonGroupBlockContainer;
+}
+
+.buttonBackSelf {
+  @include buttonBackSelf;
+}
+
+.buttonNextSelf {
+  @include buttonNextSelf;
 }

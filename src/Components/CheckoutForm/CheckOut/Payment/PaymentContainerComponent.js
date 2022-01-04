@@ -33,28 +33,6 @@ import "./PaymentStyles.css"
 import { AntSwitch } from "../AdressForm/AdressFormStyles"
 import PaymentUIComponent from "./PaymentUIComponent"
 
-const SignupSchema = yup.object().shape({
-  // greetClientInfo: yup.object().shape({
-  //     firstName: yup.string().required('Required'),
-  //     phoneNumber: yup.number('Not a number').required('Required'),
-  //     lastName: yup.string().required('Required'),
-  //     email: yup.string().email('invalid email').required('Required'),
-  // }),
-  client: yup.object().shape({
-    firstName: yup.string().required("Required"),
-    lastName: yup.string().required("Required"),
-    address: yup.string().required("Required"),
-    zip: yup.number().required("Required").typeError("Not a number"),
-    email: yup.string().email("invalid email").required("Required"),
-    phoneNumber: yup.number().typeError("Not a number").required("Required"),
-  }),
-  paymentInfo: yup.object().shape({
-    // cardNumber: yup.string().required("Required"),
-    month: yup.string().required("Required"),
-    cvc: yup.number().required("Required").typeError("Not a number"),
-  }),
-})
-
 const PaymentContainerComponent = ({
   next,
   back,
@@ -62,6 +40,27 @@ const PaymentContainerComponent = ({
   formSummary,
   setPaymentForm,
 }) => {
+  const SignupSchema = yup.object().shape({
+    // greetClientInfo: yup.object().shape({
+    //     firstName: yup.string().required('Required'),
+    //     phoneNumber: yup.number('Not a number').required('Required'),
+    //     lastName: yup.string().required('Required'),
+    //     email: yup.string().email('invalid email').required('Required'),
+    // }),
+    client: yup.object().shape({
+      firstName: yup.string().required("Required"),
+      lastName: yup.string().required("Required"),
+      address: yup.string().required("Required"),
+      zip: yup.number().required("Required").typeError("Not a number"),
+      email: yup.string().email("invalid email").required("Required"),
+      phoneNumber: yup.number().typeError("Not a number").required("Required"),
+    }),
+    paymentInfo: yup.object().shape({
+      // cardNumber: yup.string().required("Required"),
+      month: yup.string().required("Required"),
+      cvc: yup.number().required("Required").typeError("Not a number"),
+    }),
+  })
   const [states, setStates] = useState([])
   const [cities, setCities] = useState([])
   const [statesId, setStatesId] = useState(0)
@@ -122,6 +121,8 @@ const PaymentContainerComponent = ({
 
   const onSubmit = (data) => {
     console.log(data)
+    // event.preventDefault()
+
     const date = data.paymentInfo.month.split("/")
     if ((statesId, citiesId, cardForPaymentSubmit)) {
       setPaymentForm(
@@ -176,6 +177,13 @@ const PaymentContainerComponent = ({
     res ? setStatesId(res.id) : setStatesId(null)
     console.log(res)
   }
+  const extractCityId = (name) => {
+    const res = cities.find((element, index, array) => {
+      return element.name == name
+    })
+    res ? setCitiesId(res.id) : setCitiesId(null)
+    console.log(res)
+  }
 
   return (
     <PaymentUIComponent
@@ -219,6 +227,7 @@ const PaymentContainerComponent = ({
       handleNum={handleNum}
       handleType={handleType}
       extractStateId={extractStateId}
+      extractCityId={extractCityId}
     />
   )
 }

@@ -53,145 +53,115 @@ const PreviewUIComponent = ({
   const isMobile = useMediaQuery("(max-width:500px)")
 
   return (
-    <>
+    <div
+      // container
+      // spacing={1}
+      // className={classes.contentContainer}
+      className={styles.previewWrapper}
+    >
+      <div
+        // item
+        className={styles.previewTitleContainer}
+      >
+        <span
+          // variant="body2"
+          // style={{
+          //   fontFamily: "Roboto",
+          //   fontWeight: 500,
+          //   color: "white",
+          //   fontSize: "22px",
+          //   lineHeight: "36px",
+          // }}
+          className={styles.previewTitleSelf}
+        >
+          Preview
+        </span>
+      </div>
+
+      <div
+        // item
+        // className={classes.directionsContainer}
+        className={styles.directionsContainer}
+      >
+        <Directions
+          destinations={formData.orderAddressDetails}
+          setDistance={setDistance}
+          // style={{ height: "250px" }}
+        />
+      </div>
       <div
         // container
-        // spacing={1}
-        // className={classes.contentContainer}
-        className={styles.previewWrapper}
+        // justify="center"
+        className={styles.reservationDetailsContainer}
       >
-        <div
-          // item
-          className={styles.previewTitleContainer}
-        >
-          <span
-            // variant="body2"
-            // style={{
-            //   fontFamily: "Roboto",
-            //   fontWeight: 500,
-            //   color: "white",
-            //   fontSize: "22px",
-            //   lineHeight: "36px",
-            // }}
-            className={styles.previewTitleSelf}
-          >
-            Preview
-          </span>
-        </div>
-
-        <div
-          // item
-          // className={classes.directionsContainer}
-          className={styles.directionsContainer}
-        >
-          <Directions
-            destinations={formData.orderAddressDetails}
-            setDistance={setDistance}
-            // style={{ height: "250px" }}
-          />
-        </div>
-        <div
-          // container
-          // justify="center"
-          className={styles.reservationDetailsContainer}
-        >
-          {/* <div
+        {/* <div
             container
             direction="column"
             spacing={2}
             className={classes.contentContainer}
             style={{ zIndex: "4", marginTop: "-25px", paddingTop: "0px" }}
           > */}
-          <div
-            // item
-            // style={{
-            //   // height: "135px",
-            //   paddingRight: !isMobile ? "14.5px" : "0px",
-            //   marginTop: "10px",
-            //   marginBottom: "5px",
-            // }}
-            className={styles.carContainer}
-          >
-            {/* <div
+        <div
+          // item
+          // style={{
+          //   // height: "135px",
+          //   paddingRight: !isMobile ? "14.5px" : "0px",
+          //   marginTop: "10px",
+          //   marginBottom: "5px",
+          // }}
+          className={styles.carContainer}
+        >
+          {/* <div
             // container
             // direction="row"
             // justify="space-between"
             // alignItems="center"
             > */}
-            <div
-              // item
-              // style={{ width: "48.80%" }}
-              className={styles.carImageBlock}
-            >
-              <Carousel
-                autoPlay={false}
-                animation="slide"
-                navButtonsProps={{
-                  style: {
-                    width: "1em",
-                    height: "1em",
-                  },
-                }}
-                indicatorIconButtonProps={{
-                  style: {
-                    "&:hover": {
-                      "& $button": {
-                        backgroundColor: "#10B7EC",
-                        filter: "brightness(120%)",
-                        opacity: "0.4",
-                      },
+          <div
+            // item
+            // style={{ width: "48.80%" }}
+            className={styles.carImageBlock}
+          >
+            <Carousel
+              autoPlay={false}
+              animation="slide"
+              navButtonsProps={{
+                style: {
+                  width: "1em",
+                  height: "1em",
+                },
+              }}
+              indicatorIconButtonProps={{
+                style: {
+                  "&:hover": {
+                    "& $button": {
+                      backgroundColor: "#10B7EC",
+                      filter: "brightness(120%)",
+                      opacity: "0.4",
                     },
-                    marginTop: "-80px",
-                    color: "grey",
                   },
-                }}
-                activeIndicatorIconButtonProps={{
-                  style: {
-                    color: "white",
-                  },
-                }}
-                indicatorContainerProps={{
-                  style: { height: "0px" },
-                }}
-              >
-                {selectedCar.imageUrls.length !== 0 ? (
-                  selectedCar.imageUrls.map((url) => (
-                    <span
-                      key={url.id}
-                      variant="outlined"
-                      color="primary"
-                      onClick={() => handleClickOpen()}
-                    >
-                      <div
-                        style={{
-                          position: "absolute",
-                          width: "75px",
-                          height: "20px",
-                          backgroundColor: "#AC8159",
-                          color: "black",
-                          fontSize: "13px",
-                          paddingLeft: "12px",
-                          borderTopLeftRadius: "9px",
-                          paddingTop: "2px",
-                        }}
-                      >
-                        or similar
-                      </div>
-                      <img
-                        src={url.path}
-                        style={{
-                          width: !isMobile ? "100%" : "100%",
-                          height: !isMobile ? "118px" : "116px",
-                          borderRadius: "9px",
-                          cursor: "zoom-in",
-                        }}
-                        alt="car"
-                      />
-                    </span>
-                  ))
-                ) : (
-                  <>
-                    <span
+                  marginTop: "-80px",
+                  color: "grey",
+                },
+              }}
+              activeIndicatorIconButtonProps={{
+                style: {
+                  color: "white",
+                },
+              }}
+              indicatorContainerProps={{
+                style: { height: "0px" },
+              }}
+            >
+              {selectedCar.imageUrls.length !== 0 ? (
+                selectedCar.imageUrls.map((url) => (
+                  <span
+                    key={url.id}
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => handleClickOpen()}
+                  >
+                    <div
                       style={{
                         position: "absolute",
                         width: "75px",
@@ -205,133 +175,162 @@ const PreviewUIComponent = ({
                       }}
                     >
                       or similar
-                    </span>
+                    </div>
                     <img
-                      src={"https://fl-1.cdn.flockler.com/embed/not-found.png"}
+                      src={url.path}
                       style={{
                         width: !isMobile ? "100%" : "100%",
                         height: !isMobile ? "118px" : "116px",
                         borderRadius: "9px",
+                        cursor: "zoom-in",
                       }}
                       alt="car"
                     />
-                  </>
-                )}
-              </Carousel>
-              {carModal && (
-                <Dialog
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                  // style={{
-                  //   width: !isMobile ? "600px" : "238px",
-                  //   height: !isMobile ? "450px" : "150px",
-                  // }}
-                >
-                  <DialogActions>
-                    <Carousel
-                      autoPlay={false}
-                      animation="slide"
-                      swipe={true}
-                      navButtonsAlwaysVisible={true}
-                      navButtonsProps={{
-                        style: {
-                          width: "1em",
-                          height: "1em",
-                        },
-                      }}
-                      indicatorIconButtonProps={{
-                        style: {
-                          "&:hover": {
-                            "& $button": {
-                              backgroundColor: "#10B7EC",
-                              filter: "brightness(120%)",
-                              opacity: "0.4",
-                            },
+                  </span>
+                ))
+              ) : (
+                <>
+                  <span
+                    style={{
+                      position: "absolute",
+                      width: "75px",
+                      height: "20px",
+                      backgroundColor: "#AC8159",
+                      color: "black",
+                      fontSize: "13px",
+                      paddingLeft: "12px",
+                      borderTopLeftRadius: "9px",
+                      paddingTop: "2px",
+                    }}
+                  >
+                    or similar
+                  </span>
+                  <img
+                    src={"https://fl-1.cdn.flockler.com/embed/not-found.png"}
+                    style={{
+                      width: !isMobile ? "100%" : "100%",
+                      height: !isMobile ? "118px" : "116px",
+                      borderRadius: "9px",
+                    }}
+                    alt="car"
+                  />
+                </>
+              )}
+            </Carousel>
+            {carModal && (
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                // style={{
+                //   width: !isMobile ? "600px" : "238px",
+                //   height: !isMobile ? "450px" : "150px",
+                // }}
+              >
+                <DialogActions>
+                  <Carousel
+                    autoPlay={false}
+                    animation="slide"
+                    swipe={true}
+                    navButtonsAlwaysVisible={true}
+                    navButtonsProps={{
+                      style: {
+                        width: "1em",
+                        height: "1em",
+                      },
+                    }}
+                    indicatorIconButtonProps={{
+                      style: {
+                        "&:hover": {
+                          "& $button": {
+                            backgroundColor: "#10B7EC",
+                            filter: "brightness(120%)",
+                            opacity: "0.4",
                           },
                         },
-                      }}
-                      activeIndicatorIconButtonProps={{
-                        style: {
-                          color: "#10B7EC",
-                        },
-                      }}
-                      indicatorContainerProps={{
-                        style: {},
-                      }}
-                    >
-                      {carModal &&
-                        selectedCar.imageUrls.map((url) => (
-                          <AspectRatio
-                            ratio="4/3"
+                      },
+                    }}
+                    activeIndicatorIconButtonProps={{
+                      style: {
+                        color: "#10B7EC",
+                      },
+                    }}
+                    indicatorContainerProps={{
+                      style: {},
+                    }}
+                  >
+                    {carModal &&
+                      selectedCar.imageUrls.map((url) => (
+                        <AspectRatio
+                          ratio="4/3"
+                          style={{
+                            width: !isMobile ? "550px" : "257px",
+                            height: !isMobile ? "400px" : "170px",
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            // display: "block",
+                            // width: !isMobile ? "170px" : "100%",
+                            // height: !isMobile ? "107px" : "116px",
+                            // // borderRadius: "8px",
+                            // cursor: "zoom-in",
+                            // width: "100%",
+                            // height: "100%",
+                            // userDrag: "none",
+                            // userSelect: "none",
+                            // mozUserSelect: "none",
+                            // webkitUserDrag: "none",
+                            // webkitUserSelect: "none",
+                            // msUserSelect: "none",
+                            // maxWidth: "500px",
+                          }}
+                        >
+                          <img
+                            src={url.path}
                             style={{
-                              width: !isMobile ? "550px" : "257px",
-                              height: !isMobile ? "400px" : "170px",
-                              display: "flex",
-                              flexDirection: "row",
-                              justifyContent: "center",
-                              alignItems: "center",
-                              // display: "block",
-                              // width: !isMobile ? "170px" : "100%",
-                              // height: !isMobile ? "107px" : "116px",
-                              // // borderRadius: "8px",
-                              // cursor: "zoom-in",
+                              borderRadius: "8px",
                               // width: "100%",
                               // height: "100%",
-                              // userDrag: "none",
-                              // userSelect: "none",
-                              // mozUserSelect: "none",
-                              // webkitUserDrag: "none",
-                              // webkitUserSelect: "none",
-                              // msUserSelect: "none",
-                              // maxWidth: "500px",
                             }}
-                          >
-                            <img
-                              src={url.path}
-                              style={{
-                                borderRadius: "8px",
-                                // width: "100%",
-                                // height: "100%",
-                              }}
-                              alt="car"
-                              key={`${url.id}${url.path}`}
-                            />
-                          </AspectRatio>
-                        ))}
-                    </Carousel>
-                  </DialogActions>
-                </Dialog>
-              )}
-            </div>
+                            alt="car"
+                            key={`${url.id}${url.path}`}
+                          />
+                        </AspectRatio>
+                      ))}
+                  </Carousel>
+                </DialogActions>
+              </Dialog>
+            )}
+          </div>
+          <div
+            // item
+            // style={{ width: "45.2%" }}
+            className={styles.carDescriptionTextBlock}
+          >
             <div
-              // item
-              // style={{ width: "45.2%" }}
-              className={styles.carDescriptionTextBlock}
+              // container
+              // direction="column"
+              // spacing={2}
+              // className={classes.carInfoCont}
+              className={styles.carDescriptionTextContainer}
             >
-              <div
-                // container
-                // direction="column"
-                // spacing={2}
-                // className={classes.carInfoCont}
-                className={styles.carDescriptionTextContainer}
+              <span
+                // className={classes.textColor}
+                // variant="body2"
+                // style={{ fontSize: "18px" }}
+                className={styles.carModel}
               >
-                <span
-                  // className={classes.textColor}
-                  // variant="body2"
-                  // style={{ fontSize: "18px" }}
-                  className={styles.carModel}
-                >
-                  {selectedCar.make} {selectedCar.model}
-                </span>
+                {selectedCar.make} {selectedCar.model}
+              </span>
 
-                {/* <Typography
+              {/* <Typography
                             variant='body2'
                             style={{ fontSize: '18px' }}
                           ></Typography> */}
 
-                {/* <Grid
+              {/* <Grid
                     container
                     justify="row"
                     justify="space-between"
@@ -372,235 +371,235 @@ const PreviewUIComponent = ({
                     </Grid>
                   </Grid> */}
 
+              <div
+                // container
+                // justify="row"
+                // justify="space-between"
+                // alignItems="center"
+                className={styles.detailedDescription}
+              >
                 <div
-                  // container
-                  // justify="row"
-                  // justify="space-between"
-                  // alignItems="center"
-                  className={styles.detailedDescription}
+                  // item
+                  className={styles.detailedDescriptionTitleContainer}
+                >
+                  <span
+                    // style={{
+                    //   color: carTextColor,
+                    //   fontSize: "13px",
+                    //   fontWeight: "400",
+                    // }}
+                    className={styles.detailedDescriptionTitleSelf}
+                  >
+                    Type
+                  </span>
+                </div>
+                <div
+                  // item
+                  // style={{ flexGrow: 1 }}
+                  className={styles.detailedDescriptionPointedLineContainer}
                 >
                   <div
-                    // item
-                    className={styles.detailedDescriptionTitleContainer}
-                  >
-                    <span
-                      // style={{
-                      //   color: carTextColor,
-                      //   fontSize: "13px",
-                      //   fontWeight: "400",
-                      // }}
-                      className={styles.detailedDescriptionTitleSelf}
-                    >
-                      Type
-                    </span>
-                  </div>
-                  <div
-                    // item
-                    // style={{ flexGrow: 1 }}
-                    className={styles.detailedDescriptionPointedLineContainer}
-                  >
-                    <div
-                      // style={{
-                      //   marginTop: "12px",
-                      //   backgroundColor: "transparent",
-                      //   marginLeft: "3px",
-                      //   marginRight: "3px",
-                      //   borderBottom: `2px dotted ${carTextColor}`,
-                      // }}
-                      className={styles.detailedDescriptionPointedLineSelf}
-                    />
-                  </div>
-                  <div
-                    // item
-                    className={styles.detailedDescriptionValueContainer}
-                  >
-                    <span
-                      // style={{
-                      //   color: carTextColor,
-                      //   fontSize: "13px",
-                      //   fontWeight: "400",
-                      // }}
-                      className={styles.detailedDescriptionValueSelf}
-                    >
-                      {selectedCar.type}
-                    </span>
-                  </div>
+                    // style={{
+                    //   marginTop: "12px",
+                    //   backgroundColor: "transparent",
+                    //   marginLeft: "3px",
+                    //   marginRight: "3px",
+                    //   borderBottom: `2px dotted ${carTextColor}`,
+                    // }}
+                    className={styles.detailedDescriptionPointedLineSelf}
+                  />
                 </div>
-
                 <div
-                  // container
-                  // justify="row"
-                  // justify="space-between"
-                  // alignItems="center"
-                  className={styles.detailedDescription}
+                  // item
+                  className={styles.detailedDescriptionValueContainer}
+                >
+                  <span
+                    // style={{
+                    //   color: carTextColor,
+                    //   fontSize: "13px",
+                    //   fontWeight: "400",
+                    // }}
+                    className={styles.detailedDescriptionValueSelf}
+                  >
+                    {selectedCar.type}
+                  </span>
+                </div>
+              </div>
+
+              <div
+                // container
+                // justify="row"
+                // justify="space-between"
+                // alignItems="center"
+                className={styles.detailedDescription}
+              >
+                <div
+                  // item
+                  className={styles.detailedDescriptionTitleContainer}
+                >
+                  <span
+                    // style={{
+                    //   color: carTextColor,
+                    //   fontSize: "13px",
+                    //   fontWeight: "400",
+                    // }}
+                    className={styles.detailedDescriptionTitleSelf}
+                  >
+                    Capacity
+                  </span>
+                </div>
+                <div
+                  // item
+                  // style={{ flexGrow: 1 }}
+                  className={styles.detailedDescriptionPointedLineContainer}
                 >
                   <div
-                    // item
-                    className={styles.detailedDescriptionTitleContainer}
-                  >
-                    <span
-                      // style={{
-                      //   color: carTextColor,
-                      //   fontSize: "13px",
-                      //   fontWeight: "400",
-                      // }}
-                      className={styles.detailedDescriptionTitleSelf}
-                    >
-                      Capacity
-                    </span>
-                  </div>
-                  <div
-                    // item
-                    // style={{ flexGrow: 1 }}
-                    className={styles.detailedDescriptionPointedLineContainer}
-                  >
-                    <div
-                      // style={{
-                      //   marginTop: "12px",
-                      //   backgroundColor: "transparent",
-                      //   marginLeft: "3px",
-                      //   marginRight: "3px",
-                      //   borderBottom: `2px dotted ${carTextColor}`,
-                      // }}
-                      className={styles.detailedDescriptionPointedLineSelf}
-                    />
-                  </div>
-                  <div
-                    // item
-                    className={styles.detailedDescriptionValueContainer}
-                  >
-                    <span
-                      // style={{
-                      //   color: carTextColor,
-                      //   fontSize: "13px",
-                      //   fontWeight: "400",
-                      // }}
-                      className={styles.detailedDescriptionValueSelf}
-                    >
-                      {selectedCar.capacity}
-                    </span>
-                  </div>
+                    // style={{
+                    //   marginTop: "12px",
+                    //   backgroundColor: "transparent",
+                    //   marginLeft: "3px",
+                    //   marginRight: "3px",
+                    //   borderBottom: `2px dotted ${carTextColor}`,
+                    // }}
+                    className={styles.detailedDescriptionPointedLineSelf}
+                  />
                 </div>
-
                 <div
-                  // container
-                  // justify="row"
-                  // justify="space-between"
-                  // alignItems="center"
-                  className={styles.detailedDescription}
+                  // item
+                  className={styles.detailedDescriptionValueContainer}
+                >
+                  <span
+                    // style={{
+                    //   color: carTextColor,
+                    //   fontSize: "13px",
+                    //   fontWeight: "400",
+                    // }}
+                    className={styles.detailedDescriptionValueSelf}
+                  >
+                    {selectedCar.capacity}
+                  </span>
+                </div>
+              </div>
+
+              <div
+                // container
+                // justify="row"
+                // justify="space-between"
+                // alignItems="center"
+                className={styles.detailedDescription}
+              >
+                <div
+                  // item
+                  className={styles.detailedDescriptionTitleContainer}
+                >
+                  <span
+                    // style={{
+                    //   color: carTextColor,
+                    //   fontSize: "13px",
+                    //   fontWeight: "400",
+                    // }}
+                    className={styles.detailedDescriptionTitleSelf}
+                  >
+                    Color
+                  </span>
+                </div>
+                <div
+                  // item
+                  // style={{ flexGrow: 1 }}
+                  className={styles.detailedDescriptionPointedLineContainer}
                 >
                   <div
-                    // item
-                    className={styles.detailedDescriptionTitleContainer}
-                  >
-                    <span
-                      // style={{
-                      //   color: carTextColor,
-                      //   fontSize: "13px",
-                      //   fontWeight: "400",
-                      // }}
-                      className={styles.detailedDescriptionTitleSelf}
-                    >
-                      Color
-                    </span>
-                  </div>
-                  <div
-                    // item
-                    // style={{ flexGrow: 1 }}
-                    className={styles.detailedDescriptionPointedLineContainer}
-                  >
-                    <div
-                      // style={{
-                      //   marginTop: "12px",
-                      //   backgroundColor: "transparent",
-                      //   marginLeft: "3px",
-                      //   marginRight: "3px",
-                      //   borderBottom: `2px dotted ${carTextColor}`,
-                      // }}
-                      className={styles.detailedDescriptionPointedLineSelf}
-                    />
-                  </div>
-                  <div
-                    // item
-                    className={styles.detailedDescriptionValueContainer}
-                  >
-                    <span
-                      // style={{
-                      //   color: carTextColor,
-                      //   fontSize: "13px",
-                      //   fontWeight: "400",
-                      // }}
-                      className={styles.detailedDescriptionValueSelf}
-                    >
-                      {selectedCar.color}
-                    </span>
-                  </div>
+                    // style={{
+                    //   marginTop: "12px",
+                    //   backgroundColor: "transparent",
+                    //   marginLeft: "3px",
+                    //   marginRight: "3px",
+                    //   borderBottom: `2px dotted ${carTextColor}`,
+                    // }}
+                    className={styles.detailedDescriptionPointedLineSelf}
+                  />
                 </div>
-
                 <div
-                  // container
-                  // justify="row"
-                  // justify="space-between"
-                  // alignItems="center"
-                  className={styles.detailedDescription}
+                  // item
+                  className={styles.detailedDescriptionValueContainer}
+                >
+                  <span
+                    // style={{
+                    //   color: carTextColor,
+                    //   fontSize: "13px",
+                    //   fontWeight: "400",
+                    // }}
+                    className={styles.detailedDescriptionValueSelf}
+                  >
+                    {selectedCar.color}
+                  </span>
+                </div>
+              </div>
+
+              <div
+                // container
+                // justify="row"
+                // justify="space-between"
+                // alignItems="center"
+                className={styles.detailedDescription}
+              >
+                <div
+                  // item
+                  className={styles.detailedDescriptionTitleContainer}
+                >
+                  <span
+                    // style={{
+                    //   color: carTextColor,
+                    //   fontSize: "13px",
+                    //   fontWeight: "400",
+                    // }}
+                    className={styles.detailedDescriptionTitleSelf}
+                  >
+                    Amount
+                  </span>
+                </div>
+                <div
+                  // item
+                  // style={{ flexGrow: 1 }}
+                  className={styles.detailedDescriptionPointedLineContainer}
                 >
                   <div
-                    // item
-                    className={styles.detailedDescriptionTitleContainer}
-                  >
-                    <span
-                      // style={{
-                      //   color: carTextColor,
-                      //   fontSize: "13px",
-                      //   fontWeight: "400",
-                      // }}
-                      className={styles.detailedDescriptionTitleSelf}
-                    >
-                      Amount
-                    </span>
-                  </div>
-                  <div
-                    // item
-                    // style={{ flexGrow: 1 }}
-                    className={styles.detailedDescriptionPointedLineContainer}
-                  >
-                    <div
-                      // style={{
-                      //   marginTop: "12px",
-                      //   backgroundColor: "transparent",
-                      //   marginLeft: "3px",
-                      //   marginRight: "3px",
-                      //   borderBottom: `2px dotted ${carTextColor}`,
-                      // }}
-                      className={styles.detailedDescriptionPointedLineSelf}
-                    />
-                  </div>
-                  <div
-                    // item
-                    className={styles.detailedDescriptionValueContainer}
-                  >
-                    <span
-                      // style={{
-                      //   color: carTextColor,
-                      //   fontSize: "13px",
-                      //   fontWeight: "400",
-                      // }}
-                      className={styles.detailedDescriptionValueSelf}
-                    >
-                      {gateMeeting
-                        ? `$${round(
-                            selectedCar.price -
-                              selectedCar.greetAndMeetPrice -
-                              selectedCar.boosterSeatPrice -
-                              selectedCar.safetySeatPrice,
-                            2
-                          )}`
-                        : showCarAmount()}
-                    </span>
-                  </div>
+                    // style={{
+                    //   marginTop: "12px",
+                    //   backgroundColor: "transparent",
+                    //   marginLeft: "3px",
+                    //   marginRight: "3px",
+                    //   borderBottom: `2px dotted ${carTextColor}`,
+                    // }}
+                    className={styles.detailedDescriptionPointedLineSelf}
+                  />
                 </div>
+                <div
+                  // item
+                  className={styles.detailedDescriptionValueContainer}
+                >
+                  <span
+                    // style={{
+                    //   color: carTextColor,
+                    //   fontSize: "13px",
+                    //   fontWeight: "400",
+                    // }}
+                    className={styles.detailedDescriptionValueSelf}
+                  >
+                    {gateMeeting
+                      ? `$${round(
+                          selectedCar.price -
+                            selectedCar.greetAndMeetPrice -
+                            selectedCar.boosterSeatPrice -
+                            selectedCar.safetySeatPrice,
+                          2
+                        )}`
+                      : showCarAmount()}
+                  </span>
+                </div>
+              </div>
 
-                {/* <Grid
+              {/* <Grid
                     container
                     justify="row"
                     justify="space-between"
@@ -641,7 +640,7 @@ const PreviewUIComponent = ({
                     </Grid>
                   </Grid> */}
 
-                {/* <Grid container justify="row">
+              {/* <Grid container justify="row">
                     <Grid item>
                       <Typography
                         className={classes.textColor}
@@ -677,7 +676,7 @@ const PreviewUIComponent = ({
                     </Grid>
                   </Grid> */}
 
-                {/* <Grid container justify="row">
+              {/* <Grid container justify="row">
                     <Grid item>
                       <Typography
                         className={classes.textColor}
@@ -720,7 +719,7 @@ const PreviewUIComponent = ({
                       </Typography>
                     </Grid>
                   </Grid> */}
-                {/* <Grid item xs={8}>
+              {/* <Grid item xs={8}>
                             <Paper className={classes.priceBox}>
                               <Grid container justify="center">
                                 <Typography variant="body2">
@@ -729,135 +728,135 @@ const PreviewUIComponent = ({
                               </Grid>
                             </Paper>
                           </Grid> */}
-              </div>
             </div>
-            {/* </div> */}
           </div>
+          {/* </div> */}
+        </div>
+        <div
+          // item
+          className={styles.reservationDetailsItem}
+        >
           <div
-            // item
-            className={styles.reservationDetailsItem}
+            // container
+            // direction="row"
+            // justify="space-between"
+            // alignItems="center"
+            className={styles.reservationDetailsItemContainer}
           >
             <div
-              // container
-              // direction="row"
-              // justify="space-between"
-              // alignItems="center"
-              className={styles.reservationDetailsItemContainer}
+              // item
+              className={styles.reservationDetailsItemTitleContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{ fontSize: "16px" }}
+                className={styles.reservationDetailsItemTitleSelf}
+              >
+                Date
+              </span>
+            </div>
+            <div
+              // item
+              // style={{ flexGrow: 1 }}
+
+              className={styles.reservationDetailsItemPointedLineContainer}
             >
               <div
-                // item
-                className={styles.reservationDetailsItemTitleContainer}
+                // className={classes.boxBorder}
+                // style={{
+                //   marginTop: "8px",
+                //   backgroundColor: "transparent",
+                //   marginLeft: "3px",
+                //   marginRight: "3px",
+                // }}
+                className={styles.reservationDetailsItemPointedLineSelf}
+              />
+            </div>
+            <div
+              // item
+              className={styles.reservationDetailsItemValueContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{
+                //   fontSize: "16px",
+                //   marginRight: "-3px",
+                // }}
+                className={styles.reservationDetailsItemValueSelf}
               >
-                <span
-                  // className={classes.textColor}
-                  // style={{ fontSize: "16px" }}
-                  className={styles.reservationDetailsItemTitleSelf}
-                >
-                  Date
-                </span>
-              </div>
-              <div
-                // item
-                // style={{ flexGrow: 1 }}
-
-                className={styles.reservationDetailsItemPointedLineContainer}
-              >
-                <div
-                  // className={classes.boxBorder}
-                  // style={{
-                  //   marginTop: "8px",
-                  //   backgroundColor: "transparent",
-                  //   marginLeft: "3px",
-                  //   marginRight: "3px",
-                  // }}
-                  className={styles.reservationDetailsItemPointedLineSelf}
-                />
-              </div>
-              <div
-                // item
-                className={styles.reservationDetailsItemValueContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{
-                  //   fontSize: "16px",
-                  //   marginRight: "-3px",
-                  // }}
-                  className={styles.reservationDetailsItemValueSelf}
-                >
-                  {formData.orderStartDateTime.match(
-                    /(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/g
-                  )}
-                </span>
-              </div>
+                {formData.orderStartDateTime.match(
+                  /(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/g
+                )}
+              </span>
             </div>
           </div>
+        </div>
 
+        <div
+          // item
+          className={styles.reservationDetailsItem}
+        >
           <div
-            // item
-            className={styles.reservationDetailsItem}
+            // container
+            // direction="row"
+            // justify="space-between"
+            // alignItems="center"
+            className={styles.reservationDetailsItemContainer}
           >
             <div
-              // container
-              // direction="row"
-              // justify="space-between"
-              // alignItems="center"
-              className={styles.reservationDetailsItemContainer}
+              // item
+              className={styles.reservationDetailsItemTitleContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{ fontSize: "16px" }}
+                className={styles.reservationDetailsItemTitleSelf}
+              >
+                Time
+              </span>
+            </div>
+            <div
+              // item
+              // style={{ flexGrow: 1 }}
+
+              className={styles.reservationDetailsItemPointedLineContainer}
             >
               <div
-                // item
-                className={styles.reservationDetailsItemTitleContainer}
+                // className={classes.boxBorder}
+                // style={{
+                //   marginTop: "8px",
+                //   backgroundColor: "transparent",
+                //   marginLeft: "3px",
+                //   marginRight: "3px",
+                // }}
+                className={styles.reservationDetailsItemPointedLineSelf}
+              />
+            </div>
+            <div
+              // item
+              className={styles.reservationDetailsItemValueContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{
+                //   fontSize: "16px",
+                //   marginRight: "-3px",
+                // }}
+                className={styles.reservationDetailsItemValueSelf}
               >
-                <span
-                  // className={classes.textColor}
-                  // style={{ fontSize: "16px" }}
-                  className={styles.reservationDetailsItemTitleSelf}
-                >
-                  Time
-                </span>
-              </div>
-              <div
-                // item
-                // style={{ flexGrow: 1 }}
-
-                className={styles.reservationDetailsItemPointedLineContainer}
-              >
-                <div
-                  // className={classes.boxBorder}
-                  // style={{
-                  //   marginTop: "8px",
-                  //   backgroundColor: "transparent",
-                  //   marginLeft: "3px",
-                  //   marginRight: "3px",
-                  // }}
-                  className={styles.reservationDetailsItemPointedLineSelf}
-                />
-              </div>
-              <div
-                // item
-                className={styles.reservationDetailsItemValueContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{
-                  //   fontSize: "16px",
-                  //   marginRight: "-3px",
-                  // }}
-                  className={styles.reservationDetailsItemValueSelf}
-                >
-                  {new Date(formData.orderStartDateTime).toLocaleTimeString(
-                    "en-US",
-                    {
-                      hour: "numeric",
-                      minute: "numeric",
-                    }
-                  )}
-                </span>
-              </div>
+                {new Date(formData.orderStartDateTime).toLocaleTimeString(
+                  "en-US",
+                  {
+                    hour: "numeric",
+                    minute: "numeric",
+                  }
+                )}
+              </span>
             </div>
           </div>
+        </div>
 
-          {/* <Grid item>
+        {/* <Grid item>
             <Grid
               container
               direction="row"
@@ -900,65 +899,65 @@ const PreviewUIComponent = ({
             </Grid>
           </Grid> */}
 
+        <div
+          // item
+          className={styles.reservationDetailsItem}
+        >
           <div
-            // item
-            className={styles.reservationDetailsItem}
+            // container
+            // direction="row"
+            // justify="space-between"
+            // alignItems="center"
+            className={styles.reservationDetailsItemContainer}
           >
             <div
-              // container
-              // direction="row"
-              // justify="space-between"
-              // alignItems="center"
-              className={styles.reservationDetailsItemContainer}
+              // item
+              className={styles.reservationDetailsItemTitleContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{ fontSize: "16px" }}
+                className={styles.reservationDetailsItemTitleSelf}
+              >
+                From
+              </span>
+            </div>
+            <div
+              // item
+              // style={{ flexGrow: 1 }}
+
+              className={styles.reservationDetailsItemPointedLineContainer}
             >
               <div
-                // item
-                className={styles.reservationDetailsItemTitleContainer}
+                // className={classes.boxBorder}
+                // style={{
+                //   marginTop: "8px",
+                //   backgroundColor: "transparent",
+                //   marginLeft: "3px",
+                //   marginRight: "3px",
+                // }}
+                className={styles.reservationDetailsItemPointedLineSelf}
+              />
+            </div>
+            <div
+              // item
+              className={styles.reservationDetailsItemValueContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{
+                //   fontSize: "16px",
+                //   marginRight: "-3px",
+                // }}
+                className={styles.reservationDetailsItemValueSelf}
               >
-                <span
-                  // className={classes.textColor}
-                  // style={{ fontSize: "16px" }}
-                  className={styles.reservationDetailsItemTitleSelf}
-                >
-                  From
-                </span>
-              </div>
-              <div
-                // item
-                // style={{ flexGrow: 1 }}
-
-                className={styles.reservationDetailsItemPointedLineContainer}
-              >
-                <div
-                  // className={classes.boxBorder}
-                  // style={{
-                  //   marginTop: "8px",
-                  //   backgroundColor: "transparent",
-                  //   marginLeft: "3px",
-                  //   marginRight: "3px",
-                  // }}
-                  className={styles.reservationDetailsItemPointedLineSelf}
-                />
-              </div>
-              <div
-                // item
-                className={styles.reservationDetailsItemValueContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{
-                  //   fontSize: "16px",
-                  //   marginRight: "-3px",
-                  // }}
-                  className={styles.reservationDetailsItemValueSelf}
-                >
-                  {formData.orderAddressDetails[0].rideCheckPoint}
-                </span>
-              </div>
+                {formData.orderAddressDetails[0].rideCheckPoint}
+              </span>
             </div>
           </div>
+        </div>
 
-          {/* <Grid item>
+        {/* <Grid item>
             <Grid
               container
               direction="row"
@@ -1011,69 +1010,69 @@ const PreviewUIComponent = ({
             </Grid>
           </Grid> */}
 
+        <div
+          // item
+          className={styles.reservationDetailsItem}
+        >
           <div
-            // item
-            className={styles.reservationDetailsItem}
+            // container
+            // direction="row"
+            // justify="space-between"
+            // alignItems="center"
+            className={styles.reservationDetailsItemContainer}
           >
             <div
-              // container
-              // direction="row"
-              // justify="space-between"
-              // alignItems="center"
-              className={styles.reservationDetailsItemContainer}
+              // item
+              className={styles.reservationDetailsItemTitleContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{ fontSize: "16px" }}
+                className={styles.reservationDetailsItemTitleSelf}
+              >
+                To
+              </span>
+            </div>
+            <div
+              // item
+              // style={{ flexGrow: 1 }}
+
+              className={styles.reservationDetailsItemPointedLineContainer}
             >
               <div
-                // item
-                className={styles.reservationDetailsItemTitleContainer}
+                // className={classes.boxBorder}
+                // style={{
+                //   marginTop: "8px",
+                //   backgroundColor: "transparent",
+                //   marginLeft: "3px",
+                //   marginRight: "3px",
+                // }}
+                className={styles.reservationDetailsItemPointedLineSelf}
+              />
+            </div>
+            <div
+              // item
+              className={styles.reservationDetailsItemValueContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{
+                //   fontSize: "16px",
+                //   marginRight: "-3px",
+                // }}
+                className={styles.reservationDetailsItemValueSelf}
               >
-                <span
-                  // className={classes.textColor}
-                  // style={{ fontSize: "16px" }}
-                  className={styles.reservationDetailsItemTitleSelf}
-                >
-                  To
-                </span>
-              </div>
-              <div
-                // item
-                // style={{ flexGrow: 1 }}
-
-                className={styles.reservationDetailsItemPointedLineContainer}
-              >
-                <div
-                  // className={classes.boxBorder}
-                  // style={{
-                  //   marginTop: "8px",
-                  //   backgroundColor: "transparent",
-                  //   marginLeft: "3px",
-                  //   marginRight: "3px",
-                  // }}
-                  className={styles.reservationDetailsItemPointedLineSelf}
-                />
-              </div>
-              <div
-                // item
-                className={styles.reservationDetailsItemValueContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{
-                  //   fontSize: "16px",
-                  //   marginRight: "-3px",
-                  // }}
-                  className={styles.reservationDetailsItemValueSelf}
-                >
-                  {
-                    formData.orderAddressDetails[
-                      formData.orderAddressDetails.length - 1
-                    ].rideCheckPoint
-                  }
-                </span>
-              </div>
+                {
+                  formData.orderAddressDetails[
+                    formData.orderAddressDetails.length - 1
+                  ].rideCheckPoint
+                }
+              </span>
             </div>
           </div>
+        </div>
 
-          {/* <Grid item>
+        {/* <Grid item>
             <Grid
               container
               direction="row"
@@ -1130,388 +1129,388 @@ const PreviewUIComponent = ({
             </Grid>
           </Grid> */}
 
+        <div
+          // item
+          className={styles.reservationDetailsItem}
+        >
           <div
-            // item
-            className={styles.reservationDetailsItem}
+            // container
+            // direction="row"
+            // justify="space-between"
+            // alignItems="center"
+            className={styles.reservationDetailsItemContainer}
           >
-            <div
-              // container
-              // direction="row"
-              // justify="space-between"
-              // alignItems="center"
-              className={styles.reservationDetailsItemContainer}
-            >
-              <div
-                // item
-                className={styles.reservationDetailsItemTitleContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{ fontSize: "16px" }}
-                  className={styles.reservationDetailsItemTitleSelf}
-                >
-                  Vehicle
-                </span>
-              </div>
-              <div
-                // item
-                // style={{ flexGrow: 1 }}
-
-                className={styles.reservationDetailsItemPointedLineContainer}
-              >
-                <div
-                  // className={classes.boxBorder}
-                  // style={{
-                  //   marginTop: "8px",
-                  //   backgroundColor: "transparent",
-                  //   marginLeft: "3px",
-                  //   marginRight: "3px",
-                  // }}
-                  className={styles.reservationDetailsItemPointedLineSelf}
-                />
-              </div>
-              <div
-                // item
-                className={styles.reservationDetailsItemValueContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{
-                  //   fontSize: "16px",
-                  //   marginRight: "-3px",
-                  // }}
-                  className={styles.reservationDetailsItemValueSelf}
-                >
-                  {selectedCar.type}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* <Grid item>
-            <Grid
-              container
-              direction="row"
-              justify="space-between"
-              alignItems="center"
-            >
-              <Grid item>
-                <Typography
-                  className={classes.textColor}
-                  style={{ fontSize: "16px" }}
-                >
-                  Vehicle
-                </Typography>
-              </Grid>
-              <Grid item style={{ flexGrow: 1 }}>
-                <Box
-                  className={classes.boxBorder}
-                  style={{
-                    marginTop: "8px",
-                    backgroundColor: "transparent",
-                    marginLeft: "3px",
-                    marginRight: "3px",
-                  }}
-                />
-              </Grid>
-              <Grid item>
-                <Typography
-                  className={classes.textColor}
-                  style={{ fontSize: "16px" }}
-                >
-                  {selectedCar.type}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid> */}
-
-          <div
-            // item
-            className={styles.reservationDetailsItem}
-          >
-            <div
-              // container
-              // direction="row"
-              // justify="space-between"
-              // alignItems="center"
-              className={styles.reservationDetailsItemContainer}
-            >
-              <div
-                // item
-                className={styles.reservationDetailsItemTitleContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{ fontSize: "16px" }}
-                  className={styles.reservationDetailsItemTitleSelf}
-                >
-                  Total distance
-                </span>
-              </div>
-              <div
-                // item
-                // style={{ flexGrow: 1 }}
-
-                className={styles.reservationDetailsItemPointedLineContainer}
-              >
-                <div
-                  // className={classes.boxBorder}
-                  // style={{
-                  //   marginTop: "8px",
-                  //   backgroundColor: "transparent",
-                  //   marginLeft: "3px",
-                  //   marginRight: "3px",
-                  // }}
-                  className={styles.reservationDetailsItemPointedLineSelf}
-                />
-              </div>
-              <div
-                // item
-                className={styles.reservationDetailsItemValueContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{
-                  //   fontSize: "16px",
-                  //   marginRight: "-3px",
-                  // }}
-                  className={styles.reservationDetailsItemValueSelf}
-                >
-                  {distance} miles
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* <Grid item>
-            <Grid
-              container
-              direction="row"
-              justify="space-between"
-              alignItems="center"
-            >
-              <Grid item>
-                <Typography
-                  className={classes.textColor}
-                  style={{ fontSize: "16px" }}
-                >
-                  Total distance
-                </Typography>
-              </Grid>
-              <Grid item style={{ flexGrow: 1 }}>
-                <Box
-                  className={classes.boxBorder}
-                  style={{
-                    marginTop: "8px",
-                    backgroundColor: "transparent",
-                    marginLeft: "3px",
-                    marginRight: "3px",
-                  }}
-                />
-              </Grid>
-              <Grid item>
-                <Typography
-                  className={classes.textColor}
-                  style={{ fontSize: "16px" }}
-                >
-                  {distance} miles
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid> */}
-
-          <div
-            // item
-            className={styles.reservationDetailsItem}
-          >
-            <div
-              // container
-              // direction="row"
-              // justify="space-between"
-              // alignItems="center"
-              className={styles.reservationDetailsItemContainer}
-            >
-              <div
-                // item
-                className={styles.reservationDetailsItemTitleContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{ fontSize: "16px" }}
-                  className={styles.reservationDetailsItemTitleSelf}
-                >
-                  Number of Passengers
-                </span>
-              </div>
-              <div
-                // item
-                // style={{ flexGrow: 1 }}
-
-                className={styles.reservationDetailsItemPointedLineContainer}
-              >
-                <div
-                  // className={classes.boxBorder}
-                  // style={{
-                  //   marginTop: "8px",
-                  //   backgroundColor: "transparent",
-                  //   marginLeft: "3px",
-                  //   marginRight: "3px",
-                  // }}
-                  className={styles.reservationDetailsItemPointedLineSelf}
-                />
-              </div>
-              <div
-                // item
-                className={styles.reservationDetailsItemValueContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{
-                  //   fontSize: "16px",
-                  //   marginRight: "-3px",
-                  // }}
-                  className={styles.reservationDetailsItemValueSelf}
-                >
-                  {formData.passengersQuantity}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* <Grid item>
-            <Grid
-              container
-              direction="row"
-              justify="space-between"
-              alignItems="center"
-            >
-              <Grid item>
-                <Typography
-                  className={classes.textColor}
-                  style={{ fontSize: "16px" }}
-                >
-                  Number of Passengers
-                </Typography>
-              </Grid>
-              <Grid item style={{ flexGrow: 1 }}>
-                <Box
-                  className={classes.boxBorder}
-                  style={{
-                    marginTop: "8px",
-                    backgroundColor: "transparent",
-                    marginLeft: "3px",
-                    marginRight: "3px",
-                  }}
-                />
-              </Grid>
-              <Grid item>
-                <Typography
-                  className={classes.textColor}
-                  style={{ fontSize: "16px" }}
-                >
-                  {formData.passengersQuantity}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid> */}
-
-          {hourlyAndSeatsRedux && (
             <div
               // item
-              className={styles.reservationDetailsItem}
+              className={styles.reservationDetailsItemTitleContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{ fontSize: "16px" }}
+                className={styles.reservationDetailsItemTitleSelf}
+              >
+                Vehicle
+              </span>
+            </div>
+            <div
+              // item
+              // style={{ flexGrow: 1 }}
+
+              className={styles.reservationDetailsItemPointedLineContainer}
             >
               <div
-                // container
-                // direction="row"
-                // justify="space-between"
-                // alignItems="center"
-                className={styles.reservationDetailsItemContainer}
+                // className={classes.boxBorder}
+                // style={{
+                //   marginTop: "8px",
+                //   backgroundColor: "transparent",
+                //   marginLeft: "3px",
+                //   marginRight: "3px",
+                // }}
+                className={styles.reservationDetailsItemPointedLineSelf}
+              />
+            </div>
+            <div
+              // item
+              className={styles.reservationDetailsItemValueContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{
+                //   fontSize: "16px",
+                //   marginRight: "-3px",
+                // }}
+                className={styles.reservationDetailsItemValueSelf}
+              >
+                {selectedCar.type}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* <Grid item>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <Typography
+                  className={classes.textColor}
+                  style={{ fontSize: "16px" }}
+                >
+                  Vehicle
+                </Typography>
+              </Grid>
+              <Grid item style={{ flexGrow: 1 }}>
+                <Box
+                  className={classes.boxBorder}
+                  style={{
+                    marginTop: "8px",
+                    backgroundColor: "transparent",
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                  }}
+                />
+              </Grid>
+              <Grid item>
+                <Typography
+                  className={classes.textColor}
+                  style={{ fontSize: "16px" }}
+                >
+                  {selectedCar.type}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid> */}
+
+        <div
+          // item
+          className={styles.reservationDetailsItem}
+        >
+          <div
+            // container
+            // direction="row"
+            // justify="space-between"
+            // alignItems="center"
+            className={styles.reservationDetailsItemContainer}
+          >
+            <div
+              // item
+              className={styles.reservationDetailsItemTitleContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{ fontSize: "16px" }}
+                className={styles.reservationDetailsItemTitleSelf}
+              >
+                Total distance
+              </span>
+            </div>
+            <div
+              // item
+              // style={{ flexGrow: 1 }}
+
+              className={styles.reservationDetailsItemPointedLineContainer}
+            >
+              <div
+                // className={classes.boxBorder}
+                // style={{
+                //   marginTop: "8px",
+                //   backgroundColor: "transparent",
+                //   marginLeft: "3px",
+                //   marginRight: "3px",
+                // }}
+                className={styles.reservationDetailsItemPointedLineSelf}
+              />
+            </div>
+            <div
+              // item
+              className={styles.reservationDetailsItemValueContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{
+                //   fontSize: "16px",
+                //   marginRight: "-3px",
+                // }}
+                className={styles.reservationDetailsItemValueSelf}
+              >
+                {distance} miles
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* <Grid item>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <Typography
+                  className={classes.textColor}
+                  style={{ fontSize: "16px" }}
+                >
+                  Total distance
+                </Typography>
+              </Grid>
+              <Grid item style={{ flexGrow: 1 }}>
+                <Box
+                  className={classes.boxBorder}
+                  style={{
+                    marginTop: "8px",
+                    backgroundColor: "transparent",
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                  }}
+                />
+              </Grid>
+              <Grid item>
+                <Typography
+                  className={classes.textColor}
+                  style={{ fontSize: "16px" }}
+                >
+                  {distance} miles
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid> */}
+
+        <div
+          // item
+          className={styles.reservationDetailsItem}
+        >
+          <div
+            // container
+            // direction="row"
+            // justify="space-between"
+            // alignItems="center"
+            className={styles.reservationDetailsItemContainer}
+          >
+            <div
+              // item
+              className={styles.reservationDetailsItemTitleContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{ fontSize: "16px" }}
+                className={styles.reservationDetailsItemTitleSelf}
+              >
+                Number of Passengers
+              </span>
+            </div>
+            <div
+              // item
+              // style={{ flexGrow: 1 }}
+
+              className={styles.reservationDetailsItemPointedLineContainer}
+            >
+              <div
+                // className={classes.boxBorder}
+                // style={{
+                //   marginTop: "8px",
+                //   backgroundColor: "transparent",
+                //   marginLeft: "3px",
+                //   marginRight: "3px",
+                // }}
+                className={styles.reservationDetailsItemPointedLineSelf}
+              />
+            </div>
+            <div
+              // item
+              className={styles.reservationDetailsItemValueContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{
+                //   fontSize: "16px",
+                //   marginRight: "-3px",
+                // }}
+                className={styles.reservationDetailsItemValueSelf}
+              >
+                {formData.passengersQuantity}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* <Grid item>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item>
+                <Typography
+                  className={classes.textColor}
+                  style={{ fontSize: "16px" }}
+                >
+                  Number of Passengers
+                </Typography>
+              </Grid>
+              <Grid item style={{ flexGrow: 1 }}>
+                <Box
+                  className={classes.boxBorder}
+                  style={{
+                    marginTop: "8px",
+                    backgroundColor: "transparent",
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                  }}
+                />
+              </Grid>
+              <Grid item>
+                <Typography
+                  className={classes.textColor}
+                  style={{ fontSize: "16px" }}
+                >
+                  {formData.passengersQuantity}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid> */}
+
+        {hourlyAndSeatsRedux && (
+          <div
+            // item
+            className={styles.reservationDetailsItem}
+          >
+            <div
+              // container
+              // direction="row"
+              // justify="space-between"
+              // alignItems="center"
+              className={styles.reservationDetailsItemContainer}
+            >
+              <div
+                // item
+                className={styles.reservationDetailsItemTitleContainer}
+              >
+                <span
+                  // className={classes.textColor}
+                  // style={{ fontSize: "16px" }}
+                  className={styles.reservationDetailsItemTitleSelf}
+                >
+                  Hours
+                </span>
+              </div>
+              <div
+                // item
+                // style={{ flexGrow: 1 }}
+
+                className={styles.reservationDetailsItemPointedLineContainer}
               >
                 <div
-                  // item
-                  className={styles.reservationDetailsItemTitleContainer}
+                  // className={classes.boxBorder}
+                  // style={{
+                  //   marginTop: "8px",
+                  //   backgroundColor: "transparent",
+                  //   marginLeft: "3px",
+                  //   marginRight: "3px",
+                  // }}
+                  className={styles.reservationDetailsItemPointedLineSelf}
+                />
+              </div>
+              <div
+                // item
+                className={styles.reservationDetailsItemValueContainer}
+              >
+                <span
+                  // className={classes.textColor}
+                  // style={{
+                  //   fontSize: "16px",
+                  //   marginRight: "-3px",
+                  // }}
+                  className={styles.reservationDetailsItemValueSelf}
                 >
-                  <span
-                    // className={classes.textColor}
-                    // style={{ fontSize: "16px" }}
-                    className={styles.reservationDetailsItemTitleSelf}
-                  >
-                    Hours
-                  </span>
-                </div>
-                <div
-                  // item
-                  // style={{ flexGrow: 1 }}
-
-                  className={styles.reservationDetailsItemPointedLineContainer}
-                >
-                  <div
-                    // className={classes.boxBorder}
-                    // style={{
-                    //   marginTop: "8px",
-                    //   backgroundColor: "transparent",
-                    //   marginLeft: "3px",
-                    //   marginRight: "3px",
-                    // }}
-                    className={styles.reservationDetailsItemPointedLineSelf}
-                  />
-                </div>
-                <div
-                  // item
-                  className={styles.reservationDetailsItemValueContainer}
-                >
-                  <span
-                    // className={classes.textColor}
-                    // style={{
-                    //   fontSize: "16px",
-                    //   marginRight: "-3px",
-                    // }}
-                    className={styles.reservationDetailsItemValueSelf}
-                  >
-                    {formData.hours}
-                  </span>
-                </div>
+                  {formData.hours}
+                </span>
               </div>
             </div>
+          </div>
 
-            // <Grid item>
-            //   <Grid
-            //     container
-            //     direction="row"
-            //     justify="space-between"
-            //     alignItems="center"
-            //   >
-            //     <Grid item>
-            //       <Typography
-            //         className={classes.textColor}
-            //         style={{ fontSize: "16px" }}
-            //       >
-            //         Hours
-            //       </Typography>
-            //     </Grid>
-            //     <Grid item style={{ flexGrow: 1 }}>
-            //       <Box
-            //         className={classes.boxBorder}
-            //         style={{
-            //           marginTop: "8px",
-            //           backgroundColor: "transparent",
-            //           marginLeft: "3px",
-            //           marginRight: "3px",
-            //         }}
-            //       />
-            //     </Grid>
-            //     <Grid item>
-            //       <Typography
-            //         className={classes.textColor}
-            //         style={{ fontSize: "16px" }}
-            //       >
-            //         {formData.hours}
-            //       </Typography>
-            //     </Grid>
-            //   </Grid>
-            // </Grid>
-          )}
-          {/* {selectedCar.boosterSeatPrice !== 0 &&
+          // <Grid item>
+          //   <Grid
+          //     container
+          //     direction="row"
+          //     justify="space-between"
+          //     alignItems="center"
+          //   >
+          //     <Grid item>
+          //       <Typography
+          //         className={classes.textColor}
+          //         style={{ fontSize: "16px" }}
+          //       >
+          //         Hours
+          //       </Typography>
+          //     </Grid>
+          //     <Grid item style={{ flexGrow: 1 }}>
+          //       <Box
+          //         className={classes.boxBorder}
+          //         style={{
+          //           marginTop: "8px",
+          //           backgroundColor: "transparent",
+          //           marginLeft: "3px",
+          //           marginRight: "3px",
+          //         }}
+          //       />
+          //     </Grid>
+          //     <Grid item>
+          //       <Typography
+          //         className={classes.textColor}
+          //         style={{ fontSize: "16px" }}
+          //       >
+          //         {formData.hours}
+          //       </Typography>
+          //     </Grid>
+          //   </Grid>
+          // </Grid>
+        )}
+        {/* {selectedCar.boosterSeatPrice !== 0 &&
           selectedCar.boosterSeatPrice !== undefined ? (
             <div
               // item
@@ -1574,247 +1573,241 @@ const PreviewUIComponent = ({
               </div>
             </div>
           ) : ( */}
+        <>
+          {selectedCar.boosterSeatPrice == undefined ? null : (
+            <div
+              // item
+              className={styles.reservationDetailsItem}
+            >
+              <div
+                // container
+                // direction="row"
+                // justify="space-between"
+                // alignItems="center"
+                className={styles.reservationDetailsItemContainer}
+              >
+                <div
+                  // item
+                  className={styles.reservationDetailsItemTitleContainer}
+                >
+                  <span
+                    // className={classes.textColor}
+                    // style={{ fontSize: "16px" }}
+                    className={styles.reservationDetailsItemTitleSelf}
+                  >
+                    Youth Booster Seat
+                  </span>
+                </div>
+                <div
+                  // item
+                  // style={{ flexGrow: 1 }}
+
+                  className={styles.reservationDetailsItemPointedLineContainer}
+                >
+                  <div
+                    // className={classes.boxBorder}
+                    // style={{
+                    //   marginTop: "8px",
+                    //   backgroundColor: "transparent",
+                    //   marginLeft: "3px",
+                    //   marginRight: "3px",
+                    // }}
+                    className={styles.reservationDetailsItemPointedLineSelf}
+                  />
+                </div>
+                <div
+                  // item
+                  className={styles.reservationDetailsItemValueContainer}
+                >
+                  <span
+                    // className={classes.textColor}
+                    // style={{
+                    //   fontSize: "16px",
+                    //   marginRight: "-3px",
+                    // }}
+                    className={styles.reservationDetailsItemValueSelf}
+                  >
+                    {selectedCar.boosterSeatPrice !== 0 &&
+                    selectedCar.boosterSeatPrice !== undefined
+                      ? `$${selectedCar.boosterSeatPrice}`
+                      : `$${0}`}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+        {/* )} */}
+
+        <>
+          {selectedCar.safetySeatPrice == undefined ? null : (
+            // <Grid item>
+            //   <Grid
+            //     container
+            //     direction="row"
+            //     justify="space-between"
+            //     alignItems="center"
+            //   >
+            //     <Grid item>
+            //       <Typography
+            //         className={classes.textColor}
+            //         style={{ fontSize: "16px" }}
+            //       >
+            //         {"Infant & Child Safety Seat"}
+            //       </Typography>
+            //     </Grid>
+            //     <Grid item style={{ flexGrow: 1 }}>
+            //       <Box
+            //         className={classes.boxBorder}
+            //         style={{
+            //           marginTop: "8px",
+            //           backgroundColor: "transparent",
+            //           marginLeft: "3px",
+            //           marginRight: "3px",
+            //         }}
+            //       />
+            //     </Grid>
+            //     <Grid item>
+            //       <Typography
+            //         className={classes.textColor}
+            //         style={{ fontSize: "16px" }}
+            //       >
+            //         {/* {`$${0}`} */}
+            //         {selectedCar.safetySeatPrice !== 0 &&
+            //         selectedCar.safetySeatPrice !== undefined
+            //           ? `$${selectedCar.safetySeatPrice}`
+            //           : `$${0}`}
+            //       </Typography>
+            //     </Grid>
+            //   </Grid>
+            // </Grid>
+
+            <div
+              // item
+              className={styles.reservationDetailsItem}
+            >
+              <div
+                // container
+                // direction="row"
+                // justify="space-between"
+                // alignItems="center"
+                className={styles.reservationDetailsItemContainer}
+              >
+                <div
+                  // item
+                  className={styles.reservationDetailsItemTitleContainer}
+                >
+                  <span
+                    // className={classes.textColor}
+                    // style={{ fontSize: "16px" }}
+                    className={styles.reservationDetailsItemTitleSelf}
+                  >
+                    {"Infant & Child Safety Seat"}
+                  </span>
+                </div>
+                <div
+                  // item
+                  // style={{ flexGrow: 1 }}
+
+                  className={styles.reservationDetailsItemPointedLineContainer}
+                >
+                  <div
+                    // className={classes.boxBorder}
+                    // style={{
+                    //   marginTop: "8px",
+                    //   backgroundColor: "transparent",
+                    //   marginLeft: "3px",
+                    //   marginRight: "3px",
+                    // }}
+                    className={styles.reservationDetailsItemPointedLineSelf}
+                  />
+                </div>
+                <div
+                  // item
+                  className={styles.reservationDetailsItemValueContainer}
+                >
+                  <span
+                    // className={classes.textColor}
+                    // style={{
+                    //   fontSize: "16px",
+                    //   marginRight: "-3px",
+                    // }}
+                    className={styles.reservationDetailsItemValueSelf}
+                  >
+                    {/* {`$${0}`} */}
+                    {selectedCar.safetySeatPrice !== 0 &&
+                    selectedCar.safetySeatPrice !== undefined
+                      ? `$${selectedCar.safetySeatPrice}`
+                      : `$${0}`}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+
+        {gateMeeting && (
           <>
-            {selectedCar.boosterSeatPrice == undefined ? null : (
+            <div
+              // item
+              className={styles.reservationDetailsItem}
+            >
               <div
-                // item
-                className={styles.reservationDetailsItem}
+                // container
+                // direction="row"
+                // justify="space-between"
+                // alignItems="center"
+                className={styles.reservationDetailsItemContainer}
               >
                 <div
-                  // container
-                  // direction="row"
-                  // justify="space-between"
-                  // alignItems="center"
-                  className={styles.reservationDetailsItemContainer}
+                  // item
+                  className={styles.reservationDetailsItemTitleContainer}
                 >
-                  <div
-                    // item
-                    className={styles.reservationDetailsItemTitleContainer}
+                  <span
+                    // className={classes.textColor}
+                    // style={{ fontSize: "16px" }}
+                    className={styles.reservationDetailsItemTitleSelf}
                   >
-                    <span
-                      // className={classes.textColor}
-                      // style={{ fontSize: "16px" }}
-                      className={styles.reservationDetailsItemTitleSelf}
-                    >
-                      Youth Booster Seat
-                    </span>
-                  </div>
-                  <div
-                    // item
-                    // style={{ flexGrow: 1 }}
-
-                    className={
-                      styles.reservationDetailsItemPointedLineContainer
-                    }
-                  >
-                    <div
-                      // className={classes.boxBorder}
-                      // style={{
-                      //   marginTop: "8px",
-                      //   backgroundColor: "transparent",
-                      //   marginLeft: "3px",
-                      //   marginRight: "3px",
-                      // }}
-                      className={styles.reservationDetailsItemPointedLineSelf}
-                    />
-                  </div>
-                  <div
-                    // item
-                    className={styles.reservationDetailsItemValueContainer}
-                  >
-                    <span
-                      // className={classes.textColor}
-                      // style={{
-                      //   fontSize: "16px",
-                      //   marginRight: "-3px",
-                      // }}
-                      className={styles.reservationDetailsItemValueSelf}
-                    >
-                      {selectedCar.boosterSeatPrice !== 0 &&
-                      selectedCar.boosterSeatPrice !== undefined
-                        ? `$${selectedCar.boosterSeatPrice}`
-                        : `$${0}`}
-                    </span>
-                  </div>
+                    {"Meet & Greet/Luggage Assist"}
+                  </span>
                 </div>
-              </div>
-            )}
-          </>
-          {/* )} */}
-
-          <>
-            {selectedCar.safetySeatPrice == undefined ? null : (
-              // <Grid item>
-              //   <Grid
-              //     container
-              //     direction="row"
-              //     justify="space-between"
-              //     alignItems="center"
-              //   >
-              //     <Grid item>
-              //       <Typography
-              //         className={classes.textColor}
-              //         style={{ fontSize: "16px" }}
-              //       >
-              //         {"Infant & Child Safety Seat"}
-              //       </Typography>
-              //     </Grid>
-              //     <Grid item style={{ flexGrow: 1 }}>
-              //       <Box
-              //         className={classes.boxBorder}
-              //         style={{
-              //           marginTop: "8px",
-              //           backgroundColor: "transparent",
-              //           marginLeft: "3px",
-              //           marginRight: "3px",
-              //         }}
-              //       />
-              //     </Grid>
-              //     <Grid item>
-              //       <Typography
-              //         className={classes.textColor}
-              //         style={{ fontSize: "16px" }}
-              //       >
-              //         {/* {`$${0}`} */}
-              //         {selectedCar.safetySeatPrice !== 0 &&
-              //         selectedCar.safetySeatPrice !== undefined
-              //           ? `$${selectedCar.safetySeatPrice}`
-              //           : `$${0}`}
-              //       </Typography>
-              //     </Grid>
-              //   </Grid>
-              // </Grid>
-
-              <div
-                // item
-                className={styles.reservationDetailsItem}
-              >
                 <div
-                  // container
-                  // direction="row"
-                  // justify="space-between"
-                  // alignItems="center"
-                  className={styles.reservationDetailsItemContainer}
+                  // item
+                  // style={{ flexGrow: 1 }}
+
+                  className={styles.reservationDetailsItemPointedLineContainer}
                 >
                   <div
-                    // item
-                    className={styles.reservationDetailsItemTitleContainer}
-                  >
-                    <span
-                      // className={classes.textColor}
-                      // style={{ fontSize: "16px" }}
-                      className={styles.reservationDetailsItemTitleSelf}
-                    >
-                      {"Infant & Child Safety Seat"}
-                    </span>
-                  </div>
-                  <div
-                    // item
-                    // style={{ flexGrow: 1 }}
-
-                    className={
-                      styles.reservationDetailsItemPointedLineContainer
-                    }
-                  >
-                    <div
-                      // className={classes.boxBorder}
-                      // style={{
-                      //   marginTop: "8px",
-                      //   backgroundColor: "transparent",
-                      //   marginLeft: "3px",
-                      //   marginRight: "3px",
-                      // }}
-                      className={styles.reservationDetailsItemPointedLineSelf}
-                    />
-                  </div>
-                  <div
-                    // item
-                    className={styles.reservationDetailsItemValueContainer}
-                  >
-                    <span
-                      // className={classes.textColor}
-                      // style={{
-                      //   fontSize: "16px",
-                      //   marginRight: "-3px",
-                      // }}
-                      className={styles.reservationDetailsItemValueSelf}
-                    >
-                      {/* {`$${0}`} */}
-                      {selectedCar.safetySeatPrice !== 0 &&
-                      selectedCar.safetySeatPrice !== undefined
-                        ? `$${selectedCar.safetySeatPrice}`
-                        : `$${0}`}
-                    </span>
-                  </div>
+                    // className={classes.boxBorder}
+                    // style={{
+                    //   marginTop: "8px",
+                    //   backgroundColor: "transparent",
+                    //   marginLeft: "3px",
+                    //   marginRight: "3px",
+                    // }}
+                    className={styles.reservationDetailsItemPointedLineSelf}
+                  />
                 </div>
-              </div>
-            )}
-          </>
-
-          {gateMeeting && (
-            <>
-              <div
-                // item
-                className={styles.reservationDetailsItem}
-              >
                 <div
-                  // container
-                  // direction="row"
-                  // justify="space-between"
-                  // alignItems="center"
-                  className={styles.reservationDetailsItemContainer}
+                  // item
+                  className={styles.reservationDetailsItemValueContainer}
                 >
-                  <div
-                    // item
-                    className={styles.reservationDetailsItemTitleContainer}
+                  <span
+                    // className={classes.textColor}
+                    // style={{
+                    //   fontSize: "16px",
+                    //   marginRight: "-3px",
+                    // }}
+                    className={styles.reservationDetailsItemValueSelf}
                   >
-                    <span
-                      // className={classes.textColor}
-                      // style={{ fontSize: "16px" }}
-                      className={styles.reservationDetailsItemTitleSelf}
-                    >
-                      {"Meet & Greet/Luggage Assist"}
-                    </span>
-                  </div>
-                  <div
-                    // item
-                    // style={{ flexGrow: 1 }}
-
-                    className={
-                      styles.reservationDetailsItemPointedLineContainer
-                    }
-                  >
-                    <div
-                      // className={classes.boxBorder}
-                      // style={{
-                      //   marginTop: "8px",
-                      //   backgroundColor: "transparent",
-                      //   marginLeft: "3px",
-                      //   marginRight: "3px",
-                      // }}
-                      className={styles.reservationDetailsItemPointedLineSelf}
-                    />
-                  </div>
-                  <div
-                    // item
-                    className={styles.reservationDetailsItemValueContainer}
-                  >
-                    <span
-                      // className={classes.textColor}
-                      // style={{
-                      //   fontSize: "16px",
-                      //   marginRight: "-3px",
-                      // }}
-                      className={styles.reservationDetailsItemValueSelf}
-                    >
-                      {/* {`$${0}`} */}
-                      {`$${selectedCar.greetAndMeetPrice}`}
-                    </span>
-                  </div>
+                    {/* {`$${0}`} */}
+                    {`$${selectedCar.greetAndMeetPrice}`}
+                  </span>
                 </div>
               </div>
+            </div>
 
-              {/* <Grid item>
+            {/* <Grid item>
                 <Grid
                   container
                   direction="row"
@@ -1854,68 +1847,66 @@ const PreviewUIComponent = ({
                 </Grid>
               </Grid> */}
 
+            <div
+              // item
+              className={styles.reservationDetailsItem}
+            >
               <div
-                // item
-                className={styles.reservationDetailsItem}
+                // container
+                // direction="row"
+                // justify="space-between"
+                // alignItems="center"
+                className={styles.reservationDetailsItemContainer}
               >
                 <div
-                  // container
-                  // direction="row"
-                  // justify="space-between"
-                  // alignItems="center"
-                  className={styles.reservationDetailsItemContainer}
+                  // item
+                  className={styles.reservationDetailsItemTitleContainer}
+                >
+                  <span
+                    // className={classes.textColor}
+                    // style={{ fontSize: "16px" }}
+                    className={styles.reservationDetailsItemTitleSelf}
+                  >
+                    Luggage count
+                  </span>
+                </div>
+                <div
+                  // item
+                  // style={{ flexGrow: 1 }}
+
+                  className={styles.reservationDetailsItemPointedLineContainer}
                 >
                   <div
-                    // item
-                    className={styles.reservationDetailsItemTitleContainer}
+                    // className={classes.boxBorder}
+                    // style={{
+                    //   marginTop: "8px",
+                    //   backgroundColor: "transparent",
+                    //   marginLeft: "3px",
+                    //   marginRight: "3px",
+                    // }}
+                    className={styles.reservationDetailsItemPointedLineSelf}
+                  />
+                </div>
+                <div
+                  // item
+                  className={styles.reservationDetailsItemValueContainer}
+                >
+                  <span
+                    // className={classes.textColor}
+                    // style={{
+                    //   fontSize: "16px",
+                    //   marginRight: "-3px",
+                    // }}
+                    className={styles.reservationDetailsItemValueSelf}
                   >
-                    <span
-                      // className={classes.textColor}
-                      // style={{ fontSize: "16px" }}
-                      className={styles.reservationDetailsItemTitleSelf}
-                    >
-                      Luggage count
-                    </span>
-                  </div>
-                  <div
-                    // item
-                    // style={{ flexGrow: 1 }}
-
-                    className={
-                      styles.reservationDetailsItemPointedLineContainer
-                    }
-                  >
-                    <div
-                      // className={classes.boxBorder}
-                      // style={{
-                      //   marginTop: "8px",
-                      //   backgroundColor: "transparent",
-                      //   marginLeft: "3px",
-                      //   marginRight: "3px",
-                      // }}
-                      className={styles.reservationDetailsItemPointedLineSelf}
-                    />
-                  </div>
-                  <div
-                    // item
-                    className={styles.reservationDetailsItemValueContainer}
-                  >
-                    <span
-                      // className={classes.textColor}
-                      // style={{
-                      //   fontSize: "16px",
-                      //   marginRight: "-3px",
-                      // }}
-                      className={styles.reservationDetailsItemValueSelf}
-                    >
-                      {/* {`$${0}`} */}
-                      {formData.luggageCount}
-                    </span>
-                  </div>
+                    {/* {`$${0}`} */}
+                    {formData.luggageCount}
+                  </span>
                 </div>
               </div>
+            </div>
 
-              {/* <Grid item>
+            {/* <Grid item>
                 <Grid
                   container
                   direction="row"
@@ -1956,144 +1947,143 @@ const PreviewUIComponent = ({
                   </Grid>
                 </Grid>
               </Grid> */}
-            </>
-          )}
+          </>
+        )}
 
+        <div
+          // item
+          className={styles.reservationDetailsItem}
+        >
           <div
-            // item
-            className={styles.reservationDetailsItem}
+            // container
+            // direction="row"
+            // justify="space-between"
+            // alignItems="center"
+            className={styles.reservationDetailsItemContainer}
           >
             <div
-              // container
-              // direction="row"
-              // justify="space-between"
-              // alignItems="center"
-              className={styles.reservationDetailsItemContainer}
+              // item
+              className={styles.reservationDetailsItemTitleContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{ fontSize: "16px" }}
+                className={styles.reservationDetailsItemTitleSelf}
+              >
+                Total
+              </span>
+            </div>
+            <div
+              // item
+              // style={{ flexGrow: 1 }}
+
+              className={styles.reservationDetailsItemPointedLineContainer}
             >
               <div
-                // item
-                className={styles.reservationDetailsItemTitleContainer}
+                // className={classes.boxBorder}
+                // style={{
+                //   marginTop: "8px",
+                //   backgroundColor: "transparent",
+                //   marginLeft: "3px",
+                //   marginRight: "3px",
+                // }}
+                className={styles.reservationDetailsItemPointedLineSelf}
+              />
+            </div>
+            <div
+              // item
+              className={styles.reservationDetailsItemValueContainer}
+            >
+              <span
+                // className={classes.textColor}
+                // style={{
+                //   fontSize: "16px",
+                //   marginRight: "-3px",
+                // }}
+                className={styles.reservationDetailsItemValueSelf}
               >
-                <span
-                  // className={classes.textColor}
-                  // style={{ fontSize: "16px" }}
-                  className={styles.reservationDetailsItemTitleSelf}
-                >
-                  Total
-                </span>
-              </div>
-              <div
-                // item
-                // style={{ flexGrow: 1 }}
-
-                className={styles.reservationDetailsItemPointedLineContainer}
-              >
-                <div
-                  // className={classes.boxBorder}
-                  // style={{
-                  //   marginTop: "8px",
-                  //   backgroundColor: "transparent",
-                  //   marginLeft: "3px",
-                  //   marginRight: "3px",
-                  // }}
-                  className={styles.reservationDetailsItemPointedLineSelf}
-                />
-              </div>
-              <div
-                // item
-                className={styles.reservationDetailsItemValueContainer}
-              >
-                <span
-                  // className={classes.textColor}
-                  // style={{
-                  //   fontSize: "16px",
-                  //   marginRight: "-3px",
-                  // }}
-                  className={styles.reservationDetailsItemValueSelf}
-                >
-                  {/* {`$${0}`} */}
-                  {`$${round(selectedCar.price, 2)}`}
-                </span>
-              </div>
+                {/* {`$${0}`} */}
+                {`$${round(selectedCar.price, 2)}`}
+              </span>
             </div>
           </div>
+        </div>
 
+        <div
+          // item
+          className={styles.notesTextFieldContainer}
+        >
+          <textarea
+            id="outlined-multiline-flexible"
+            label="Notes / Itinerary"
+            // multiline
+            // fullWidth
+            // rows={3}
+            // value={note}
+            // onChange={handleChange}
+            // className={classes.notes}
+            // // notesUnderline
+            // InputProps={{
+            //   classes: {
+            //     underline: classes.notesUnderline,
+            //   },
+            //   // disableUnderline: true,
+            // }}
+            className={styles.notesTextFieldSelf}
+          />
+        </div>
+        <div
+          // item
+          className={styles.buttonGroupBlock}
+        >
           <div
-            // item
-            className={styles.notesTextFieldContainer}
+            // container
+            // direction="row"
+            // alignItems="center"
+            // justify="center"
+            // spacing={1}
+            // className={classes.buttonGroup}
+            className={styles.buttonGroupBlockContainer}
           >
-            <textarea
-              id="outlined-multiline-flexible"
-              label="Notes / Itinerary"
-              // multiline
-              // fullWidth
-              // rows={3}
-              // value={note}
-              // onChange={handleChange}
-              // className={classes.notes}
-              // // notesUnderline
-              // InputProps={{
-              //   classes: {
-              //     underline: classes.notesUnderline,
-              //   },
-              //   // disableUnderline: true,
-              // }}
-              className={styles.notesTextFieldSelf}
-            />
-          </div>
-          <div
-            // item
-            className={styles.buttonGroupBlock}
-          >
-            <div
-              // container
-              // direction="row"
-              // alignItems="center"
-              // justify="center"
-              // spacing={1}
-              // className={classes.buttonGroup}
-              className={styles.buttonGroupBlockContainer}
-            >
-              {/* <Grid
+            {/* <Grid
                 // item
                 // xs={6}
                 className={styles.back}
               > */}
-              <button
-                variant="contained"
-                color="primary"
-                fullWidth
-                onClick={back}
-                startIcon={<BackArrowIcon />}
-                className={classes.backButtonSelf}
-                className={styles.buttonBackSelf}
-              >
-                Back
-              </button>
-              {/* </Grid> */}
-              {/* <Grid item xs={6}> */}
-              <button
-                variant="contained"
-                fullWidth
-                onClick={() => {
-                  next()
-                  sendNote(note)
-                  setOrderSum(selectedCar.price)
-                }}
-                color="primary"
-                endIcon={<ForwardArrowIcon />}
-                className={classes.nextButtonSelf}
-                className={styles.buttonNextSelf}
-              >
-                Next
-              </button>
-              {/* </Grid> */}
-            </div>
+            <button
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={back}
+              startIcon={<BackArrowIcon />}
+              className={classes.backButtonSelf}
+              className={styles.buttonBackSelf}
+            >
+              Back
+            </button>
+            {/* </Grid> */}
+            {/* <Grid item xs={6}> */}
+            <button
+              variant="contained"
+              fullWidth
+              onClick={() => {
+                next()
+                sendNote(note)
+                setOrderSum(selectedCar.price)
+              }}
+              color="primary"
+              endIcon={<ForwardArrowIcon />}
+              className={classes.nextButtonSelf}
+              className={styles.buttonNextSelf}
+            >
+              Next
+            </button>
+            {/* </Grid> */}
           </div>
-          {/* </div> */}
         </div>
+        {/* </div> */}
       </div>
-    </>
+    </div>
   )
 }
 

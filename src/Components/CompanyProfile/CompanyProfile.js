@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import { CloseWidgetIcon } from "../../assets/icons"
 import Divider from "@material-ui/core/Divider"
 // import { isMobile } from "react-device-detect"
-import { Preloader } from "../Helpers/Preloader"
+// import { Preloader } from "../Helpers/Preloader/Preloader"
 // import AppBar from "@material-ui/core/AppBar"
 import { useMediaQuery } from "@material-ui/core"
 import {
@@ -19,6 +19,7 @@ import {
 } from "../../Redux/reset-widget-inputs-reducer"
 import { setIsAirportPickupIncluded } from "../../Redux/form-reducer"
 import { setGateMeetingRedux } from "../../Redux/gate-meeting-reducer"
+import styles from "./CompanyProfile.module.scss"
 
 const useStyles = makeStyles((theme) => ({
   companyContainer: {
@@ -124,31 +125,40 @@ const CompanyProfile = ({
             </> : */}
       {initializing ? (
         <>
-          <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
-            wrap="nowrap"
-            className={classes.companyContainer}
+          <div
+            // container
+            // direction="row"
+            // justify="space-between"
+            // alignItems="center"
+            // wrap="nowrap"
+            // className={classes.companyContainer}
+            className={styles.companyProfileWrapper}
           >
-            <Grid item>
+            <div className={styles.companyProfileImageContainer}>
               <img
                 src={profile.companyLogoPath}
-                className={classes.companyLogo}
+                // className={classes.companyLogo}
                 alt="companyLogo"
+                className={styles.companyProfileImageSelf}
               />
-            </Grid>
-            <Grid item xs={7} md={7} lg={8} xl={8}>
-              <Typography className={classes.companyName}>
+            </div>
+            <div
+              // item
+              // xs={7}
+              // md={7}
+              // lg={8}
+              // xl={8}
+              className={styles.companyProfileNameContainer}
+            >
+              <span className={styles.companyProfileNameSelf}>
                 {profile.companyName}
-              </Typography>
-            </Grid>
+              </span>
+            </div>
             {/* {smallDevices && ( */}
-            <Grid item>
+            <div className={styles.companyProfileCloseIconContainer}>
               <div
-                style={{ cursor: "pointer", marginRight: "6px" }}
-                className={classes.closeIcon}
+                // style={{ cursor: "pointer", marginRight: "6px" }}
+                className={styles.companyProfileCloseIconContainer}
                 onClick={() => {
                   setExpanded()
                   setActiveStep(0)
@@ -161,11 +171,9 @@ const CompanyProfile = ({
               >
                 <CloseWidgetIcon />
               </div>
-            </Grid>
+            </div>
             {/* )} */}
-          </Grid>
-
-          <Divider orientation="horizontal" variant="fullWidth" />
+          </div>
         </>
       ) : null}
     </>

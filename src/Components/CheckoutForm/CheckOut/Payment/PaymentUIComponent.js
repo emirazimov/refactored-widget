@@ -35,28 +35,29 @@ import { useStyles } from "./PaymentStyles"
 // import { styles } from "@material-ui/pickers/views/Calendar/Calendar"
 import styles from "./Payment.module.scss"
 import { Switch } from "../../../Helpers/Switch/Switch"
+import ReactInputMask from "react-input-mask"
 
-const SignupSchema = yup.object().shape({
-  // greetClientInfo: yup.object().shape({
-  //     firstName: yup.string().required('Required'),
-  //     phoneNumber: yup.number('Not a number').required('Required'),
-  //     lastName: yup.string().required('Required'),
-  //     email: yup.string().email('invalid email').required('Required'),
-  // }),
-  client: yup.object().shape({
-    firstName: yup.string().required("Required"),
-    lastName: yup.string().required("Required"),
-    address: yup.string().required("Required"),
-    zip: yup.number().required("Required").typeError("Not a number"),
-    email: yup.string().email("invalid email").required("Required"),
-    phoneNumber: yup.number().typeError("Not a number").required("Required"),
-  }),
-  paymentInfo: yup.object().shape({
-    // cardNumber: yup.string().required("Required"),
-    month: yup.string().required("Required"),
-    cvc: yup.number().required("Required").typeError("Not a number"),
-  }),
-})
+// const SignupSchema = yup.object().shape({
+//   // greetClientInfo: yup.object().shape({
+//   //     firstName: yup.string().required('Required'),
+//   //     phoneNumber: yup.number('Not a number').required('Required'),
+//   //     lastName: yup.string().required('Required'),
+//   //     email: yup.string().email('invalid email').required('Required'),
+//   // }),
+//   client: yup.object().shape({
+//     firstName: yup.string().required("Required"),
+//     lastName: yup.string().required("Required"),
+//     address: yup.string().required("Required"),
+//     zip: yup.number().required("Required").typeError("Not a number"),
+//     email: yup.string().email("invalid email").required("Required"),
+//     phoneNumber: yup.number().typeError("Not a number").required("Required"),
+//   }),
+//   paymentInfo: yup.object().shape({
+//     // cardNumber: yup.string().required("Required"),
+//     month: yup.string().required("Required"),
+//     cvc: yup.number().required("Required").typeError("Not a number"),
+//   }),
+// })
 
 const PaymentUIComponent = ({
   next,
@@ -100,6 +101,7 @@ const PaymentUIComponent = ({
   handleNum,
   handleType,
   extractStateId,
+  extractCityId,
 }) => {
   const classes = useStyles()
 
@@ -109,9 +111,19 @@ const PaymentUIComponent = ({
     // width: "100%",
   }
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  // }
+
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>
+      <form
+        // onBlur={(e) => {
+        //   handleSubmit(e)
+        // }}
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles.formWrapper}
+      >
         <div
           // container
           // justify="center"
@@ -255,6 +267,7 @@ const PaymentUIComponent = ({
                       //   background: "transparent",
                       // }}
                       className={styles.cardholderInformationInputSelf}
+                      ref={register}
                     />
                   </div>
                   <div
@@ -271,6 +284,7 @@ const PaymentUIComponent = ({
                       placeholder="Last Name"
                       // style={{ width: "100%", background: "transparent" }}
                       className={styles.cardholderInformationInputSelf}
+                      ref={register}
                     />
                   </div>
                   {/* </Grid> */}
@@ -299,6 +313,7 @@ const PaymentUIComponent = ({
                       defaultValue={formSummary.greetClientInfo.email}
                       // style={{ width: "100%", background: "transparent" }}
                       className={styles.cardholderInformationInputSelf}
+                      ref={register}
                     />
                   </div>
                   <div
@@ -315,6 +330,7 @@ const PaymentUIComponent = ({
                       // className={classes.inputPlaceholderFontSize}
                       // style={{ width: "100%", background: "transparent" }}
                       className={styles.cardholderInformationInputSelf}
+                      ref={register}
                     />
                   </div>
                   {/* </Grid> */}
@@ -367,6 +383,7 @@ const PaymentUIComponent = ({
                     placeholder="First Name"
                     error={errors.client?.firstName ? true : false}
                     className={styles.cardholderInformationInputSelf}
+                    ref={register}
                   />
                   {errors.client?.firstName && (
                     <p className={classes.error}>
@@ -389,6 +406,7 @@ const PaymentUIComponent = ({
                     // style={{ width: "100%", background: "transparent" }}
                     error={errors.client?.lastName ? true : false}
                     className={styles.cardholderInformationInputSelf}
+                    ref={register}
                   />
                   {errors.client?.lastName && (
                     <p className={classes.error}>
@@ -423,6 +441,7 @@ const PaymentUIComponent = ({
                     defaultValue={formSummary.client.email}
                     error={errors.client?.email ? true : false}
                     className={styles.cardholderInformationInputSelf}
+                    ref={register}
                   />
                   {errors.client?.email && (
                     <p className={classes.error}>
@@ -445,6 +464,7 @@ const PaymentUIComponent = ({
                     // style={{ width: "100%", background: "transparent" }}
                     error={errors.client?.phoneNumber ? true : false}
                     className={styles.cardholderInformationInputSelf}
+                    ref={register}
                   />
                   {errors.client?.phoneNumber && (
                     <p className={classes.error}>
@@ -467,6 +487,7 @@ const PaymentUIComponent = ({
                   placeholder="Address"
                   defaultValue={formSummary.client.address}
                   // fullWidth
+                  ref={register}
                   error={errors.client?.address ? true : false}
                   className={styles.cardholderInformationInputWithFullWidthSelf}
                 />
@@ -498,6 +519,7 @@ const PaymentUIComponent = ({
                   //   },
                   //   // disableUnderline: true,
                   // }}
+                  ref={register}
                   onChange={(event, newValue) => {
                     // console.log(event)
                     event.target.value
@@ -631,9 +653,12 @@ const PaymentUIComponent = ({
                     // className={
                     //   styles.cardholderInformationInputWithFullWidthSelf
                     // }
+                    ref={register}
                     onChange={(event, newValue) => {
                       console.log(cities)
-                      newValue ? setCitiesId(newValue.id) : setCitiesId(null)
+                      event.target.value
+                        ? extractCityId(event.target.value)
+                        : setCitiesId(null)
                     }}
                     className={styles.cardholderInformationInputSelf}
                   />
@@ -694,6 +719,7 @@ const PaymentUIComponent = ({
                     // className={classes.inputPlaceholderFontSize}
                     placeholder="ZIP"
                     // style={{ width: "100%", background: "transparent" }}
+                    ref={register}
                     defaultValue={formSummary.client.zip}
                     error={errors.client?.address ? true : false}
                     className={styles.cardholderInformationInputSelf}
@@ -786,6 +812,7 @@ const PaymentUIComponent = ({
                 >
                   <CustomMaskInput
                     name="paymentInfo.month"
+                    ref={register}
                     mask="99/99"
                     autoComplete="off"
                     defaultValue={`${formSummary.paymentInfo.month}/${formSummary.paymentInfo.year}`}
@@ -798,6 +825,7 @@ const PaymentUIComponent = ({
                         autoComplete="off"
                         // fullWidth
                         error={errors.paymentInfo?.month ? true : false}
+                        // ref={register}
                         // style={{ background: "transparent" }}
                         // inputProps={{ style: inputStyle }}
                         // InputProps={{
@@ -826,7 +854,8 @@ const PaymentUIComponent = ({
                 >
                   <CustomMaskInput
                     name="paymentInfo.cvc"
-                    type="date"
+                    ref={register}
+                    // type="date"
                     mask={cardType == "amex" ? "9999" : "999"}
                     autoComplete="off"
                     defaultValue={formSummary.paymentInfo.cvc}
@@ -839,6 +868,7 @@ const PaymentUIComponent = ({
                         autoComplete="off"
                         // fullWidth
                         error={errors.paymentInfo?.cvc ? true : false}
+                        // ref={register}
                         // style={{ background: "transparent" }}
                         // // inputProps={{ style: inputStyle }}
                         // InputProps={{
@@ -895,10 +925,10 @@ const PaymentUIComponent = ({
                 <button
                   variant="contained"
                   color="primary"
-                  fullWidth
+                  // fullWidth
                   onClick={back}
-                  startIcon={<BackArrowIcon />}
-                  className={classes.backButtonSelf}
+                  // startIcon={<BackArrowIcon />}
+                  // className={classes.backButtonSelf}
                   className={styles.buttonBackSelf}
                 >
                   Back
@@ -906,11 +936,11 @@ const PaymentUIComponent = ({
                 {/* </Grid> */}
                 {/* <Grid item xs={6}> */}
                 <button
-                  variant="contained"
-                  fullWidth
+                  // variant="contained"
+                  // fullWidth
                   type="submit"
-                  color="primary"
-                  className={classes.payButtonSelf}
+                  // color="primary"
+                  // className={classes.payButtonSelf}
                   disabled={!checked}
                   className={styles.buttonNextSelf}
                 >

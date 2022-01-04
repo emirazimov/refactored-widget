@@ -46,16 +46,16 @@ export const LuggageIcon = () => (
 )
 export const Success = () => (
   <svg
-    width="60"
-    height="60"
+    width="54"
+    height="54"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <circle cx="30" cy="30" r="30" fill="#219653" />
+    <circle cx="30" cy="30" r="29.5" stroke="#219653" />
     <path
       d="M20 30L23.0775 26.7994L27.6923 31.6L36.9231 22L40 25.2L27.6923 38L20 30Z"
-      fill="black"
+      fill="#219653"
     />
   </svg>
 )
@@ -782,8 +782,8 @@ export const ArrowDownLine = () => (
 )
 export const ErrorIcon = () => (
   <svg
-    width="60"
-    height="60"
+    width="54"
+    height="54"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

@@ -1,18 +1,19 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { Preloader } from "./../Helpers/Preloader"
+import { Preloader } from "../../Helpers/Preloader/Preloader"
 import Grid from "@material-ui/core/Grid"
-import { Success } from "../../assets/icons"
+import { Success } from "../../../assets/icons"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
-import ReservationFailed from "./ReservationFailed"
+import ReservationFailed from "../ReservationFailed/ReservationFailed"
 import {
   createReservation,
   logOut,
   setIsAirportPickupIncluded,
-} from "./../../Redux/form-reducer"
-import { setResetWidgetInputs } from "../../Redux/reset-widget-inputs-reducer"
-import { setGotAddressError } from "../../Redux/company-profile-reducer"
+} from "../../../Redux/form-reducer"
+import { setResetWidgetInputs } from "../../../Redux/reset-widget-inputs-reducer"
+import { setGotAddressError } from "../../../Redux/company-profile-reducer"
+import styles from "./Confirmation.module.scss"
 
 // setResetWidgetInputs,
 // setGotAddressError,
@@ -44,40 +45,40 @@ const Confirmation = ({
       {isFetching ? (
         <Preloader />
       ) : isSuccess ? (
-        <Grid
-          container
-          direction="column"
-          spacing={2}
-          justify="center"
-          alignItems="center"
-          style={{ height: "80vh", backgroundColor: "black" }}
+        <div
+          // container
+          // direction="column"
+          // spacing={2}
+          // justify="center"
+          // alignItems="center"
+          // style={{ height: "80vh", backgroundColor: "black" }}
+          className={styles.confirmationWrapper}
         >
-          <Grid item>
-            <Success />
-          </Grid>
+          {/* <div></div> */}
           {/* <Grid item>
                             <Typography variant='body2'>Success</Typography>
                         </Grid> */}
-          <Grid item>
-            <Typography
-              variant="body2"
-              style={{ color: textColor }}
-              align="center"
+          <div className={styles.confirmationTextContainer}>
+            <Success />
+            <p
+              // variant="body2"
+              // style={{ color: textColor }}
+              // align="center"
+              className={styles.confirmationTextSelf1}
             >
-              Your reservation was successfully{" "}
-              <Typography variant="body2" style={{ color: textColor }}>
-                submitted. A confirmation email was
-              </Typography>{" "}
-              sent to {email && email}.
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="body2" style={{ color: textColor }}>
+              Your reservation was successfully submitted. A confirmation email
+              was sent to {email && email}.
+            </p>
+            <p
+              // variant="body2"
+              // style={{ color: textColor }}
+              className={styles.confirmationTextSelf2}
+            >
               Thanks, {companyName && companyName}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Button
+            </p>
+          </div>
+          <div className={styles.confirmationButtonContainer}>
+            <button
               onClick={() => {
                 setExpanded(false)
                 setActiveStep(0)
@@ -88,14 +89,12 @@ const Confirmation = ({
                 setIsAirportPickupIncluded(false)
                 // logOut()
               }}
-              variant="contained"
-              color="primary"
-              fullWidth
+              className={styles.confirmationButtonSelf}
             >
               Done
-            </Button>
-          </Grid>
-        </Grid>
+            </button>
+          </div>
+        </div>
       ) : (
         <ReservationFailed
           setActiveStep={setActiveStep}

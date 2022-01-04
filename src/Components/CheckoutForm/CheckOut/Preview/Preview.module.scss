@@ -1,13 +1,24 @@
 @use "../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
-
 @use "../FleetForm/FleetForm.module.scss" as *;
+@use "../../../MAINCSSFORWHOLECOMPONENTS/FontColor.module" as *;
+@use "../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
+@use "../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+  as *;
 
 @include car-descriptions;
 .previewWrapper {
   @include whole-app-background;
-  width: 100%;
-}
+  @include side-paddings-for-whole-widget-page;
 
+  width: auto;
+}
+.previewTitleContainer {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.previewTitleSelf {
+  @include global-title-styles;
+}
 .reservationDetailsItem {
 }
 .reservationDetailsItemContainer {
@@ -53,4 +64,15 @@
   padding: 0;
 }
 
-@include buttons-group;
+// @include buttons-group;
+.buttonGroupBlockContainer {
+  @include buttonGroupBlockContainer;
+}
+
+.buttonBackSelf {
+  @include buttonBackSelf;
+}
+
+.buttonNextSelf {
+  @include buttonNextSelf;
+}

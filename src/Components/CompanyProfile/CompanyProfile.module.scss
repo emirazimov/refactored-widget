@@ -1,0 +1,36 @@
+@use "../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
+@use "../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
+@use "../MAINCSSFORWHOLECOMPONENTS/FontColor.module" as *;
+
+.companyProfileWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  @include whole-app-background;
+  @include side-paddings-for-whole-widget-page;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid grey;
+}
+.companyProfileImageSelf {
+  width: 55px;
+  height: 55px;
+  border-radius: 100px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.companyProfileImageContainer {
+  flex-basis: 17%;
+}
+.companyProfileNameContainer {
+  flex-basis: 78%;
+}
+.companyProfileNameSelf {
+  @include global-title-styles;
+}
+.companyProfileCloseIconContainer {
+  flex-basis: 5%;
+}

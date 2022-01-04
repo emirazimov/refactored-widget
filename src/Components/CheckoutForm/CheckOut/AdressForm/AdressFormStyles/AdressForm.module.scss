@@ -1,11 +1,13 @@
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage' as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
 // @use "../../../../../../../../global" as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module' as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
 
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss' as *;
-@use '../../FleetForm/FleetForm.module.scss' as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
+@use "../../FleetForm/FleetForm.module.scss" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+  as *;
 
 .mainWrapper {
   @include whole-app-background;
@@ -234,10 +236,20 @@
   user-select: none;
 }
 
-@include buttons-group;
+// @include buttons-group;
 .buttonGroupBlockContainer {
+  @include buttonGroupBlockContainer;
   margin: 20px auto;
 }
+
+.buttonBackSelf {
+  @include buttonBackSelf;
+}
+
+.buttonNextSelf {
+  @include buttonNextSelf;
+}
+
 // . {
 // }
 // date_picker_icon

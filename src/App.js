@@ -27,7 +27,7 @@ import { userScreenHeight, userScreenWidth, useStyles } from "./AppStyles"
 import { AppBar, useMediaQuery } from "@material-ui/core"
 import { useRef } from "react"
 import Slide1 from "@mui/material/Slide"
-import { Preloader } from "./Components/Helpers/Preloader"
+import { Preloader } from "./Components/Helpers/Preloader/Preloader"
 import styles from "./AppStyles.module.scss"
 // import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 

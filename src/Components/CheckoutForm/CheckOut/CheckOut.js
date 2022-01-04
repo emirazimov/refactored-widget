@@ -3,7 +3,7 @@ import React from "react"
 import Payment from "./Payment/PaymentUIComponent"
 import FleetForm from "./FleetForm/FleetFormUIComponent"
 import Preview from "./Preview/PreviewUIComponent"
-import Confirmation from "../Confirmation"
+import Confirmation from "../Confirmation/Confirmation"
 
 import AdressFormContainerComponent from "./AdressForm/AdressFormContainerComponent"
 import FleetFormUIComponent from "./FleetForm/FleetFormUIComponent"
