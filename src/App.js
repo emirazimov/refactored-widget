@@ -37,19 +37,19 @@ let yOrdinate = 0
 
 const App = (props) => {
   const classes = useStyles(props)
-  const [positionsX, setPositionsX] = useState(null)
-  const [positionsY, setPositionsY] = useState(null)
-  useEffect(() => {
-    console.log(window.positionX)
-    setPositionsX(window.positionX)
-    setPositionsY(window.positionY)
-    console.log(positionsX, positionsY)
-  }, [positionsX, positionsY])
+  // const [positionsX, setPositionsX] = useState(null)
+  // const [positionsY, setPositionsY] = useState(null)
+  // useEffect(() => {
+  //   console.log(window.positionX)
+  //   setPositionsX(window.positionX)
+  //   setPositionsY(window.positionY)
+  //   console.log(positionsX, positionsY)
+  // }, [positionsX, positionsY])
 
   const [activeStep, setActiveStep] = React.useState(0)
   let position = React.useRef({
-    x: positionsX,
-    y: positionsY,
+    x: window.positionX,
+    y: window.positionY,
   })
   console.log(position)
   const [expanded, setExpanded] = React.useState(false)
@@ -70,12 +70,12 @@ const App = (props) => {
 
   const handleClose = () => {
     setExpanded(false)
-    // document.body.style.overflowY = "unset"
+    document.body.style.overflowY = "unset"
     // position.current.y = 10
 
-    // if (userScreenWidth - xOrdinate < 500) {
-    //   position.current.x = userScreenWidth - 390
-    // }
+    if (userScreenWidth - xOrdinate < 500) {
+      position.current.x = userScreenWidth - 390
+    }
   }
   {
     /* Этот обработчик для того чтобы при закрытии виджета кнопка book now стояла в самом краю без этого она сдвигаетсяв лево */
@@ -170,7 +170,7 @@ const App = (props) => {
     if (!expanded)
       setTimeout(() => {
         setDisabled(true)
-      }, 200)
+      }, 60)
   }
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1)
@@ -197,8 +197,12 @@ const App = (props) => {
 
   let stylesForBody = `
     z-index: 1000000000; 
-    position: absolute;
+    position: fixed;
+  bottom: 0;
   `
+  //   bottom: 50px;
+  // right: 0;
+  // left: 50px;
   document.getElementById("widget-by-bookinglane").style = stylesForBody
 
   const containerRef = React.useRef(null)
@@ -506,59 +510,30 @@ const App = (props) => {
               <Draggable
                 onDrag={handleDrag}
                 onStop={enableAccordionButton}
-                position={{ x: positionsX - 1000, y: -50 }}
+                position={position.current}
                 // defaultPosition={{ x: userScreenWidth, y: 25 }}
 
                 // disabled={false}
                 // bounds="body"
-                handle=".companyProfileClassForDrag, #panel1a-header"
+                handle=".companyProfileClassForDrag, #booknowIcon"
               >
-                <div>
+                <div ref={containerRef} className={styles.mainBookNowWrapper}>
                   <div
-                    elevation={0}
-                    disabled={disabled}
-                    // classes={{
-                    //   root: classes.MuiAccordionroot,
-                    //   disabled: classes.disabledButton,
-                    // }}
-                    // TransitionProps={{
-                    //   // timeout: 0,
-                    //   unmountOnExit: true,
-                    // }}
-                    // expanded={expanded === "panel1"}
+                    // elevation={0}
+                    // disabled={disabled}
                     onClick={() => {
-                      handleChange("panel1")
+                      handleChange()
                       setBackgroundScrollStop(true)
                       setExpanded(true)
                     }}
-                    ref={containerRef}
-                    className={styles.mainBookNowWrapper}
+                    className={
+                      disabled
+                        ? styles.mainBookNowIconDisabledWhileDragging
+                        : styles.mainBookNowIconEnabledWhileDragging
+                    }
                     ref={refOfBookNow}
-                    id="panel1a-header"
-                  >
-                    {/* <div
-                          // className={classes.accordion}
-                          // expandIcon={!expanded ? <BookinglaneIcon /> : null}
-                          // aria-controls="panel1a-content"
-                          // id="panel1a-header"
-                          // ref={refOfBookNow}
-                          // onClick={() => {
-                          //   setBackgroundScrollStop(true)
-                          //   setExpanded(true)
-                          // }}
-                          className={styles.mainBookNowContainer}
-                        ></div> */}
-                    {/* <Slide1
-                        direction="up"
-                        in={expanded}
-                        container={containerRef.current}
-                        timeout={300}
-                      > */}
-                    {/* <div> */}
-
-                    {/* </div> */}
-                    {/* </Slide1> */}
-                  </div>
+                    id="booknowIcon"
+                  ></div>
                   {jwtToken && (
                     <div
                       className={
@@ -567,33 +542,13 @@ const App = (props) => {
                           : styles.cardContainerHidden
                       }
                     >
-                      {/* <div
-                                style={{
-                                  width: "15px",
-                                  height: "15px",
-                                  // background: "red",
-                                  // color: "white",
-                                  // border: "1px solid white",
-                                  position: "absolute",
-                                  top: "-765px",
-                                  right: "-373px",
-                                }}
-                                className={classes.closeIcon}
-                                onClick={() => {
-                                  setExpanded()
-                                  setActiveStep(0)
-                                  setBackgroundScrollStop(false)
-                                }}
-                              >
-                                <CloseWidgetIcon />
-                              </div> */}
                       <div
                         // position="sticky"
                         className={styles.divForStickyHeader}
                       >
                         <div className="companyProfileClassForDrag">
                           {/* этот класс c div-oм для реакт драга чтобы можно было перетаскивать по шапке виджета*/}
-                          <div className={classes.companyProfile}>
+                          <div className={styles.companyProfile}>
                             {/* это для pointer cursora */}
                             <CompanyProfile
                               setExpanded={handleClose}
@@ -607,13 +562,6 @@ const App = (props) => {
                       </div>
 
                       <div
-                        // className={classes.content}
-                        // style={{ bottom: userScreenHeight - yOrdinate }}
-                        // style={
-                        //   activeStep === 1
-                        //     ? { overflowY: "hidden auto" }
-                        //     : { overflowY: "auto" }
-                        // }
                         ref={refOfCard}
                         // style={{ borderRadius: "10px" }}
                         className={styles.contentContainer}
@@ -638,8 +586,6 @@ const App = (props) => {
                 </div>
               </Draggable>
             )}
-            {/* </div> */}
-            {/* </ThemeProvider> */}
           </>
         )}
       </>

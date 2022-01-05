@@ -33,4 +33,9 @@
 }
 .companyProfileCloseIconContainer {
   flex-basis: 5%;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.companyProfileCloseIconSelf {
 }

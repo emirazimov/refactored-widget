@@ -127,30 +127,37 @@ const PreviewUIComponent = ({
               animation="slide"
               navButtonsProps={{
                 style: {
-                  width: "1em",
-                  height: "1em",
+                  width: "10px",
+                  height: "10px",
+                  marginTop: "8px",
                 },
               }}
               indicatorIconButtonProps={{
                 style: {
                   "&:hover": {
-                    "& $button": {
+                    "&$button": {
                       backgroundColor: "#10B7EC",
                       filter: "brightness(120%)",
                       opacity: "0.4",
                     },
                   },
-                  marginTop: "-80px",
+                  //
+                  width: "5px",
+                  height: "5px",
+                  // height: "0px",
+                  // marginBottom: "-30px",
                   color: "grey",
                 },
               }}
               activeIndicatorIconButtonProps={{
                 style: {
                   color: "white",
+                  width: "5px",
+                  height: "5px",
                 },
               }}
               indicatorContainerProps={{
-                style: { height: "0px" },
+                style: { bottom: "10px", position: "absolute" },
               }}
             >
               {selectedCar.imageUrls.length !== 0 ? (

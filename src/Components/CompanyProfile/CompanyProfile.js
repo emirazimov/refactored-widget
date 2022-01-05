@@ -158,7 +158,7 @@ const CompanyProfile = ({
             <div className={styles.companyProfileCloseIconContainer}>
               <div
                 // style={{ cursor: "pointer", marginRight: "6px" }}
-                className={styles.companyProfileCloseIconContainer}
+                className={styles.companyProfileCloseIconSelf}
                 onClick={() => {
                   setExpanded()
                   setActiveStep(0)
