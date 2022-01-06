@@ -119,6 +119,10 @@ const AdressFormContainerComponent = ({
 
   const [timeMask, setTimeMask] = useState(false)
 
+  const [date, setDate] = React.useState(null)
+
+  const [show, setShow] = useState(false)
+
   const { errors, register, handleSubmit, setValue, ...methods } = useForm({
     // mode: "onBlur",
     // resolver: yupResolver(schema),
@@ -169,7 +173,7 @@ const AdressFormContainerComponent = ({
     if (
       destinations[0].rideCheckPoint &&
       destinations[1].rideCheckPoint &&
-      data.orderStartDate &&
+      date &&
       (time || formData.timeForDefaultValue) &&
       (firstTimeHalf?.[0] >= "0" || formData.timeForDefaultValue) &&
       (firstTimeHalf?.[1] >= "0" || formData.timeForDefaultValue) &&
@@ -425,11 +429,9 @@ const AdressFormContainerComponent = ({
       })
       setSafetySeatCount(childSafetySeat)
       setBoosterSeatCount(boosterSeat)
-      setDateForDefaultValue(
-        new Date(data.orderStartDate).toLocaleDateString("en-US")
-      )
+      setDateForDefaultValue(date.toLocaleDateString("en-US"))
 
-      const forRes = new Date(data.orderStartDate).toLocaleDateString("en-US")
+      const forRes = date.toLocaleDateString("en-US")
       const forRes2 = time + ` ${AMPM}`
 
       // ._d.toLocaleTimeString("en-US", {
@@ -560,6 +562,10 @@ const AdressFormContainerComponent = ({
       setPassengers={setPassengers}
       setSafetySeat={setSafetySeat}
       setValue={setValue}
+      date={date}
+      setDate={setDate}
+      show={show}
+      setShow={setShow}
     />
   )
 }

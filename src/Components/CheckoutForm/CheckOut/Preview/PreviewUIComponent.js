@@ -591,7 +591,7 @@ const PreviewUIComponent = ({
                     //   fontSize: "13px",
                     //   fontWeight: "400",
                     // }}
-                    className={styles.detailedDescriptionValueSelf}
+                    className={styles.detailedDescriptionValueAmountSelf}
                   >
                     {gateMeeting
                       ? `$${round(
@@ -2022,7 +2022,8 @@ const PreviewUIComponent = ({
         >
           <textarea
             id="outlined-multiline-flexible"
-            label="Notes / Itinerary"
+            // label="Notes / Itinerary"
+            placeholder="Notes / Itinerary"
             // multiline
             // fullWidth
             // rows={3}

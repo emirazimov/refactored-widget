@@ -28,12 +28,12 @@ const FleetFormContainerComponent = ({
 
   const handleClickOpen = (id) => {
     setCarModal(id)
-    setOpen(true)
+    setShow(true)
   }
 
-  const handleClose = () => {
+  const handleClickClose = () => {
     setCarModal(null)
-    setOpen(false)
+    setShow(false)
   }
 
   const handleClick = (id) => {
@@ -44,11 +44,11 @@ const FleetFormContainerComponent = ({
   if (carModal) {
     result = cars.find((cars) => carModal === cars.id)
   }
-
-  React.useEffect(() => {
-    setCarCard(carCard)
-  }, [carCard])
-  const cars2 = { ...cars }
+  const [show, setShow] = React.useState(false)
+  // React.useEffect(() => {
+  //   setCarCard(carCard)
+  // }, [carCard])
+  // const cars2 = { ...cars }
   const round = (n, dp) => {
     const h = +"1".padEnd(dp + 1, "0") // 10 or 100 or 1000 or etc
     return Math.round(n * h) / h
@@ -75,11 +75,12 @@ const FleetFormContainerComponent = ({
       open={open}
       setOpen={setOpen}
       handleClickOpen={handleClickOpen}
-      handleClose={handleClose}
+      handleClickClose={handleClickClose}
       handleClick={handleClick}
       result={result}
-      cars2={cars2}
       round={round}
+      show={show}
+      setShow={setShow}
     />
   )
 }

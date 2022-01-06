@@ -1,4 +1,6 @@
 .showModal {
+  // width: 100%;
+  // height: 100%;
   display: block;
 }
 .hideModal {
@@ -11,7 +13,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,29 +22,29 @@
   //   pointer-events: none;
 }
 
-.modal.enter-done {
-  opacity: 1;
-  pointer-events: visible;
-}
+// .modal.enter-done {
+//   opacity: 1;
+//   pointer-events: visible;
+// }
 
-.modal.exit {
-  opacity: 0;
-}
+// .modal.exit {
+//   opacity: 0;
+// }
 
 .modalContent {
-  width: 500px;
+  width: auto;
   background-color: #fff;
-  transition: all 0.3s ease-in-out;
-  transform: translateY(-200px);
+  // transition: all 0.3s ease-in-out;
+  // transform: translateY(-200px);
 }
 
-.modal.enter-done .modalContent {
-  transform: translateY(0);
-}
+// .modal.enter-done .modalContent {
+//   transform: translateY(0);
+// }
 
-.modal.exit .modalContent {
-  transform: translateY(-200px);
-}
+// .modal.exit .modalContent {
+//   transform: translateY(-200px);
+// }
 
 .modalHeader,
 .modalFooter {

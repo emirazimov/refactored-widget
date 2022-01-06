@@ -230,12 +230,14 @@ $background: grey;
 .passengerDetailWrapper {
 }
 .passengerDetailTitleContainer,
-.cardholderInformationTitleContainer {
+.cardholderInformationTitleContainer,
+.cardInformationTitleContainer {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .passengerDetailTitleSelf,
-.cardholderInformationTitleSelf {
+.cardholderInformationTitleSelf,
+.cardInformationTitleSelf {
   font-size: 15px;
   color: $font-color;
 }

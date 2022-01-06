@@ -1,5 +1,6 @@
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/MainCountersStyles.module" as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
 // @use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
 .hoursCounterWrapper {
   width: 100%;
@@ -19,6 +20,7 @@
   //     no-repeat center;
   //   margin-left: 50px;
   //   @include main-inputs-size-and-background-styles-etc;
+  @include counters-and-switches-icon-margins;
 }
 .hoursCounterTitle {
   @include global-second-title-styles;

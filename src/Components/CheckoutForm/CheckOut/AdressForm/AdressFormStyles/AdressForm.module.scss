@@ -60,7 +60,7 @@
 }
 .datePicker {
   width: 50%;
-  margin-right: 10px;
+  margin-right: 16px;
 }
 
 .datePickerOpenButton {
@@ -69,7 +69,7 @@
   // @include addressform-inputs-with-icons;
   // padding-right: 0;
   text-indent: 36px;
-  background-position-x: 2%;
+  background-position-x: 3%;
 }
 .datePickerOpenButtonIcon {
   @include date_picker_icon;
@@ -88,6 +88,7 @@
   @include clock_icon;
   @include main-inputs-size-and-background-styles-etc;
   @include addressform-inputs-with-icons;
+  background-position-x: 3%;
 }
 
 .toggleButtonsContainer {
@@ -118,16 +119,19 @@
   //   no-repeat left;
   width: 24px;
   height: 24px;
+  @include counters-and-switches-icon-margins;
 }
 .safetySeatIconSelf {
   @include safety_seat_icon;
   width: 24px;
   height: 24px;
+  @include counters-and-switches-icon-margins;
 }
 .meetAndGreetIconSelf {
   @include meet_and_greet_icon;
   width: 24px;
   height: 24px;
+  @include counters-and-switches-icon-margins;
 }
 .safetySeatContainer,
 .hourlyRowContainer,

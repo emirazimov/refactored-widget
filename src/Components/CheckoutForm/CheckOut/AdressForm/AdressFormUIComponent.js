@@ -130,13 +130,13 @@ const AdressFormwithoutReactMemo = ({
   setPassengers,
   setSafetySeat,
   setValue,
+  date,
+  setDate,
+  show,
+  setShow,
 }) => {
   const classes = useStyles()
   const isMobile = useMediaQuery("(max-width:530px)")
-
-  const [date, setDate] = React.useState(null)
-
-  const [show, setShow] = useState(false)
 
   const MeetAndGreetSwitchBlock = (
     <>
@@ -532,10 +532,16 @@ const AdressFormwithoutReactMemo = ({
                     <input
                       onClick={() => setShow(true)}
                       className={styles.datePickerOpenButton}
+                      // value={
+                      //   date
+                      //     ? new Date(date).toLocaleDateString("en-US")
+                      //     : "Pick up Date"
+                      // }
+                      placeholder="Pick up Date"
                       value={
-                        date
-                          ? new Date(date).toLocaleDateString("en-US")
-                          : "Pick up Date"
+                        formData.dateForDefaultValue && !resetInputs
+                          ? formData.dateForDefaultValue
+                          : new Date(date).toLocaleDateString("en-US")
                       }
                     >
                       {/* <div className={styles.datePickerOpenButtonIcon}></div>
@@ -543,18 +549,24 @@ const AdressFormwithoutReactMemo = ({
                         
                       </span> */}
                     </input>
-                    <Modal
-                      title="My Modal"
-                      onClose={() => setShow(false)}
-                      show={show}
-                    >
+                    {/* {show && ( */}
+                    <Modal onClose={() => setShow(false)} show={show}>
                       <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <CalendarPicker
-                          date={date}
-                          onChange={(newDate) => setDate(newDate)}
-                        />
+                        <div
+                        // onClick={() => {
+                        //   setShow(false)
+                        // }}
+                        >
+                          <CalendarPicker
+                            date={date}
+                            onChange={(newDate) => {
+                              setDate(newDate)
+                            }}
+                          />
+                        </div>
                       </LocalizationProvider>
                     </Modal>
+                    {/* )} */}
 
                     {/* </ThemeProvider> */}
                   </div>

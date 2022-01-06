@@ -9,9 +9,13 @@ export const Modal = (props) => {
       props.onClose()
     }
   }
+  const closeOnBodyClick = () => {
+    props.onClose()
+  }
 
   useEffect(() => {
     document.body.addEventListener("keydown", closeOnEscapeKeyDown)
+
     return function cleanup() {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown)
     }
@@ -23,21 +27,27 @@ export const Modal = (props) => {
     //   unmountOnExit
     //   timeout={{ enter: 0, exit: 300 }}
     // >
-    <div className={props.show ? styles.showModal : styles.hideModal}>
+    <div
+      className={props.show ? styles.showModal : styles.hideModal}
+      onClick={props.onClose}
+    >
       <div className={styles.modal}>
         <div
           className={styles.modalContent}
-          onClick={(e) => e.stopPropagation()}
+          // onClick={(e) => e.stopPropagation()}
         >
           {/* <div className={styles.modalHeader}>
             <h4 className={styles.modalTitle}>{props.title}</h4>
           </div> */}
           <div className={styles.modalBody}>{props.children}</div>
-          <div className={styles.modalFooter}>
-            <button onClick={props.onClose} className={styles.modalOkButton}>
-              OK
-            </button>
-          </div>
+          {/* {console.log(props.children.props.children.type)} */}
+          {props?.children?.props?.children?.type == "div" && (
+            <div className={styles.modalFooter}>
+              <button onClick={props.onClose} className={styles.modalOkButton}>
+                OK
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>,

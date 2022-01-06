@@ -1,6 +1,7 @@
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_IconsForWholeAddressFormPage.scss"
   as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
 
 .luggageQuantityWrapper {
   display: flex;
@@ -24,4 +25,5 @@
   @include luggage_icon;
   width: 24px;
   height: 24px;
+  @include counters-and-switches-icon-margins;
 }

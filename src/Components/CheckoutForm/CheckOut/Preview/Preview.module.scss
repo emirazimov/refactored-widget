@@ -6,6 +6,7 @@
   as *;
 
 @include car-descriptions;
+
 .previewWrapper {
   @include whole-app-background;
   @include side-paddings-for-whole-widget-page;
@@ -20,6 +21,7 @@
   @include global-title-styles;
 }
 .reservationDetailsItem {
+  margin-bottom: 16px;
 }
 .reservationDetailsItemContainer {
   display: flex;
@@ -29,6 +31,7 @@
 .reservationDetailsItemTitleContainer {
 }
 .reservationDetailsItemTitleSelf {
+  color: $font-color;
 }
 .reservationDetailsItemPointedLineContainer {
   flex-grow: 1;
@@ -38,7 +41,7 @@
   background-color: transparent;
   margin-left: 3px;
   margin-right: 3px;
-  border-bottom: 2px dotted black;
+  border-bottom: 2px dotted $font-color;
 }
 
 .reservationDetailsItemValueContainer {
@@ -50,18 +53,48 @@
   display: inline;
   // fontSize: "16px",
   width: 100%;
+  color: $font-color;
 }
 
 .notesTextFieldContainer {
   width: 100%;
+  margin-bottom: 15px;
 }
 .notesTextFieldSelf {
   width: 100%;
   // display: block;
+  height: 45px;
+  color: $font-color;
+  font-family: "Vazir", sans-serif;
+  font-size: 15px;
   border: none;
   outline: none;
   resize: none;
   padding: 0;
+  background: transparent;
+  border-bottom: 1px solid $font-color;
+  &::-webkit-input-placeholder {
+    font-size: 15px;
+    color: $font-color;
+    font-family: "Vazir", sans-serif;
+  }
+  &:-moz-placeholder {
+    /* Upto Firefox 18, Deprecated in Firefox 19  */
+    font-size: 15px;
+    color: $font-color;
+    font-family: "Vazir", sans-serif;
+  }
+  &::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 15px;
+    color: $font-color;
+    font-family: "Vazir", sans-serif;
+  }
+  &:-ms-input-placeholder {
+    font-size: 15px;
+    color: $font-color;
+    font-family: "Vazir", sans-serif;
+  }
 }
 
 // @include buttons-group;

@@ -3,6 +3,10 @@
 @use "../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
 @use "../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
   as *;
+@use "../../../MAINCSSFORWHOLECOMPONENTS/_CarDescription.module.scss" as *;
+// car-description-model-name
+
+// car-description-specifications
 
 @mixin car-descriptions {
   .carContainer {
@@ -17,6 +21,7 @@
 
   .carImageBlock {
     width: 50%;
+    margin-right: 10px;
   }
   .carDescriptionTextBlock {
     width: 50%;
@@ -26,6 +31,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  .carModel {
+    @include car-description-model-name;
   }
 
   .detailedDescription {
@@ -37,6 +45,12 @@
   .detailedDescriptionTitleContainer {
   }
   .detailedDescriptionTitleSelf {
+    @include car-description-specifications;
+  }
+  .detailedDescriptionValueAmountSelf {
+    color: $font-color;
+    font-size: 15;
+    font-weight: 600;
   }
   .detailedDescriptionPointedLineContainer {
     flex-grow: 1;
@@ -46,11 +60,12 @@
     background-color: transparent;
     margin-left: 3px;
     margin-right: 3px;
-    border-bottom: 2px dotted black;
+    border-bottom: 2px dotted $font-color;
   }
   .detailedDescriptionValueContainer {
   }
   .detailedDescriptionValueSelf {
+    @include car-description-specifications;
   }
 }
 

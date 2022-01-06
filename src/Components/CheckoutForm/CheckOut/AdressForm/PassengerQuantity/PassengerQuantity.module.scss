@@ -1,11 +1,13 @@
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_IconsForWholeAddressFormPage.scss"
   as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
 
 .passengerQuantityWrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @include margin-top-bottom-for-adressfrom-inputs;
 }
 .passengerQuantityIconAndTitleContainer {
   display: flex;
@@ -16,6 +18,7 @@
   @include passenger_icon;
   width: 24px;
   height: 24px;
+  @include counters-and-switches-icon-margins;
 }
 .passengerCounterTitle {
   @include global_second_title_styles;

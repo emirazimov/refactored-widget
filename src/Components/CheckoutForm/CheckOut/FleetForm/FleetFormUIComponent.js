@@ -24,6 +24,7 @@ import IncorrectAddressError from "../../IncorrectAdressError/IncorrectAddressEr
 import { setResetWidgetInputs } from "../../../../Redux/reset-widget-inputs-reducer"
 import { useStyles } from "./FleetFormStyles"
 import styles from "./FleetForm.module.scss"
+import { Modal } from "../../../Helpers/Modal/Modal"
 
 const FleetForm = ({
   cars,
@@ -45,11 +46,13 @@ const FleetForm = ({
   open,
   setOpen,
   handleClickOpen,
-  handleClose,
+  handleClickClose,
   handleClick,
   result,
   cars2,
   round,
+  show,
+  setShow,
 }) => {
   const classes = useStyles()
 
@@ -128,7 +131,7 @@ const FleetForm = ({
                 {cars.map((car, index) => (
                   <div
                     // className={classes.root}
-                    onClick={() => {
+                    onClick={(event) => {
                       handleClick(car?.id)
                     }}
                     selected={car?.id === carCard}
@@ -201,9 +204,8 @@ const FleetForm = ({
                           car?.imageUrls?.map((url) => (
                             <span
                               key={url?.id}
-                              variant="outlined"
-                              color="primary"
-                              onClick={() => handleClickOpen(car?.id)}
+                              // variant="outlined"
+                              // color="primary"
                             >
                               <div
                                 style={{
@@ -242,6 +244,10 @@ const FleetForm = ({
                                     // cursor: "zoom-in",
                                   }}
                                   alt="car"
+                                  onClick={(event) => {
+                                    // event.stopPropagation()
+                                    handleClickOpen(car?.id)
+                                  }}
                                 />
                               </AspectRatio>
                             </span>
@@ -293,88 +299,9 @@ const FleetForm = ({
                         )}
                       </Carousel>
 
-                      {carModal && (
-                        <Dialog
-                          open={open}
-                          onClose={handleClose}
-                          aria-labelledby="alert-dialog-title"
-                          aria-describedby="alert-dialog-description"
-                        >
-                          <DialogActions>
-                            <Carousel
-                              autoPlay={false}
-                              animation="slide"
-                              swipe={true}
-                              navButtonsAlwaysVisible={true}
-                              navButtonsProps={{
-                                style: {
-                                  width: "1em",
-                                  height: "1em",
-                                },
-                              }}
-                              indicatorIconButtonProps={{
-                                style: {
-                                  "&:hover": {
-                                    "& $button": {
-                                      backgroundColor: "#10B7EC",
-                                      filter: "brightness(120%)",
-                                      opacity: "0.4",
-                                    },
-                                  },
-                                },
-                              }}
-                              activeIndicatorIconButtonProps={{
-                                style: {
-                                  color: "#10B7EC",
-                                },
-                              }}
-                              indicatorContainerProps={{
-                                style: {},
-                              }}
-                            >
-                              {carModal &&
-                                result?.imageUrls?.map((url) => (
-                                  <AspectRatio
-                                    ratio="4/3"
-                                    style={{
-                                      width: !isMobile ? "550px" : "239px",
-                                      height: !isMobile ? "400px" : "170px",
-                                      display: "flex",
-                                      flexDirection: "row",
-                                      justifyContent: "center",
-                                      alignItems: "center",
-                                      // display: "block",
-                                      // width: !isMobile ? "170px" : "100%",
-                                      // height: !isMobile ? "107px" : "116px",
-                                      // // borderRadius: "8px",
-                                      // cursor: "zoom-in",
-                                      // width: "100%",
-                                      // height: "100%",
-                                      // userDrag: "none",
-                                      // userSelect: "none",
-                                      // mozUserSelect: "none",
-                                      // webkitUserDrag: "none",
-                                      // webkitUserSelect: "none",
-                                      // msUserSelect: "none",
-                                      // maxWidth: "500px",
-                                    }}
-                                  >
-                                    <img
-                                      src={url?.path}
-                                      style={{
-                                        borderRadius: "8px",
-                                        maxWidth: "100%",
-                                        maxHeight: "100%",
-                                      }}
-                                      alt="car"
-                                      key={`${url?.id}${url?.path}`}
-                                    />
-                                  </AspectRatio>
-                                ))}
-                            </Carousel>
-                          </DialogActions>
-                        </Dialog>
-                      )}
+                      {/* {carModal && ( */}
+
+                      {/* )} */}
                     </div>
                     <div
                       // item
@@ -637,7 +564,9 @@ const FleetForm = ({
                               //   fontSize: "13px",
                               //   fontWeight: "400",
                               // }}
-                              className={styles.detailedDescriptionValueSelf}
+                              className={
+                                styles.detailedDescriptionValueAmountSelf
+                              }
                             >
                               {gateMeeting
                                 ? `$${round(car?.price, 2)}`
@@ -774,6 +703,87 @@ const FleetForm = ({
                     </div>
                   </div>
                 ))}
+                <Modal onClose={() => handleClickClose()} show={show}>
+                  <Carousel
+                    autoPlay={false}
+                    animation="slide"
+                    swipe={true}
+                    navButtonsAlwaysVisible={true}
+                    navButtonsProps={{
+                      style: {
+                        width: "1em",
+                        height: "1em",
+                      },
+                    }}
+                    indicatorIconButtonProps={{
+                      style: {
+                        "&:hover": {
+                          "& $button": {
+                            backgroundColor: "#10B7EC",
+                            filter: "brightness(120%)",
+                            opacity: "0.4",
+                          },
+                        },
+                      },
+                    }}
+                    activeIndicatorIconButtonProps={{
+                      style: {
+                        color: "grey",
+                        width: "5px",
+                        height: "5px",
+                      },
+                    }}
+                    // inactiveIndicatorIconButtonProps={{
+                    //   style: {
+                    //     color: "pink",
+                    //     width: "5px",
+                    //     height: "5px",
+                    //   },
+                    // }}
+                    indicatorContainerProps={{
+                      style: { bottom: "10px", position: "absolute" },
+                    }}
+                  >
+                    {result?.imageUrls?.map((url) => (
+                      <AspectRatio
+                        ratio="4/3"
+                        style={{
+                          width: !isMobile ? "550px" : "239px",
+                          height: !isMobile ? "400px" : "170px",
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          // display: "block",
+                          // width: !isMobile ? "170px" : "100%",
+                          // height: !isMobile ? "107px" : "116px",
+                          // // borderRadius: "8px",
+                          // cursor: "zoom-in",
+                          // width: "100%",
+                          // height: "100%",
+                          // userDrag: "none",
+                          // userSelect: "none",
+                          // mozUserSelect: "none",
+                          // webkitUserDrag: "none",
+                          // webkitUserSelect: "none",
+                          // msUserSelect: "none",
+                          // maxWidth: "500px",
+                        }}
+                      >
+                        <img
+                          src={url?.path}
+                          style={{
+                            borderRadius: "8px",
+                            maxWidth: "100%",
+                            maxHeight: "100%",
+                          }}
+                          alt="car"
+                          key={`${url?.id}${url?.path}`}
+                        />
+                      </AspectRatio>
+                    ))}
+                  </Carousel>
+                </Modal>
                 {Object.keys(cars).length === 0 && (
                   <div
                     style={{
@@ -817,17 +827,17 @@ const FleetForm = ({
                 className={styles.buttonBackContainer}
               > */}
                 <button
-                  variant="contained"
-                  color="primary"
-                  fullWidth
+                  // variant="contained"
+                  // color="primary"
+                  // fullWidth
                   onClick={() => {
                     back()
                     setGateMeetingRedux(false)
                     setResetWidgetInputs(false)
                     setIsAirportPickupIncluded(false)
                   }}
-                  startIcon={<BackArrowIcon />}
-                  className={classes.backButtonSelf}
+                  // startIcon={<BackArrowIcon />}
+                  // className={classes.backButtonSelf}
                   // style={{
                   //   height: "50px",
 
@@ -845,15 +855,15 @@ const FleetForm = ({
                 className={styles.buttonNextContainer}
               > */}
                 <button
-                  variant="contained"
-                  fullWidth
+                  // variant="contained"
+                  // fullWidth
                   onClick={() => {
                     next()
                     setCarId(carCard)
                   }}
-                  color="primary"
-                  endIcon={<ForwardArrowIcon />}
-                  className={classes.nextButtonSelf}
+                  // color="primary"
+                  // endIcon={<ForwardArrowIcon />}
+                  // className={classes.nextButtonSelf}
                   disabled={carCard ? false : true}
                   // style={{
                   //   height: "50px",
