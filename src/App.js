@@ -533,7 +533,10 @@ const App = (props) => {
                     }
                     ref={refOfBookNow}
                     id="booknowIcon"
-                  ></div>
+                  >
+                    <div className={styles.letterB}></div>
+                    <span className={styles.bookNow}>BOOK NOW!</span>
+                  </div>
                   {jwtToken && (
                     <div
                       className={

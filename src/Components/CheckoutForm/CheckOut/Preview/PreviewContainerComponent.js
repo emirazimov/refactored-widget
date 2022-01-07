@@ -30,14 +30,16 @@ const PreviewContainerComponent = ({
   const [carModal, setCarModal] = React.useState(null)
   const [open, setOpen] = React.useState(false)
 
+  const [show, setShow] = React.useState(false)
+
   const handleClickOpen = (id) => {
     setCarModal(true)
-    setOpen(true)
+    setShow(true)
   }
 
-  const handleClose = () => {
+  const handleClickClose = () => {
     setCarModal(null)
-    setOpen(false)
+    setShow(false)
   }
 
   const handleClick = (id) => {
@@ -96,10 +98,12 @@ const PreviewContainerComponent = ({
       open={open}
       setOpen={setOpen}
       handleClickOpen={handleClickOpen}
-      handleClose={handleClose}
+      handleClickClose={handleClickClose}
       handleClick={handleClick}
       round={round}
       showCarAmount={showCarAmount}
+      show={show}
+      setShow={setShow}
     />
   )
 }

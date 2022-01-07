@@ -244,7 +244,7 @@ export default React.memo(function SafetySeat({
               //   "&:hover": { borderBottom: "2px solid white" },
               // }}
             >
-              <span
+              <button
                 onClick={onDecreaseBoosterSeat}
                 // style={
                 //   {
@@ -252,9 +252,7 @@ export default React.memo(function SafetySeat({
                 //   }
                 // }
                 className={styles.boosterSeatCounterMinusSelf}
-              >
-                <MinusIcon />
-              </span>
+              ></button>
             </div>
             <div
               // style={{
@@ -298,13 +296,11 @@ export default React.memo(function SafetySeat({
               // item
               className={styles.boosterSeatCounterPlusContainer}
             >
-              <span
+              <button
                 onClick={onIncreaseBoosterSeat}
                 // style={{ marginLeft: "4px" }}
                 className={styles.boosterSeatCounterPlusSelf}
-              >
-                <PlusIcon />
-              </span>
+              ></button>
             </div>
             {/* </div> */}
           </div>
@@ -368,7 +364,7 @@ export default React.memo(function SafetySeat({
               //   "&:hover": { borderBottom: "2px solid white" },
               // }}
             >
-              <span
+              <button
                 onClick={onDecreaseChildSafetySeat}
                 // style={
                 //   {
@@ -376,9 +372,7 @@ export default React.memo(function SafetySeat({
                 //   }
                 // }
                 className={styles.safetySeatCounterMinusSelf}
-              >
-                <MinusIcon />
-              </span>
+              ></button>
             </div>
             <div
               // style={{
@@ -422,13 +416,11 @@ export default React.memo(function SafetySeat({
               // item
               className={styles.safetySeatCounterPlusContainer}
             >
-              <span
+              <button
                 onClick={onIncreaseChildSafetySeat}
                 // style={{ marginLeft: "4px" }}
                 className={styles.safetySeatCounterPlusSelf}
-              >
-                <PlusIcon />
-              </span>
+              ></button>
             </div>
             {/* </div> */}
           </div>

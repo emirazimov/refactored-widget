@@ -82,7 +82,7 @@ const FleetForm = ({
             //     // paddingTop: isMobile ? "0px" : "0px",
             //   }
             // }
-            className={styles.mainWrapper}
+            className={styles.mainWrapperFleet}
           >
             <div
               // container
@@ -208,17 +208,18 @@ const FleetForm = ({
                               // color="primary"
                             >
                               <div
-                                style={{
-                                  position: "absolute",
-                                  width: "75px",
-                                  height: "20px",
-                                  backgroundColor: "#AC8159",
-                                  color: "black",
-                                  fontSize: "13px",
-                                  paddingLeft: "12px",
-                                  borderTopLeftRadius: "8px",
-                                  paddingTop: "2px",
-                                }}
+                                // style={{
+                                //   position: "absolute",
+                                //   width: "75px",
+                                //   height: "20px",
+                                //   backgroundColor: "#AC8159",
+                                //   color: "black",
+                                //   fontSize: "13px",
+                                //   paddingLeft: "12px",
+                                //   borderTopLeftRadius: "8px",
+                                //   paddingTop: "2px",
+                                // }}
+                                className={styles.orSimiliar}
                               >
                                 or similar
                               </div>
@@ -234,16 +235,17 @@ const FleetForm = ({
                               >
                                 <img
                                   src={url?.path}
-                                  style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    // display: "block",
-                                    // width: !isMobile ? "170px" : "100%",
-                                    // height: !isMobile ? "127px" : "116px",
-                                    borderRadius: "9px",
-                                    // cursor: "zoom-in",
-                                  }}
+                                  // style={{
+                                  //   width: "100%",
+                                  //   height: "100%",
+                                  //   // display: "block",
+                                  //   // width: !isMobile ? "170px" : "100%",
+                                  //   // height: !isMobile ? "127px" : "116px",
+                                  //   borderRadius: "9px",
+                                  //   // cursor: "zoom-in",
+                                  // }}
                                   alt="car"
+                                  className={styles.carImageSelf}
                                   onClick={(event) => {
                                     // event.stopPropagation()
                                     handleClickOpen(car?.id)
@@ -255,17 +257,18 @@ const FleetForm = ({
                         ) : (
                           <>
                             <span
-                              style={{
-                                position: "absolute",
-                                width: "75px",
-                                height: "20px",
-                                backgroundColor: "#AC8159",
-                                color: "black",
-                                fontSize: "13px",
-                                paddingLeft: "12px",
-                                borderTopLeftRadius: "8px",
-                                paddingTop: "2px",
-                              }}
+                              // style={{
+                              //   position: "absolute",
+                              //   width: "75px",
+                              //   height: "20px",
+                              //   backgroundColor: "#AC8159",
+                              //   color: "black",
+                              //   fontSize: "13px",
+                              //   paddingLeft: "12px",
+                              //   borderTopLeftRadius: "8px",
+                              //   paddingTop: "2px",
+                              // }}
+                              className={styles.orSimiliar}
                             >
                               or similar
                             </span>
@@ -283,15 +286,16 @@ const FleetForm = ({
                                 src={
                                   "https://fl-1.cdn.flockler.com/embed/not-found.png"
                                 }
-                                style={{
-                                  width: "100%",
-                                  height: "100%",
-                                  // display: "block",
-                                  // width: !isMobile ? "170px" : "100%",
-                                  // height: !isMobile ? "127px" : "116px",
-                                  borderRadius: "9px",
-                                  // cursor: "zoom-in",
-                                }}
+                                // style={{
+                                //   width: "100%",
+                                //   height: "100%",
+                                //   // display: "block",
+                                //   // width: !isMobile ? "170px" : "100%",
+                                //   // height: !isMobile ? "127px" : "116px",
+                                //   borderRadius: "9px",
+                                //   // cursor: "zoom-in",
+                                // }}
+                                className={styles.carImageSelf}
                                 alt="car"
                               />
                             </AspectRatio>

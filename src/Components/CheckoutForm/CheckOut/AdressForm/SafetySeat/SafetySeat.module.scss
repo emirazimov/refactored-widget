@@ -2,6 +2,9 @@
   as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
 
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+  as *;
+
 .boosterSeatCounterWrapper,
 .safetySeatCounterWrapper {
   width: 100%;
@@ -27,4 +30,21 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.boosterSeatCounterMinusSelf,
+.boosterSeatCounterPlusSelf,
+.safetySeatCounterMinusSelf,
+.safetySeatCounterPlusSelf {
+  @include counters-button-styles;
+}
+
+.boosterSeatCounterMinusSelf,
+.safetySeatCounterMinusSelf {
+  @include counters-buttons-minus-icon;
+}
+
+.boosterSeatCounterPlusSelf,
+.safetySeatCounterPlusSelf {
+  @include counters-buttons-plus-icon;
 }

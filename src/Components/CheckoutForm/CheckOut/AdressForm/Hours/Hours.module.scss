@@ -2,6 +2,10 @@
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
 // @use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
+
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+  as *;
+
 .hoursCounterWrapper {
   width: 100%;
   display: flex;
@@ -54,6 +58,19 @@
     /* <-- Apparently some margin are still there even though it's hidden */
   }
 }
+
+.hoursCounterMinus,
+.hoursCounterPlus {
+  @include counters-button-styles;
+}
+
+.hoursCounterMinus {
+  @include counters-buttons-minus-icon;
+}
+.hoursCounterPlus {
+  @include counters-buttons-plus-icon;
+}
+
 // .hoursCounterInput::-webkit-outer-spin-button,
 // .hoursCounterInput::-webkit-inner-spin-button {
 //   /* display: none; <- Crashes Chrome on hover */

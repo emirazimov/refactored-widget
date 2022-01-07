@@ -341,7 +341,7 @@ const AdressFormContainerComponent = ({
     }
     setAMPM(event.target.textContent)
     setTimeForDefaultValueAMPM(event.target.textContent)
-    // console.log(event.target.textContent)
+    console.log(event.target.textContent)
   }
 
   const [triggerToTimePicker, setTriggerToTimePicker] = useState(false)
@@ -566,6 +566,7 @@ const AdressFormContainerComponent = ({
       setDate={setDate}
       show={show}
       setShow={setShow}
+      AMPM={AMPM}
     />
   )
 }

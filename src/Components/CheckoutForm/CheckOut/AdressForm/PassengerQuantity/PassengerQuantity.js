@@ -112,7 +112,7 @@ export default React.memo(function PassengerQuantity({
           //   "&:hover": { borderBottom: "2px solid white" },
           // }}
         >
-          <span
+          <button
             onClick={onDecrease}
             // style={
             //   {
@@ -121,8 +121,8 @@ export default React.memo(function PassengerQuantity({
             // }
             className={styles.passengerQuantityMinusSelf}
           >
-            <MinusIcon />
-          </span>
+            {/* - */}
+          </button>
         </div>
         <div
           // style={{
@@ -168,13 +168,11 @@ export default React.memo(function PassengerQuantity({
           // item
           className={styles.passengerQuantityPlusContainer}
         >
-          <span
+          <button
             onClick={onIncrease}
             // style={{ marginLeft: "4px" }}
             className={styles.passengerQuantityPlusSelf}
-          >
-            <PlusIcon />
-          </span>
+          ></button>
         </div>
         {/* </div> */}
       </div>

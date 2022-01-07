@@ -84,14 +84,12 @@ const Hours = ({
           // }}
         > */}
         <div className={styles.hoursCounterMinusContainer}>
-          <span
-            lassName={styles.hoursCounterMinus}
+          <button
             onClick={onDecrease}
+            className={styles.hoursCounterMinus}
 
             // style={{ marginRight: "5px" }}
-          >
-            <MinusIcon />
-          </span>
+          ></button>
         </div>
         <div
           // item
@@ -136,13 +134,11 @@ const Hours = ({
           />
         </div>
         <div className={styles.hoursCounterPlusContainer}>
-          <span
+          <button
             className={styles.hoursCounterPlus}
             onClick={onIncrease}
             // style={{ marginLeft: "4px" }}
-          >
-            <PlusIcon />
-          </span>
+          ></button>
           {/* </div> */}
         </div>
       </div>

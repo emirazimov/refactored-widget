@@ -19,6 +19,7 @@ import Dialog from "@material-ui/core/Dialog"
 import DialogActions from "@material-ui/core/DialogActions"
 import { useStyles } from "./PreviewStyles"
 import styles from "./Preview.module.scss"
+import { Modal } from "../../../Helpers/Modal/Modal"
 
 const PreviewUIComponent = ({
   carId,
@@ -44,10 +45,12 @@ const PreviewUIComponent = ({
   open,
   setOpen,
   handleClickOpen,
-  handleClose,
+  handleClickClose,
   handleClick,
   round,
   showCarAmount,
+  show,
+  setShow,
 }) => {
   const classes = useStyles()
   const isMobile = useMediaQuery("(max-width:500px)")
@@ -164,152 +167,164 @@ const PreviewUIComponent = ({
                 selectedCar.imageUrls.map((url) => (
                   <span
                     key={url.id}
-                    variant="outlined"
-                    color="primary"
-                    onClick={() => handleClickOpen()}
+                    // variant="outlined"
+                    // color="primary"
                   >
                     <div
-                      style={{
-                        position: "absolute",
-                        width: "75px",
-                        height: "20px",
-                        backgroundColor: "#AC8159",
-                        color: "black",
-                        fontSize: "13px",
-                        paddingLeft: "12px",
-                        borderTopLeftRadius: "9px",
-                        paddingTop: "2px",
-                      }}
+                      // style={{
+                      //   position: "absolute",
+                      //   width: "75px",
+                      //   height: "20px",
+                      //   backgroundColor: "#AC8159",
+                      //   color: "black",
+                      //   fontSize: "13px",
+                      //   paddingLeft: "12px",
+                      //   borderTopLeftRadius: "9px",
+                      //   paddingTop: "2px",
+                      // }}
+                      className={styles.orSimiliar}
                     >
                       or similar
                     </div>
-                    <img
-                      src={url.path}
+                    <AspectRatio
+                      // ratio="560/315"
                       style={{
+                        display: "block",
                         width: !isMobile ? "100%" : "100%",
-                        height: !isMobile ? "118px" : "116px",
-                        borderRadius: "9px",
+                        height: !isMobile ? "112px" : "116px",
+
                         cursor: "zoom-in",
                       }}
-                      alt="car"
-                    />
+                    >
+                      <img
+                        src={url.path}
+                        // style={{
+                        //   width: !isMobile ? "100%" : "100%",
+                        //   height: !isMobile ? "118px" : "116px",
+                        //   borderRadius: "9px",
+                        //   cursor: "zoom-in",
+                        // }}
+                        alt="car"
+                        onClick={() => handleClickOpen()}
+                        className={styles.carImageSelf}
+                      />
+                    </AspectRatio>
                   </span>
                 ))
               ) : (
                 <>
                   <span
-                    style={{
-                      position: "absolute",
-                      width: "75px",
-                      height: "20px",
-                      backgroundColor: "#AC8159",
-                      color: "black",
-                      fontSize: "13px",
-                      paddingLeft: "12px",
-                      borderTopLeftRadius: "9px",
-                      paddingTop: "2px",
-                    }}
+                    // style={{
+                    //   position: "absolute",
+                    //   width: "75px",
+                    //   height: "20px",
+                    //   backgroundColor: "#AC8159",
+                    //   color: "black",
+                    //   fontSize: "13px",
+                    //   paddingLeft: "12px",
+                    //   borderTopLeftRadius: "9px",
+                    //   paddingTop: "2px",
+                    // }}
+                    className={styles.orSimiliar}
                   >
                     or similar
                   </span>
-                  <img
-                    src={"https://fl-1.cdn.flockler.com/embed/not-found.png"}
+                  <AspectRatio
+                    // ratio="560/315"
                     style={{
+                      display: "block",
                       width: !isMobile ? "100%" : "100%",
-                      height: !isMobile ? "118px" : "116px",
-                      borderRadius: "9px",
+                      height: !isMobile ? "112px" : "116px",
+
+                      cursor: "zoom-in",
                     }}
-                    alt="car"
-                  />
+                  >
+                    <img
+                      src={"https://fl-1.cdn.flockler.com/embed/not-found.png"}
+                      // style={{
+                      //   width: !isMobile ? "100%" : "100%",
+                      //   height: !isMobile ? "118px" : "116px",
+                      //   borderRadius: "9px",
+                      // }}
+                      alt="car"
+                      className={styles.carImageSelf}
+                    />
+                  </AspectRatio>
                 </>
               )}
             </Carousel>
-            {carModal && (
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-                // style={{
-                //   width: !isMobile ? "600px" : "238px",
-                //   height: !isMobile ? "450px" : "150px",
-                // }}
+            <Modal onClose={() => handleClickClose()} show={show}>
+              <Carousel
+                autoPlay={false}
+                animation="slide"
+                swipe={true}
+                navButtonsAlwaysVisible={true}
+                navButtonsProps={{
+                  style: {
+                    width: "1em",
+                    height: "1em",
+                  },
+                }}
+                indicatorIconButtonProps={{
+                  style: {
+                    "&:hover": {
+                      "& $button": {
+                        backgroundColor: "#10B7EC",
+                        filter: "brightness(120%)",
+                        opacity: "0.4",
+                      },
+                    },
+                  },
+                }}
+                activeIndicatorIconButtonProps={{
+                  style: {
+                    color: "#10B7EC",
+                  },
+                }}
+                indicatorContainerProps={{
+                  style: {},
+                }}
               >
-                <DialogActions>
-                  <Carousel
-                    autoPlay={false}
-                    animation="slide"
-                    swipe={true}
-                    navButtonsAlwaysVisible={true}
-                    navButtonsProps={{
-                      style: {
-                        width: "1em",
-                        height: "1em",
-                      },
-                    }}
-                    indicatorIconButtonProps={{
-                      style: {
-                        "&:hover": {
-                          "& $button": {
-                            backgroundColor: "#10B7EC",
-                            filter: "brightness(120%)",
-                            opacity: "0.4",
-                          },
-                        },
-                      },
-                    }}
-                    activeIndicatorIconButtonProps={{
-                      style: {
-                        color: "#10B7EC",
-                      },
-                    }}
-                    indicatorContainerProps={{
-                      style: {},
+                {selectedCar.imageUrls.map((url) => (
+                  <AspectRatio
+                    ratio="4/3"
+                    style={{
+                      width: !isMobile ? "550px" : "257px",
+                      height: !isMobile ? "400px" : "170px",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      // display: "block",
+                      // width: !isMobile ? "170px" : "100%",
+                      // height: !isMobile ? "107px" : "116px",
+                      // // borderRadius: "8px",
+                      // cursor: "zoom-in",
+                      // width: "100%",
+                      // height: "100%",
+                      // userDrag: "none",
+                      // userSelect: "none",
+                      // mozUserSelect: "none",
+                      // webkitUserDrag: "none",
+                      // webkitUserSelect: "none",
+                      // msUserSelect: "none",
+                      // maxWidth: "500px",
                     }}
                   >
-                    {carModal &&
-                      selectedCar.imageUrls.map((url) => (
-                        <AspectRatio
-                          ratio="4/3"
-                          style={{
-                            width: !isMobile ? "550px" : "257px",
-                            height: !isMobile ? "400px" : "170px",
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            // display: "block",
-                            // width: !isMobile ? "170px" : "100%",
-                            // height: !isMobile ? "107px" : "116px",
-                            // // borderRadius: "8px",
-                            // cursor: "zoom-in",
-                            // width: "100%",
-                            // height: "100%",
-                            // userDrag: "none",
-                            // userSelect: "none",
-                            // mozUserSelect: "none",
-                            // webkitUserDrag: "none",
-                            // webkitUserSelect: "none",
-                            // msUserSelect: "none",
-                            // maxWidth: "500px",
-                          }}
-                        >
-                          <img
-                            src={url.path}
-                            style={{
-                              borderRadius: "8px",
-                              // width: "100%",
-                              // height: "100%",
-                            }}
-                            alt="car"
-                            key={`${url.id}${url.path}`}
-                          />
-                        </AspectRatio>
-                      ))}
-                  </Carousel>
-                </DialogActions>
-              </Dialog>
-            )}
+                    <img
+                      src={url.path}
+                      style={{
+                        borderRadius: "8px",
+                        // width: "100%",
+                        // height: "100%",
+                      }}
+                      alt="car"
+                      key={`${url.id}${url.path}`}
+                    />
+                  </AspectRatio>
+                ))}
+              </Carousel>
+            </Modal>
           </div>
           <div
             // item

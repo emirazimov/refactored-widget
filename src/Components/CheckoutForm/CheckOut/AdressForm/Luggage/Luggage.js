@@ -199,7 +199,7 @@ const Luggage = ({ luggage, setLuggage }) => {
           //   "&:hover": { borderBottom: "2px solid white" },
           // }}
         >
-          <span
+          <button
             onClick={onDecrease}
             // style={
             //   {
@@ -207,9 +207,7 @@ const Luggage = ({ luggage, setLuggage }) => {
             //   }
             // }
             className={styles.luggageQuantityMinusSelf}
-          >
-            <MinusIcon />
-          </span>
+          ></button>
         </div>
         <div
           // style={{
@@ -253,13 +251,11 @@ const Luggage = ({ luggage, setLuggage }) => {
           // item
           className={styles.luggageQuantityPlusContainer}
         >
-          <span
+          <button
             onClick={onIncrease}
             // style={{ marginLeft: "4px" }}
             className={styles.luggageQuantityPlusSelf}
-          >
-            <PlusIcon />
-          </span>
+          ></button>
         </div>
         {/* </div> */}
       </div>

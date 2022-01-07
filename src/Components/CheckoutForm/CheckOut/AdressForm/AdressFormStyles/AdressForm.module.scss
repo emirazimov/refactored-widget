@@ -96,18 +96,41 @@
   flex-direction: row;
 
   position: absolute;
-  top: 20%;
-  right: 5px;
-  background-color: red;
+  top: 23%;
+  right: 7px;
+
   border-radius: 3px;
 }
-.toggleButtonAM {
-  width: 32px;
-  height: 23px;
+.toggleButtonAMNotSelected,
+.toggleButtonPMNotSelected {
+  width: 30px;
+  height: 21px;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $whole-app-background;
+  color: $font-color;
+  transition: 0.1s;
+  &:hover {
+    filter: brightness(85%);
+    cursor: pointer;
+    transition: 0.15s;
+  }
 }
-.toggleButtonAM {
-  width: 32px;
-  height: 23px;
+.toggleButtonAMSelected,
+.toggleButtonPMSelected {
+  width: 30px;
+  height: 21px;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $whole-app-background;
+  color: $font-color;
+  transition: 0.1s;
+  filter: brightness(125%);
+  // border: 1px solid green;
 }
 .safetySeatWrapper,
 .hourlyWrapper,

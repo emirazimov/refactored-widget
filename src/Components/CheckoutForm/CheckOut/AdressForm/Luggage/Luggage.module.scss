@@ -2,6 +2,8 @@
   as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+  as *;
 
 .luggageQuantityWrapper {
   display: flex;
@@ -26,4 +28,16 @@
   width: 24px;
   height: 24px;
   @include counters-and-switches-icon-margins;
+}
+
+.luggageQuantityMinusSelf,
+.luggageQuantityPlusSelf {
+  @include counters-button-styles;
+}
+
+.luggageQuantityMinusSelf {
+  @include counters-buttons-minus-icon;
+}
+.luggageQuantityPlusSelf {
+  @include counters-buttons-plus-icon;
 }

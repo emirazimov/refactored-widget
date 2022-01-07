@@ -1,3 +1,6 @@
+@use "./_AppBackgroundColor.module.scss" as *;
+@use "./_FontColor.module.scss" as *;
+
 @mixin buttonGroupBlockContainer {
   width: auto;
   height: 42px;
@@ -14,4 +17,57 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+}
+
+@mixin buttons-margin-bottom {
+  margin-bottom: 10px;
+}
+
+@mixin counters-button-styles {
+  width: 34px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: $whole-app-background;
+  filter: brightness(85%);
+  // position: relative;
+}
+
+@mixin counters-buttons-minus-icon {
+  &::before {
+    content: "";
+    width: 12px;
+    height: 2px;
+    background: $font-color;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+  }
+}
+
+@mixin counters-buttons-plus-icon {
+  &::before {
+    content: "";
+    width: 12px;
+    height: 2px;
+    background: $font-color;
+    position: absolute;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+  }
+  &::after {
+    content: "";
+    width: 12px;
+    height: 2px;
+    background: white;
+    transform: rotate(90deg);
+    position: absolute;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+  }
 }

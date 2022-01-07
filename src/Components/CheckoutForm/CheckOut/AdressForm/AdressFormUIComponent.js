@@ -134,6 +134,7 @@ const AdressFormwithoutReactMemo = ({
   setDate,
   show,
   setShow,
+  AMPM,
 }) => {
   const classes = useStyles()
   const isMobile = useMediaQuery("(max-width:530px)")
@@ -692,16 +693,16 @@ const AdressFormwithoutReactMemo = ({
                               //   ),
                               // }}
                             />
-                            <ToggleButtonGroup
-                              color="primary"
-                              value={
-                                formData.timeForDefaultValueAMPM?.alignment ||
-                                formData.timeForDefaultValueAMPM?.ampm
-                                  ? formData.timeForDefaultValueAMPM?.ampm
-                                  : alignment
-                              }
-                              exclusive
-                              onChange={handleChangeAMPM}
+                            <div
+                              // color="primary"
+                              // value={
+                              //   formData.timeForDefaultValueAMPM?.alignment ||
+                              //   formData.timeForDefaultValueAMPM?.ampm
+                              //     ? formData.timeForDefaultValueAMPM?.ampm
+                              //     : alignment
+                              // }
+                              // exclusive
+                              // onChange={handleChangeAMPM}
                               // style={{
                               //   display: "flex",
                               //   flexDirection: "row",
@@ -710,9 +711,13 @@ const AdressFormwithoutReactMemo = ({
                               // }}
                               className={styles.toggleButtonsContainer}
                             >
-                              <ToggleButton
-                                value="AM"
-                                className={styles.toggleButtonAM}
+                              <div
+                                // value="AM"
+                                className={
+                                  AMPM == "AM"
+                                    ? styles.toggleButtonAMSelected
+                                    : styles.toggleButtonAMNotSelected
+                                }
                                 // style={{
                                 //   width: "26px",
                                 //   height: "20px",
@@ -720,13 +725,18 @@ const AdressFormwithoutReactMemo = ({
                                 //   paddingTop: "0px",
                                 //   paddingBottom: "0px",
                                 // }}
-                                onClick={(e) => {}}
+                                // onClick={(e) => {}}
+                                onClick={handleChangeAMPM}
                               >
                                 AM
-                              </ToggleButton>
-                              <ToggleButton
-                                value="PM"
-                                className={styles.toggleButtonAM}
+                              </div>
+                              <div
+                                // value="PM"
+                                className={
+                                  AMPM == "PM"
+                                    ? styles.toggleButtonPMSelected
+                                    : styles.toggleButtonPMNotSelected
+                                }
                                 // style={{
                                 //   width: "26px",
                                 //   height: "20px",
@@ -735,10 +745,11 @@ const AdressFormwithoutReactMemo = ({
                                 //   paddingTop: "0px",
                                 //   paddingBottom: "0px",
                                 // }}
+                                onClick={handleChangeAMPM}
                               >
                                 PM
-                              </ToggleButton>
-                            </ToggleButtonGroup>
+                              </div>
+                            </div>
                           </div>
                         )
                       }}

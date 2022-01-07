@@ -478,61 +478,79 @@ const PaymentUIComponent = ({
                 // item
                 className={styles.cardholderInformationInputsWrapper}
               >
-                <input
-                  name="client.address"
-                  // variant="standard"
-                  autoComplete="off"
-                  // className={classes.inputPlaceholderFontSize}
-                  // style={{ height: "100%", background: "transparent" }}
-                  placeholder="Address"
-                  defaultValue={formSummary.client.address}
-                  // fullWidth
-                  ref={register}
-                  error={errors.client?.address ? true : false}
-                  className={styles.cardholderInformationInputWithFullWidthSelf}
-                />
+                <div
+                  // item
+                  className={
+                    styles.cardholderInformationInputsContainerForPositionErrorMessage
+                  }
+                >
+                  <input
+                    name="client.address"
+                    // variant="standard"
+                    autoComplete="off"
+                    // className={classes.inputPlaceholderFontSize}
+                    // style={{ height: "100%", background: "transparent" }}
+                    placeholder="Address"
+                    defaultValue={formSummary.client.address}
+                    // fullWidth
+                    ref={register}
+                    error={errors.client?.address ? true : false}
+                    className={
+                      styles.cardholderInformationInputWithFullWidthSelf
+                    }
+                  />
+                  {errors.client?.address && (
+                    <p className={classes.error}>
+                      {errors.client?.address.message}
+                    </p>
+                  )}
+                </div>
               </div>
-              {errors.client?.address && (
-                <p style={{ marginLeft: "10px" }} className={classes.error}>
-                  {errors.client?.address.message}
-                </p>
-              )}
+
               <div
                 // item
                 className={styles.cardholderInformationInputsWrapper}
               >
-                <input
-                  // {...params}
-                  // fullWidth
-                  // className={classes.inputPlaceholderFontSize}
-                  placeholder="State"
-                  // variant="standard"
-                  // style={{ background: "transparent" }}
-                  autoComplete="off"
-                  // InputProps={{
-                  //   ...params.InputProps,
-                  //   style: { inputStyle },
-                  //   classes: {
-                  //     root: classes.inputRootAutocomplete,
-                  //     underline: classes.noBorder,
-                  //     input: classes.input,
-                  //   },
-                  //   // disableUnderline: true,
-                  // }}
-                  ref={register}
-                  onChange={(event, newValue) => {
-                    // console.log(event)
-                    event.target.value
-                      ? extractStateId(event.target.value)
-                      : setStatesId(null)
-                    // newValue ? setStatesId(newValue.id) : setStatesId(null)
-                  }}
-                  list="states-list"
-                  className={styles.cardholderInformationInputWithFullWidthSelf}
-                />
+                <div
+                  // item
+                  className={
+                    styles.cardholderInformationInputsContainerForPositionErrorMessage
+                  }
+                >
+                  <input
+                    // {...params}
+                    // fullWidth
+                    // className={classes.inputPlaceholderFontSize}
+                    placeholder="State"
+                    // variant="standard"
+                    // style={{ background: "transparent" }}
+                    autoComplete="off"
+                    // InputProps={{
+                    //   ...params.InputProps,
+                    //   style: { inputStyle },
+                    //   classes: {
+                    //     root: classes.inputRootAutocomplete,
+                    //     underline: classes.noBorder,
+                    //     input: classes.input,
+                    //   },
+                    //   // disableUnderline: true,
+                    // }}
+                    ref={register}
+                    onChange={(event, newValue) => {
+                      // console.log(event)
+                      event.target.value
+                        ? extractStateId(event.target.value)
+                        : setStatesId(null)
+                      // newValue ? setStatesId(newValue.id) : setStatesId(null)
+                    }}
+                    list="states-list"
+                    className={
+                      styles.cardholderInformationInputWithFullWidthSelf
+                    }
+                  />
 
-                <datalist id="states-list">
-                  {/* id="combo-box-demo"
+                  <datalist id="states-list">
+                    {/* id="combo-box-demo"
                   options={states}
                   defaultValue={null}
                   autoComplete="off"
@@ -561,12 +579,13 @@ const PaymentUIComponent = ({
                   )}
                   
                   name="stateId" */}
-                  {states.map((state) => (
-                    <option value={state.name} id={state.id} />
-                  ))}
-                </datalist>
+                    {states.map((state) => (
+                      <option value={state.name} id={state.id} />
+                    ))}
+                  </datalist>
 
-                {statesIdError && <p className={classes.error}>Required</p>}
+                  {statesIdError && <p className={classes.error}>Required</p>}
+                </div>
               </div>
               <div
                 // item
@@ -776,24 +795,32 @@ const PaymentUIComponent = ({
                   />
                 )}
               </CustomMaskInput> */}
+                <div
+                  // item
+                  className={
+                    styles.cardholderInformationInputsContainerForPositionErrorMessage
+                  }
+                >
+                  <Cleave
+                    delimiter="-"
+                    options={{
+                      creditCard: true,
+                      onCreditCardTypeChanged: handleType,
+                    }}
+                    name="paymentInfo.cardNumber"
+                    error={errors.paymentInfo?.cardNumber ? true : false}
+                    onChange={handleNum}
+                    placeholder="Card number"
+                    className="credit-card-input-by-bookinglane"
+                    className={
+                      styles.cardholderInformationInputWithFullWidthSelf
+                    }
+                  />
 
-                <Cleave
-                  delimiter="-"
-                  options={{
-                    creditCard: true,
-                    onCreditCardTypeChanged: handleType,
-                  }}
-                  name="paymentInfo.cardNumber"
-                  error={errors.paymentInfo?.cardNumber ? true : false}
-                  onChange={handleNum}
-                  placeholder="Card number"
-                  className="credit-card-input-by-bookinglane"
-                  className={styles.cardholderInformationInputWithFullWidthSelf}
-                />
-
-                {cardForPaymentSubmitError && (
-                  <p className={classes.error}>Required</p>
-                )}
+                  {cardForPaymentSubmitError && (
+                    <p className={classes.error}>Required</p>
+                  )}
+                </div>
               </div>
               <div
                 // item
