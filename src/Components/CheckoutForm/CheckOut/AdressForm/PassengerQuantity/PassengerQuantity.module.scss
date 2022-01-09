@@ -1,9 +1,9 @@
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_IconsForWholeAddressFormPage.scss"
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_IconsForWholeAddressFormPage.scss'
   as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_AppBackgroundColor.module.scss" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_AppBackgroundColor.module.scss' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss'
   as *;
 
 .passengerQuantityWrapper {
@@ -35,6 +35,9 @@
 .passengerQuantityMinusSelf,
 .passengerQuantityPlusSelf {
   @include counters-button-styles;
+  &:hover {
+    filter: brightness(125%);
+  }
 }
 .passengerQuantityMinusSelf {
   @include counters-buttons-minus-icon;

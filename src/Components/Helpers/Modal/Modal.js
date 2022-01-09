@@ -1,7 +1,7 @@
-import React, { useEffect } from "react"
-import ReactDOM from "react-dom"
+import React, { useEffect } from 'react'
+import ReactDOM from 'react-dom'
 // import { CSSTransition } from "react-transition-group"
-import styles from "./Modal.module.scss"
+import styles from './Modal.module.scss'
 
 export const Modal = (props) => {
   const closeOnEscapeKeyDown = (e) => {
@@ -14,10 +14,10 @@ export const Modal = (props) => {
   }
 
   useEffect(() => {
-    document.body.addEventListener("keydown", closeOnEscapeKeyDown)
+    document.body.addEventListener('keydown', closeOnEscapeKeyDown)
 
     return function cleanup() {
-      document.body.removeEventListener("keydown", closeOnEscapeKeyDown)
+      document.body.removeEventListener('keydown', closeOnEscapeKeyDown)
     }
   }, [])
 
@@ -40,8 +40,15 @@ export const Modal = (props) => {
             <h4 className={styles.modalTitle}>{props.title}</h4>
           </div> */}
           <div className={styles.modalBody}>{props.children}</div>
-          {/* {console.log(props.children.props.children.type)} */}
-          {props?.children?.props?.children?.type == "div" && (
+          {console.log(props.children)}
+          {props?.children?.props?.children?.type == 'div' && (
+            <div className={styles.modalFooter}>
+              <button onClick={props.onClose} className={styles.modalOkButton}>
+                OK
+              </button>
+            </div>
+          )}
+          {props?.children?.type == 'div' && (
             <div className={styles.modalFooter}>
               <button onClick={props.onClose} className={styles.modalOkButton}>
                 OK
@@ -52,6 +59,6 @@ export const Modal = (props) => {
       </div>
     </div>,
     // </CSSTransition>,
-    document.getElementById("widget-by-bookinglane")
+    document.getElementById('widget-by-bookinglane')
   )
 }

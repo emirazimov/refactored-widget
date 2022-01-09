@@ -1,12 +1,12 @@
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage' as *;
 // @use "../../../../../../../../global" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module' as *;
 
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
-@use "../../FleetForm/FleetForm.module.scss" as *;
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss' as *;
+@use '../../FleetForm/FleetForm.module.scss' as *;
+@use '../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss'
   as *;
 
 .mainWrapper {
@@ -209,11 +209,14 @@
     background: pink;
     cursor: pointer;
   }
-  &:active,
-  &:focus {
-    background: pink;
-    cursor: default;
-  }
+}
+.carItemContainerSelected {
+  width: 60px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: pink;
 }
 .carItemTitleContainer {
   height: 30%;

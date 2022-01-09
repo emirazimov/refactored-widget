@@ -1,9 +1,9 @@
-@use "../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
-@use "../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
-@use "../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
-@use "../../../MAINCSSFORWHOLECOMPONENTS/FontColor.module" as *;
-@use "../FleetForm/FleetForm.module.scss" as *;
-@use "../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
+@use '../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
+@use '../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module' as *;
+@use '../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module' as *;
+@use '../../../MAINCSSFORWHOLECOMPONENTS/FontColor.module' as *;
+@use '../FleetForm/FleetForm.module.scss' as *;
+@use '../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss'
   as *;
 
 $green: #2ecc71;
@@ -11,7 +11,7 @@ $lightgray: lightgray;
 $background: grey;
 
 @mixin inactiveMixin {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
 }
@@ -164,7 +164,7 @@ $background: grey;
 }
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmarkSelf:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }
@@ -248,10 +248,10 @@ $background: grey;
 // cardholderInformationTitleSelf
 
 .cardholderInformationInputsWrapper {
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 16px;
 }
 .cardholderInformationInputsContainerForPositionErrorMessage {
@@ -271,20 +271,23 @@ $background: grey;
 .cardholderInformationInputSelfContainer {
 }
 .cardholderInformationInputSelfContainer1 {
-  // width: 100%;
+  width: 50%;
   margin-right: 7px;
 }
 .cardholderInformationInputSelfContainer2 {
   // width: 100%;
+  width: 50%;
 }
 .cardholderInformationInputSelfContainerJustForFirstAndLastName {
+  width: 50%;
   position: relative;
   &:after {
     position: absolute;
-    content: "";
+    content: '';
     border-right: 1px solid rgb(47, 47, 47);
     top: 28%;
     right: 0;
+    width: 1px;
     height: 41%;
     margin-top: auto;
     margin-bottom: auto;
@@ -299,8 +302,13 @@ $background: grey;
   // &::placeholder {
   //   @include payment-inputs-with-left-padding;
   // }
+  width: 100%;
   padding: 0;
   text-indent: 20px;
+  &::-webkit-calendar-picker-indicator {
+    opacity: 100;
+    color: red;
+  }
 }
 .cardholderInformationInputWithFullWidthSelf {
   @include main-inputs-size-and-background-styles-etc;
@@ -313,6 +321,7 @@ $background: grey;
   text-indent: 20px;
   &::-webkit-calendar-picker-indicator {
     opacity: 1;
+    color: red;
   }
 }
 
