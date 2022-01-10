@@ -1,12 +1,12 @@
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage' as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/IconsForWholeAddressFormPage" as *;
 // @use "../../../../../../../../global" as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module' as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/AppBackgroundColor.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
 
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss' as *;
-@use '../../FleetForm/FleetForm.module.scss' as *;
-@use '../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss'
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
+@use "../../FleetForm/FleetForm.module.scss" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
   as *;
 
 .mainWrapper {
@@ -63,13 +63,18 @@
   margin-right: 16px;
 }
 
-.datePickerOpenButton {
+.datePickerOpenButton,
+.datePickerOpenButtonWithRedBorder {
   @include date_picker_icon;
   @include main-inputs-size-and-background-styles-etc;
   // @include addressform-inputs-with-icons;
   // padding-right: 0;
   text-indent: 36px;
   background-position-x: 3%;
+}
+
+.datePickerOpenButtonWithRedBorder {
+  border: 1px solid red;
 }
 .datePickerOpenButtonIcon {
   @include date_picker_icon;
@@ -84,13 +89,16 @@
   flex-direction: row;
   position: relative;
 }
-.timePickerInput {
+.timePickerInput,
+.timePickerInputWithRedBorder {
   @include clock_icon;
   @include main-inputs-size-and-background-styles-etc;
   @include addressform-inputs-with-icons;
   background-position-x: 3%;
 }
-
+.timePickerInputWithRedBorder {
+  border: 1px solid red;
+}
 .toggleButtonsContainer {
   display: flex;
   flex-direction: row;
@@ -247,7 +255,9 @@
 // @include buttons-group;
 .buttonGroupBlockContainer {
   @include buttonGroupBlockContainer;
-  margin: 20px auto;
+  @include margin-top-bottom-for-adressfrom-inputs;
+  @include buttons-margin-bottom;
+  // margin: 20px auto;
 }
 
 .buttonBackSelf {

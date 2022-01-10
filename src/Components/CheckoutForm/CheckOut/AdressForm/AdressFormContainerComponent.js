@@ -123,10 +123,17 @@ const AdressFormContainerComponent = ({
 
   const [show, setShow] = useState(false)
 
-  const { errors, register, handleSubmit, setValue, ...methods } = useForm({
-    // mode: "onBlur",
-    // resolver: yupResolver(schema),
-  })
+  // const { errors, register, handleSubmit, setValue, ...methods } = useForm({
+  //   // mode: "onBlur",
+  //   // resolver: yupResolver(schema),
+  // })
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+    ...methods
+  } = useForm({})
 
   const schema = yup.object().shape({
     destinations: yup.object().shape({
@@ -170,10 +177,12 @@ const AdressFormContainerComponent = ({
     ?.match(/\d+/)
 
   const onSubmit2 = (data) => {
+    console.log(data)
+
     if (
       destinations[0].rideCheckPoint &&
       destinations[1].rideCheckPoint &&
-      date &&
+      (date || formData.dateForDefaultValue) &&
       (time || formData.timeForDefaultValue) &&
       (firstTimeHalf?.[0] >= "0" || formData.timeForDefaultValue) &&
       (firstTimeHalf?.[1] >= "0" || formData.timeForDefaultValue) &&
@@ -429,9 +438,9 @@ const AdressFormContainerComponent = ({
       })
       setSafetySeatCount(childSafetySeat)
       setBoosterSeatCount(boosterSeat)
-      setDateForDefaultValue(date.toLocaleDateString("en-US"))
+      setDateForDefaultValue(date?.toLocaleDateString("en-US"))
 
-      const forRes = date.toLocaleDateString("en-US")
+      const forRes = date?.toLocaleDateString("en-US")
       const forRes2 = time + ` ${AMPM}`
 
       // ._d.toLocaleTimeString("en-US", {
@@ -448,13 +457,15 @@ const AdressFormContainerComponent = ({
         orderStartDateTime: `${forRes} ` + `${forRes2}`,
       }
 
-      setFormData(resData2)
+      if (date) {
+        setFormData(resData2)
+      }
 
       console.log(
         destinations[0].rideCheckPoint,
         destinations[1].rideCheckPoint,
-        data.orderStartDate,
-        data.orderStartTime + ` ${AMPM}`,
+        data?.orderStartDate,
+        data?.orderStartTime + ` ${AMPM}`,
         {
           hours: hourly ? hoursAddressForm : 0,
           isGateMeeting: isGateMeeting,
@@ -531,6 +542,7 @@ const AdressFormContainerComponent = ({
       isAirline={isAirline}
       luggage={luggage}
       methods={methods}
+      register={register}
       myArrow={myArrow}
       onSubmit={onSubmit}
       passengers={passengers}
@@ -561,12 +573,14 @@ const AdressFormContainerComponent = ({
       setLuggage={setLuggage}
       setPassengers={setPassengers}
       setSafetySeat={setSafetySeat}
-      setValue={setValue}
+      // setValue={setValue}
       date={date}
       setDate={setDate}
       show={show}
       setShow={setShow}
       AMPM={AMPM}
+      setDateForDefaultValue={setDateForDefaultValue}
+      control={control}
     />
   )
 }

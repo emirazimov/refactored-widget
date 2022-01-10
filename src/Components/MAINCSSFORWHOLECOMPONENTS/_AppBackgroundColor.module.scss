@@ -1,5 +1,5 @@
-@mixin whole-app-background {
-  background-color: rgb(122, 103, 67);
-}
+$whole-app-background: rgb(20, 3, 46);
 
-$whole-app-background: rgb(122, 103, 67);
+@mixin whole-app-background {
+  background-color: $whole-app-background;
+}

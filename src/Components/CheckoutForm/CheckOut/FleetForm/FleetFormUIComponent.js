@@ -134,12 +134,16 @@ const FleetForm = ({
                     onClick={(event) => {
                       handleClick(car?.id)
                     }}
-                    selected={car?.id === carCard}
+                    // selected={car?.id === carCard}
                     // classes={{
                     //   root: classes.listRoot,
                     //   selected: car?.id && classes.active,
                     // }}
-                    className={styles.carContainer}
+                    className={
+                      car?.id === carCard
+                        ? styles.carContainerSelected
+                        : styles.carContainer
+                    }
                     key={`${car?.id}${car?.name}`}
                     // style={{
                     //   opacity: "0.5",

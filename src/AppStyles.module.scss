@@ -138,7 +138,7 @@ html {
 .contentContainer {
   width: 356px;
   height: 60vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-right: 0px;
   @include whole-app-background;
   &::-webkit-scrollbar {

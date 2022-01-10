@@ -54,7 +54,7 @@ const PreviewUIComponent = ({
 }) => {
   const classes = useStyles()
   const isMobile = useMediaQuery("(max-width:500px)")
-
+  console.log(formData.orderStartDateTime)
   return (
     <div
       // container

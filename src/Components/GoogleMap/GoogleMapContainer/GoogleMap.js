@@ -164,7 +164,7 @@ const GoogleMap = React.memo(
               // item
               className={styles.mapContainer}
             >
-              <div className={styles.mapContainerForNativeMapPositioning}>
+              <div className={styles.mapContainerForHideMapsTagsPositioning}>
                 <Map
                   google={props.google}
                   disableDefaultUI={true}
@@ -189,70 +189,74 @@ const GoogleMap = React.memo(
                 </Map>
               </div>
             </div>
-
             <div
-              // item
-              className={
-                flagForGotAddressError
-                  ? classes.destinationContainerred
-                  : classes.destinationContainer
-              }
-              className={styles.mapInputsContainer}
+              className={styles.mapInputsContainerForHideMapsTagsPositioning}
             >
-              <TransitionGroup>
-                {destinations.map((destination, id) => {
-                  console.log(destinations)
-                  if (!airportCenter4.includes(destination?.rideCheckPoint)) {
-                    nothing = destinations[id]?.rideCheckPoint
-                  }
+              <div
+                // item
+                className={
+                  flagForGotAddressError
+                    ? classes.destinationContainerred
+                    : classes.destinationContainer
+                }
+                className={styles.mapInputsContainer}
+              >
+                <TransitionGroup>
+                  {destinations.map((destination, id) => {
+                    console.log(destinations)
+                    if (!airportCenter4.includes(destination?.rideCheckPoint)) {
+                      nothing = destinations[id]?.rideCheckPoint
+                    }
 
-                  return (
-                    <CSSTransition
-                      key={id}
-                      classNames={{
-                        enter: "enter",
-                        enterActive: "enterActive",
-                        exit: "exit",
-                        exitActive: "exitActive",
-                        // leave: "leave",
-                        // leaveActive: "leaveActive",
-                        // appear: "appear",
-                        // appearActive: "appearActive",
-                      }}
-                      timeout={300}
-                    >
-                      <PlacesAutocomplete
-                        value={
-                          formData.orderAddressDetails[id]?.rideCheckPoint &&
-                          !resetInputs
-                            ? formData.orderAddressDetails[id]?.rideCheckPoint
-                            : nothing
-                        }
-                        onChange={(value) => handleChange(value, id)}
-                        onSelect={(value) => {
-                          handleSelect(value, id)
+                    return (
+                      <CSSTransition
+                        key={id}
+                        classNames={{
+                          enter: "enter",
+                          enterActive: "enterActive",
+                          exit: "exit",
+                          exitActive: "exitActive",
+                          // leave: "leave",
+                          // leaveActive: "leaveActive",
+                          // appear: "appear",
+                          // appearActive: "appearActive",
                         }}
-                        key={`${destination.id}${id}`}
-                        // searchOptions={searchOptions}
+                        timeout={300}
                       >
-                        {({
-                          getInputProps,
-                          suggestions,
-                          getSuggestionItemProps,
-                          loading,
-                        }) => {
-                          copiedSuggestions = [...suggestions].filter(
-                            (item) => {
-                              return !airportCenter4.includes(item.description)
-                            }
-                          )
+                        <PlacesAutocomplete
+                          value={
+                            formData.orderAddressDetails[id]?.rideCheckPoint &&
+                            !resetInputs
+                              ? formData.orderAddressDetails[id]?.rideCheckPoint
+                              : nothing
+                          }
+                          onChange={(value) => handleChange(value, id)}
+                          onSelect={(value) => {
+                            handleSelect(value, id)
+                          }}
+                          key={`${destination.id}${id}`}
+                          // searchOptions={searchOptions}
+                        >
+                          {({
+                            getInputProps,
+                            suggestions,
+                            getSuggestionItemProps,
+                            loading,
+                          }) => {
+                            copiedSuggestions = [...suggestions].filter(
+                              (item) => {
+                                return !airportCenter4.includes(
+                                  item.description
+                                )
+                              }
+                            )
 
-                          return (
-                            <>
-                              <div
-                                className={styles.destinationsInputContainer}
-                              >
-                                {/* <div
+                            return (
+                              <>
+                                <div
+                                  className={styles.destinationsInputContainer}
+                                >
+                                  {/* <div
                                 className={
                                   redBorderOnSubmit || redBorderOnSubmit2
                                     ? classes.noBorderRed
@@ -260,170 +264,174 @@ const GoogleMap = React.memo(
                                 }
                                 className={classes.normalInputClass}
                               > */}
-                                {id > 0 && id < destinations.length - 1 && (
-                                  <span
-                                    className={styles.numberOfDestinationPoint}
-                                  >
-                                    {id}
-                                  </span>
-                                )}
-
-                                <input
-                                  // position="start"
-                                  // style={{
-                                  //   height: "40px",
-                                  //   // border: "none",
-                                  //   // marginTop: "-4px",
-                                  //   boxShadow: "4px 5px 30px rgba(0, 0, 0, 0.1)",
-                                  // }}
-                                  // variant="standard"
-                                  name="rideCheckPoint"
-                                  defaultValue={
-                                    destinations[id]?.rideCheckPoint
-                                  }
-                                  // fullWidth
-                                  // className={classes.normalInputClass}
-                                  inputRef={ref}
-                                  // className={styles.destinationsInputContainer}
-                                  // InputProps={{
-                                  //   startAdornment: (
-                                  //     <InputAdornment
-                                  //       style={{
-                                  //         marginRight: "10px",
-                                  //         marginLeft: "15px",
-                                  //       }}
-                                  //     >
-                                  //       {id === 0 && <StartLocationIcon />}
-                                  //       {id === destinations.length - 1 && (
-                                  //         <EndLocationIcon />
-                                  //       )}
-                                  //       {id > 0 &&
-                                  //         id < destinations.length - 1 && (
-                                  //           <span
-                                  //             style={{
-                                  //               borderRadius: "50%",
-                                  //               width: "24px",
-                                  //               height: "25px",
-                                  //               backgroundColor: "transparent",
-                                  //               border: "2px solid #FFFFFF",
-                                  //               textAlign: "center",
-                                  //               fontFamily: "Roboto",
-                                  //               fontWeight: "700",
-                                  //               fontSize: "0.9rem",
-                                  //               paddingTop: "2px",
-                                  //               marginLeft: "-5px",
-                                  //               marginRight: "-5px",
-                                  //             }}
-                                  //           >
-                                  //             {id}
-                                  //           </span>
-                                  //         )}
-                                  //     </InputAdornment>
-                                  //   ),
-                                  // endAdornment: (
-                                  //   <InputAdornment
-                                  //     style={{
-                                  //       cursor: "pointer",
-                                  //       // marginRight: "10px",
-                                  //     }}
-                                  //     position="end"
-                                  //   >
-                                  //     {id === destinations.length - 1 && (
-                                  //       <span
-                                  //         onClick={addEndPoint}
-                                  //         style={{
-                                  //           marginTop: "5px",
-                                  //         }}
-                                  //       >
-                                  //         <AddLocIcon />
-                                  //       </span>
-                                  //     )}
-                                  //     {id > 0 && id < destinations.length - 1 && (
-                                  //       <span
-                                  //         onClick={() => removeEndPoint(id)}
-                                  //         style={{ marginBottom: "6px" }}
-                                  //       >
-                                  //         <DeleteLocIcon />
-                                  //       </span>
-                                  //     )}
-                                  //   </InputAdornment>
-                                  // ),
-                                  // classes: {
-                                  //   root: classes.inputRoot,
-                                  //   underline:
-                                  //     redBorderOnSubmit || redBorderOnSubmit2
-                                  //       ? classes.noBorderRed
-                                  //       : classes.noBorderDefault,
-                                  //   input: classes.input,
-                                  // },
-                                  // }}
-                                  placeholder={id === 0 ? "From" : "To"}
-                                  className={setDestinationsIcons(
-                                    id,
-                                    destinations
-                                  )}
-                                  {...getInputProps()}
-                                />
-
-                                {id === destinations.length - 1 && (
-                                  <span
-                                    onClick={addEndPoint}
-                                    className={styles.addLocationIcon}
-                                  >
-                                    <AddLocIcon />
-                                  </span>
-                                )}
-                                {id > 0 && id < destinations.length - 1 && (
-                                  <span
-                                    onClick={() => removeEndPoint(id)}
-                                    className={styles.deleteLocationIcon}
-                                  >
-                                    <DeleteLocIcon />
-                                  </span>
-                                )}
-                                {/* </div> */}
-
-                                <div className={styles.dropDown}>
-                                  {loading && (
-                                    <div
-                                      // style={{
-                                      //   alignItems: "center",
-                                      //   color: "green",
-                                      // }}
-                                      className={styles.dropDownLoadingText}
+                                  {id > 0 && id < destinations.length - 1 && (
+                                    <span
+                                      className={
+                                        styles.numberOfDestinationPoint
+                                      }
                                     >
-                                      Loading...
-                                    </div>
+                                      {id}
+                                    </span>
                                   )}
-                                  {copiedSuggestions.map((suggestion, id) => {
-                                    // console.log(copiedSuggestions)
 
-                                    // inline style for demonstration purpose
-                                    // const style = suggestion.active
-                                    //   ? {
-                                    //       backgroundColor: "#bababa",
+                                  <input
+                                    // position="start"
+                                    // style={{
+                                    //   height: "40px",
+                                    //   // border: "none",
+                                    //   // marginTop: "-4px",
+                                    //   boxShadow: "4px 5px 30px rgba(0, 0, 0, 0.1)",
+                                    // }}
+                                    // variant="standard"
+                                    name="rideCheckPoint"
+                                    defaultValue={
+                                      destinations[id]?.rideCheckPoint
+                                    }
+                                    // fullWidth
+                                    // className={classes.normalInputClass}
+                                    inputRef={ref}
+                                    // className={styles.destinationsInputContainer}
+                                    // InputProps={{
+                                    //   startAdornment: (
+                                    //     <InputAdornment
+                                    //       style={{
+                                    //         marginRight: "10px",
+                                    //         marginLeft: "15px",
+                                    //       }}
+                                    //     >
+                                    //       {id === 0 && <StartLocationIcon />}
+                                    //       {id === destinations.length - 1 && (
+                                    //         <EndLocationIcon />
+                                    //       )}
+                                    //       {id > 0 &&
+                                    //         id < destinations.length - 1 && (
+                                    //           <span
+                                    //             style={{
+                                    //               borderRadius: "50%",
+                                    //               width: "24px",
+                                    //               height: "25px",
+                                    //               backgroundColor: "transparent",
+                                    //               border: "2px solid #FFFFFF",
+                                    //               textAlign: "center",
+                                    //               fontFamily: "Roboto",
+                                    //               fontWeight: "700",
+                                    //               fontSize: "0.9rem",
+                                    //               paddingTop: "2px",
+                                    //               marginLeft: "-5px",
+                                    //               marginRight: "-5px",
+                                    //             }}
+                                    //           >
+                                    //             {id}
+                                    //           </span>
+                                    //         )}
+                                    //     </InputAdornment>
+                                    //   ),
+                                    // endAdornment: (
+                                    //   <InputAdornment
+                                    //     style={{
                                     //       cursor: "pointer",
-                                    //       textTransform: "none",
-                                    //       justifyContent: "center",
+                                    //       // marginRight: "10px",
+                                    //     }}
+                                    //     position="end"
+                                    //   >
+                                    //     {id === destinations.length - 1 && (
+                                    //       <span
+                                    //         onClick={addEndPoint}
+                                    //         style={{
+                                    //           marginTop: "5px",
+                                    //         }}
+                                    //       >
+                                    //         <AddLocIcon />
+                                    //       </span>
+                                    //     )}
+                                    //     {id > 0 && id < destinations.length - 1 && (
+                                    //       <span
+                                    //         onClick={() => removeEndPoint(id)}
+                                    //         style={{ marginBottom: "6px" }}
+                                    //       >
+                                    //         <DeleteLocIcon />
+                                    //       </span>
+                                    //     )}
+                                    //   </InputAdornment>
+                                    // ),
+                                    // classes: {
+                                    //   root: classes.inputRoot,
+                                    //   underline:
+                                    //     redBorderOnSubmit || redBorderOnSubmit2
+                                    //       ? classes.noBorderRed
+                                    //       : classes.noBorderDefault,
+                                    //   input: classes.input,
+                                    // },
+                                    // }}
+                                    placeholder={id === 0 ? "From" : "To"}
+                                    className={setDestinationsIcons(
+                                      id,
+                                      destinations
+                                    )}
+                                    {...getInputProps()}
+                                  />
 
-                                    //       width: "340px",
-                                    //     }
-                                    //   : {
-                                    //       backgroundColor: "white",
-                                    //       cursor: "pointer",
-                                    //       textTransform: "none",
-                                    //       width: "340px",
+                                  {id === destinations.length - 1 && (
+                                    <span
+                                      onClick={addEndPoint}
+                                      className={styles.addLocationIcon}
+                                    >
+                                      <AddLocIcon />
+                                    </span>
+                                  )}
+                                  {id > 0 && id < destinations.length - 1 && (
+                                    <span
+                                      onClick={() => removeEndPoint(id)}
+                                      className={styles.deleteLocationIcon}
+                                    >
+                                      <DeleteLocIcon />
+                                    </span>
+                                  )}
+                                  {/* </div> */}
 
-                                    //       justifyContent: "center",
-                                    //     }
-
-                                    return (
+                                  <div className={styles.dropDown}>
+                                    {loading && (
                                       <div
-                                        key={`${id}${suggestion.description}`}
-                                        {...getSuggestionItemProps(suggestion)}
-                                        className={styles.itemInsideDropDown}
+                                        // style={{
+                                        //   alignItems: "center",
+                                        //   color: "green",
+                                        // }}
+                                        className={styles.dropDownLoadingText}
                                       >
-                                        {/* <MenuItem
+                                        Loading...
+                                      </div>
+                                    )}
+                                    {copiedSuggestions.map((suggestion, id) => {
+                                      // console.log(copiedSuggestions)
+
+                                      // inline style for demonstration purpose
+                                      // const style = suggestion.active
+                                      //   ? {
+                                      //       backgroundColor: "#bababa",
+                                      //       cursor: "pointer",
+                                      //       textTransform: "none",
+                                      //       justifyContent: "center",
+
+                                      //       width: "340px",
+                                      //     }
+                                      //   : {
+                                      //       backgroundColor: "white",
+                                      //       cursor: "pointer",
+                                      //       textTransform: "none",
+                                      //       width: "340px",
+
+                                      //       justifyContent: "center",
+                                      //     }
+
+                                      return (
+                                        <div
+                                          key={`${id}${suggestion.description}`}
+                                          {...getSuggestionItemProps(
+                                            suggestion
+                                          )}
+                                          className={styles.itemInsideDropDown}
+                                        >
+                                          {/* <MenuItem
                                         onMouseEnter={(e) => (
                                           (e.target.style.backgroundColor =
                                             "black"),
@@ -441,21 +449,22 @@ const GoogleMap = React.memo(
                                           color: "black",
                                         }}
                                       > */}
-                                        {suggestion.description}
-                                        {/* </MenuItem> */}
-                                      </div>
-                                    )
-                                  })}
+                                          {suggestion.description}
+                                          {/* </MenuItem> */}
+                                        </div>
+                                      )
+                                    })}
+                                  </div>
                                 </div>
-                              </div>
-                            </>
-                          )
-                        }}
-                      </PlacesAutocomplete>
-                    </CSSTransition>
-                  )
-                })}
-              </TransitionGroup>
+                              </>
+                            )
+                          }}
+                        </PlacesAutocomplete>
+                      </CSSTransition>
+                    )
+                  })}
+                </TransitionGroup>
+              </div>
             </div>
           </div>
         </>

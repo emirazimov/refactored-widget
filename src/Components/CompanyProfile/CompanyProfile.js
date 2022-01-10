@@ -169,7 +169,10 @@ const CompanyProfile = ({
                   setGateMeetingRedux(false)
                 }}
               >
-                <CloseWidgetIcon />
+                <span
+                  className={styles.companyProfileCloseIconSelfCustomCreation}
+                ></span>
+                {/* <CloseWidgetIcon /> */}
               </div>
             </div>
             {/* )} */}

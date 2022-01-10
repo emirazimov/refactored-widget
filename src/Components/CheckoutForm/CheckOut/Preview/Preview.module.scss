@@ -4,9 +4,13 @@
 @use "../../../MAINCSSFORWHOLECOMPONENTS/SidePaddings.module" as *;
 @use "../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
   as *;
+@use "../../../MAINCSSFORWHOLECOMPONENTS/_MainInputsStyles.module.scss" as *;
 
 @include car-descriptions;
-
+.carContainer {
+  @include margin-top-bottom-for-adressfrom-inputs;
+  opacity: 1;
+}
 .previewWrapper {
   @include whole-app-background;
   @include side-paddings-for-whole-widget-page;
@@ -58,7 +62,9 @@
 
 .notesTextFieldContainer {
   width: 100%;
-  margin-bottom: 15px;
+  // @include margin-top-bottom-for-adressfrom-inputs;
+  margin-top: 30px;
+  // margin-bottom: 15px;
 }
 .notesTextFieldSelf {
   width: 100%;
@@ -100,6 +106,8 @@
 // @include buttons-group;
 .buttonGroupBlockContainer {
   @include buttonGroupBlockContainer;
+  @include margin-top-bottom-for-adressfrom-inputs;
+  @include buttons-margin-bottom;
 }
 
 .buttonBackSelf {
