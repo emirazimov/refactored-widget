@@ -1,41 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { FormProvider, useForm } from 'react-hook-form'
+import React, { useState, useEffect } from "react"
+import { connect } from "react-redux"
+import { FormProvider, useForm } from "react-hook-form"
 import {
   CustomFormInput,
   CustomFormInputForPayment,
   CustomMaskInput,
-} from '../CustomFormInput/CustomFormInput'
-import { makeStyles } from '@material-ui/core/styles'
-import { BackArrowIcon } from '../../../../assets/icons'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import Autocomplete from '@material-ui/lab/Autocomplete'
-import Button from '@material-ui/core/Button'
-import Checkbox from '@material-ui/core/Checkbox'
+} from "../CustomFormInput/CustomFormInput"
+import { makeStyles } from "@material-ui/core/styles"
+import { BackArrowIcon } from "../../../../assets/icons"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import Grid from "@material-ui/core/Grid"
+import Typography from "@material-ui/core/Typography"
+import Autocomplete from "@material-ui/lab/Autocomplete"
+import Button from "@material-ui/core/Button"
+import Checkbox from "@material-ui/core/Checkbox"
 // import Switch from "@material-ui/core/Switch"
-import { Link } from '@material-ui/core'
-import { placesApi } from '../../../../api/api'
-import TextField from '@material-ui/core/TextField'
+import { Link } from "@material-ui/core"
+import { placesApi } from "../../../../api/api"
+import TextField from "@material-ui/core/TextField"
 import {
   createReservation,
   setPaymentForm,
-} from '../../../../Redux/form-reducer'
-import PrivacyPolicy from '../../../TermsOfUse/PrivacyPolicy/PrivacyPolicy'
-import TermsOfUse from '../../../TermsOfUse/TermOfUse/TermOfUse'
-import { withStyles } from '@material-ui/styles'
+} from "../../../../Redux/form-reducer"
+import PrivacyPolicy from "../../../TermsOfUse/PrivacyPolicy/PrivacyPolicy"
+import TermsOfUse from "../../../TermsOfUse/TermOfUse/TermOfUse"
+import { withStyles } from "@material-ui/styles"
 // import { Number, Cvc, Expiration } from "react-credit-card-primitives"
 
-import Cleave from 'cleave.js/react'
-import './PaymentStyles.css'
-import { AntSwitch } from '../AdressForm/AdressFormStyles'
-import { useStyles } from './PaymentStyles'
+import Cleave from "cleave.js/react"
+import "./PaymentStyles.css"
+import { AntSwitch } from "../AdressForm/AdressFormStyles"
+import { useStyles } from "./PaymentStyles"
 // import { styles } from "@material-ui/pickers/views/Calendar/Calendar"
-import styles from './Payment.module.scss'
-import { Switch } from '../../../Helpers/Switch/Switch'
-import ReactInputMask from 'react-input-mask'
+import styles from "./Payment.module.scss"
+import { Switch } from "../../../Helpers/Switch/Switch"
+import ReactInputMask from "react-input-mask"
 
 // const SignupSchema = yup.object().shape({
 //   // greetClientInfo: yup.object().shape({
@@ -106,8 +106,8 @@ const PaymentUIComponent = ({
   const classes = useStyles()
 
   const inputStyle = {
-    WebkitBoxShadow: '0 0 0 1000px transparent inset',
-    height: '0px',
+    WebkitBoxShadow: "0 0 0 1000px transparent inset",
+    height: "0px",
     // width: "100%",
   }
 
@@ -257,16 +257,16 @@ const PaymentUIComponent = ({
                   >
                     <input
                       // variant="standard"
-                      name='greetClientInfo.firstName'
-                      autoComplete='off'
-                      placeholder='First Name'
+                      name="greetClientInfo.firstName"
+                      autoComplete="off"
+                      placeholder="First Name"
                       // className={classes.inputPlaceholderFontSize}
                       defaultValue={formSummary.greetClientInfo.firstName}
                       // style={{
                       //   width: "100%",
                       //   background: "transparent",
                       // }}
-                      className={styles.cardholderInformationInputSelf}
+                      className={styles.cardholderInformationInputSelfFirstName}
                       ref={register}
                     />
                   </div>
@@ -277,13 +277,13 @@ const PaymentUIComponent = ({
                   >
                     <input
                       // variant="standard"
-                      name='greetClientInfo.lastName'
-                      autoComplete='off'
+                      name="greetClientInfo.lastName"
+                      autoComplete="off"
                       // className={classes.inputPlaceholderFontSize}
                       defaultValue={formSummary.greetClientInfo.lastName}
-                      placeholder='Last Name'
+                      placeholder="Last Name"
                       // style={{ width: "100%", background: "transparent" }}
-                      className={styles.cardholderInformationInputSelf}
+                      className={styles.cardholderInformationInputSelfLastName}
                       ref={register}
                     />
                   </div>
@@ -305,10 +305,10 @@ const PaymentUIComponent = ({
                     className={styles.cardholderInformationInputSelfContainer1}
                   >
                     <input
-                      name='greetClientInfo.email'
+                      name="greetClientInfo.email"
                       // variant="standard"
-                      autoComplete='off'
-                      placeholder='Email'
+                      autoComplete="off"
+                      placeholder="Email"
                       // className={classes.inputPlaceholderFontSize}
                       defaultValue={formSummary.greetClientInfo.email}
                       // style={{ width: "100%", background: "transparent" }}
@@ -323,10 +323,10 @@ const PaymentUIComponent = ({
                   >
                     <input
                       // variant="standard"
-                      name='greetClientInfo.phoneNumber'
-                      autoComplete='off'
+                      name="greetClientInfo.phoneNumber"
+                      autoComplete="off"
                       defaultValue={formSummary.greetClientInfo.phoneNumber}
-                      placeholder='Phone Number'
+                      placeholder="Phone Number"
                       // className={classes.inputPlaceholderFontSize}
                       // style={{ width: "100%", background: "transparent" }}
                       className={styles.cardholderInformationInputSelf}
@@ -362,33 +362,38 @@ const PaymentUIComponent = ({
                 className={styles.cardholderInformationInputsWrapper}
               >
                 <div
-                  // item
-                  // xs={6}
-
-                  className={
-                    styles.cardholderInformationInputSelfContainerJustForFirstAndLastName
-                  }
-                  style={{ width: '50%' }}
+                  className={styles.cardholderInformationInputSelfContainer}
+                  style={{ width: "50%" }}
                 >
-                  <input
-                    // variant="standard"
-                    name='client.firstName'
-                    autoComplete='off'
-                    // className={classes.inputPlaceholderFontSize}
-                    defaultValue={formSummary.client.firstName}
-                    // style={{
-                    //   fontSize: "14px",
-                    //   width: "100%",
-                    //   background: "transparent",
-                    // }}
-                    placeholder='First Name'
-                    error={errors.client?.firstName ? true : false}
-                    className={styles.cardholderInformationInputSelf}
-                    ref={register}
-                    style={{ width: '100%' }}
-                  />
+                  <div
+                    // item
+                    // xs={6}
+
+                    className={
+                      styles.cardholderInformationInputSelfContainerJustForFirstAndLastName
+                    }
+                    style={{ width: "100%" }}
+                  >
+                    <input
+                      // variant="standard"
+                      name="client.firstName"
+                      autoComplete="off"
+                      // className={classes.inputPlaceholderFontSize}
+                      defaultValue={formSummary.client.firstName}
+                      // style={{
+                      //   fontSize: "14px",
+                      //   width: "100%",
+                      //   background: "transparent",
+                      // }}
+                      placeholder="First Name"
+                      error={errors.client?.firstName ? true : false}
+                      className={styles.cardholderInformationInputSelfFirstName}
+                      ref={register}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
                   {errors.client?.firstName && (
-                    <p className={classes.error}>
+                    <p className={styles.errorInputs}>
                       {errors.client?.firstName.message}
                     </p>
                   )}
@@ -397,23 +402,23 @@ const PaymentUIComponent = ({
                   // item
                   // xs={6}
                   className={styles.cardholderInformationInputSelfContainer}
-                  style={{ width: '50%' }}
+                  style={{ width: "50%" }}
                 >
                   <input
                     // variant="standard"
-                    name='client.lastName'
-                    autoComplete='off'
-                    placeholder='Last Name'
+                    name="client.lastName"
+                    autoComplete="off"
+                    placeholder="Last Name"
                     // className={classes.inputPlaceholderFontSize}
                     defaultValue={formSummary.client.lastName}
                     // style={{ width: "100%", background: "transparent" }}
                     error={errors.client?.lastName ? true : false}
-                    className={styles.cardholderInformationInputSelf}
+                    className={styles.cardholderInformationInputSelfLastName}
                     ref={register}
-                    style={{ width: '100%' }}
+                    style={{ width: "100%" }}
                   />
                   {errors.client?.lastName && (
-                    <p className={classes.error}>
+                    <p className={styles.errorInputs}>
                       {errors.client?.lastName.message}
                     </p>
                   )}
@@ -436,11 +441,11 @@ const PaymentUIComponent = ({
                   className={styles.cardholderInformationInputSelfContainer1}
                 >
                   <input
-                    name='client.email'
+                    name="client.email"
                     // variant="standard"
-                    autoComplete='off'
+                    autoComplete="off"
                     // className={classes.inputPlaceholderFontSize}
-                    placeholder='Email'
+                    placeholder="Email"
                     // style={{ width: "100%", background: "transparent" }}
                     defaultValue={formSummary.client.email}
                     error={errors.client?.email ? true : false}
@@ -448,7 +453,7 @@ const PaymentUIComponent = ({
                     ref={register}
                   />
                   {errors.client?.email && (
-                    <p className={classes.error}>
+                    <p className={styles.errorInputs}>
                       {errors.client?.email.message}
                     </p>
                   )}
@@ -460,18 +465,18 @@ const PaymentUIComponent = ({
                 >
                   <input
                     // variant="standard"
-                    name='client.phoneNumber'
-                    autoComplete='off'
+                    name="client.phoneNumber"
+                    autoComplete="off"
                     // className={classes.inputPlaceholderFontSize}
                     defaultValue={formSummary.client.phoneNumber}
-                    placeholder='Phone Number'
+                    placeholder="Phone Number"
                     // style={{ width: "100%", background: "transparent" }}
                     error={errors.client?.phoneNumber ? true : false}
                     className={styles.cardholderInformationInputSelf}
                     ref={register}
                   />
                   {errors.client?.phoneNumber && (
-                    <p className={classes.error}>
+                    <p className={styles.errorInputs}>
                       {errors.client?.phoneNumber.message}
                     </p>
                   )}
@@ -489,12 +494,12 @@ const PaymentUIComponent = ({
                   }
                 >
                   <input
-                    name='client.address'
+                    name="client.address"
                     // variant="standard"
-                    autoComplete='off'
+                    autoComplete="off"
                     // className={classes.inputPlaceholderFontSize}
                     // style={{ height: "100%", background: "transparent" }}
-                    placeholder='Address'
+                    placeholder="Address"
                     defaultValue={formSummary.client.address}
                     // fullWidth
                     ref={register}
@@ -504,7 +509,7 @@ const PaymentUIComponent = ({
                     }
                   />
                   {errors.client?.address && (
-                    <p className={classes.error}>
+                    <p className={styles.errorInputs}>
                       {errors.client?.address.message}
                     </p>
                   )}
@@ -525,10 +530,10 @@ const PaymentUIComponent = ({
                     // {...params}
                     // fullWidth
                     // className={classes.inputPlaceholderFontSize}
-                    placeholder='State'
+                    placeholder="State"
                     // variant="standard"
                     // style={{ background: "transparent" }}
-                    autoComplete='off'
+                    autoComplete="off"
                     // InputProps={{
                     //   ...params.InputProps,
                     //   style: { inputStyle },
@@ -547,13 +552,13 @@ const PaymentUIComponent = ({
                         : setStatesId(null)
                       // newValue ? setStatesId(newValue.id) : setStatesId(null)
                     }}
-                    list='states-list'
+                    list="states-list"
                     className={
                       styles.cardholderInformationInputWithFullWidthSelf
                     }
                   />
 
-                  <datalist id='states-list'>
+                  <datalist id="states-list">
                     {/* id="combo-box-demo"
                   options={states}
                   defaultValue={null}
@@ -588,7 +593,9 @@ const PaymentUIComponent = ({
                     ))}
                   </datalist>
 
-                  {statesIdError && <p className={classes.error}>Required</p>}
+                  {statesIdError && (
+                    <p className={styles.errorInputs}>Required</p>
+                  )}
                 </div>
               </div>
               <div
@@ -661,10 +668,10 @@ const PaymentUIComponent = ({
                     // {...params}
                     // fullWidth
                     // className={classes.inputPlaceholderFontSize}
-                    placeholder='Cities'
+                    placeholder="Cities"
                     // variant="standard"
                     // style={{ background: "transparent" }}
-                    autoComplete='off'
+                    autoComplete="off"
                     // InputProps={{
                     //   ...params.InputProps,
                     //   style: { inputStyle },
@@ -675,7 +682,7 @@ const PaymentUIComponent = ({
                     //   },
                     //   // disableUnderline: true,
                     // }}
-                    list='cities-list'
+                    list="cities-list"
                     // className={
                     //   styles.cardholderInformationInputWithFullWidthSelf
                     // }
@@ -688,13 +695,13 @@ const PaymentUIComponent = ({
                     }}
                     className={styles.cardholderInformationInputSelf}
                     style={{
-                      width: '100%',
-                      paddingRight: '25px',
-                      boxSizing: 'border-box',
+                      width: "100%",
+                      paddingRight: "25px",
+                      boxSizing: "border-box",
                     }}
                   />
 
-                  <datalist id='cities-list'>
+                  <datalist id="cities-list">
                     {/* id="combo-box-demo"
                   options={states}
                   defaultValue={null}
@@ -736,7 +743,9 @@ const PaymentUIComponent = ({
                     ))}
                   </datalist>
 
-                  {citiesIdError && <p className={classes.error}>Required</p>}
+                  {citiesIdError && (
+                    <p className={styles.errorInputs}>Required</p>
+                  )}
                   {/* </div> */}
                 </div>
                 <div
@@ -746,10 +755,10 @@ const PaymentUIComponent = ({
                 >
                   <input
                     // variant="standard"
-                    name='client.zip'
-                    autoComplete='off'
+                    name="client.zip"
+                    autoComplete="off"
                     // className={classes.inputPlaceholderFontSize}
-                    placeholder='ZIP'
+                    placeholder="ZIP"
                     // style={{ width: "100%", background: "transparent" }}
                     ref={register}
                     defaultValue={formSummary.client.zip}
@@ -757,7 +766,7 @@ const PaymentUIComponent = ({
                     className={styles.cardholderInformationInputSelf}
                   />
                   {errors.client?.zip && (
-                    <p className={classes.error}>
+                    <p className={styles.errorInputs}>
                       {errors.client?.zip.message}
                     </p>
                   )}
@@ -815,23 +824,23 @@ const PaymentUIComponent = ({
                   }
                 >
                   <Cleave
-                    delimiter='-'
+                    delimiter="-"
                     options={{
                       creditCard: true,
                       onCreditCardTypeChanged: handleType,
                     }}
-                    name='paymentInfo.cardNumber'
+                    name="paymentInfo.cardNumber"
                     error={errors.paymentInfo?.cardNumber ? true : false}
                     onChange={handleNum}
-                    placeholder='Card number'
-                    className='credit-card-input-by-bookinglane'
+                    placeholder="Card number"
+                    className="credit-card-input-by-bookinglane"
                     className={
                       styles.cardholderInformationInputWithFullWidthSelf
                     }
                   />
 
                   {cardForPaymentSubmitError && (
-                    <p className={classes.error}>Required</p>
+                    <p className={styles.errorInputs}>Required</p>
                   )}
                 </div>
               </div>
@@ -851,18 +860,18 @@ const PaymentUIComponent = ({
                   className={styles.cardholderInformationInputSelfContainer1}
                 >
                   <CustomMaskInput
-                    name='paymentInfo.month'
+                    name="paymentInfo.month"
                     ref={register}
-                    mask='99/99'
-                    autoComplete='off'
+                    mask="99/99"
+                    autoComplete="off"
                     defaultValue={`${formSummary.paymentInfo.month}/${formSummary.paymentInfo.year}`}
                   >
                     {() => (
                       <input
                         // variant="standard"
                         // className={classes.inputPlaceholderFontSize}
-                        placeholder='mm/yy'
-                        autoComplete='off'
+                        placeholder="mm/yy"
+                        autoComplete="off"
                         // fullWidth
                         error={errors.paymentInfo?.month ? true : false}
                         // ref={register}
@@ -882,7 +891,7 @@ const PaymentUIComponent = ({
                     )}
                   </CustomMaskInput>
                   {errors.paymentInfo?.month && (
-                    <p className={classes.error}>
+                    <p className={styles.errorInputs}>
                       {errors.paymentInfo?.month.message}
                     </p>
                   )}
@@ -893,19 +902,19 @@ const PaymentUIComponent = ({
                   className={styles.cardholderInformationInputSelfContainer2}
                 >
                   <CustomMaskInput
-                    name='paymentInfo.cvc'
+                    name="paymentInfo.cvc"
                     ref={register}
                     // type="date"
-                    mask={cardType == 'amex' ? '9999' : '999'}
-                    autoComplete='off'
+                    mask={cardType == "amex" ? "9999" : "999"}
+                    autoComplete="off"
                     defaultValue={formSummary.paymentInfo.cvc}
                   >
                     {() => (
                       <input
                         // variant="standard"
                         // className={classes.inputPlaceholderFontSize}
-                        placeholder='CVV/CVC'
-                        autoComplete='off'
+                        placeholder="CVV/CVC"
+                        autoComplete="off"
                         // fullWidth
                         error={errors.paymentInfo?.cvc ? true : false}
                         // ref={register}
@@ -925,7 +934,7 @@ const PaymentUIComponent = ({
                     )}
                   </CustomMaskInput>
                   {errors.paymentInfo?.cvc && (
-                    <p className={classes.error}>
+                    <p className={styles.errorInputs}>
                       {errors.paymentInfo?.cvc.message}
                     </p>
                   )}
@@ -938,7 +947,7 @@ const PaymentUIComponent = ({
               className={styles.checkboxWrapper}
             >
               <label className={styles.checkmarkContainer}>
-                <input type='checkbox' onClick={() => setChecked(!checked)} />
+                <input type="checkbox" onClick={() => setChecked(!checked)} />
                 <span className={styles.checkmarkSelf}></span>
               </label>
               {/* <a underline="always" style={{ color: "#BABABA" }}> */}
@@ -963,8 +972,8 @@ const PaymentUIComponent = ({
               >
                 {/* <Grid item xs={6}> */}
                 <button
-                  variant='contained'
-                  color='primary'
+                  variant="contained"
+                  color="primary"
                   // fullWidth
                   onClick={back}
                   // startIcon={<BackArrowIcon />}
@@ -978,7 +987,7 @@ const PaymentUIComponent = ({
                 <button
                   // variant="contained"
                   // fullWidth
-                  type='submit'
+                  type="submit"
                   // color="primary"
                   // className={classes.payButtonSelf}
                   disabled={!checked}

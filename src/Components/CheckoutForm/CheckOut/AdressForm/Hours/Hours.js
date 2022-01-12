@@ -106,7 +106,7 @@ const Hours = ({
           <input
             ref={register}
             name="hours"
-            className="passenger"
+            // className="passenger"
             onChange={(e) => {
               setHoursAddressForm(e.target.value)
             }}

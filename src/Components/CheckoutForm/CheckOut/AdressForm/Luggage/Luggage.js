@@ -220,29 +220,29 @@ const Luggage = ({ luggage, setLuggage }) => {
           <input
             ref={register}
             name="hours"
-            className="luggage"
+            // className="luggage"
             onChange={(e) => {
               setLuggage(e.target.value)
             }}
             value={luggage}
             size="1"
-            style={{
-              // pointerEvents: "none",
-              minWidth: "34px",
-              maxWidth: "34px",
-              // marginLeft: "2px",
-              // marginRight: "2.5px",
-              // marginBottom: "4px",
-              backgroundColor: "transparent",
-              border: "none",
-              color: "white",
-              textAlign: "center",
-              fontFamily: "Roboto",
-              textTransform: "none",
-              fontWeight: "400",
-              fontSize: "14px",
-              height: "100%",
-            }}
+            // style={{
+            //   // pointerEvents: "none",
+            //   minWidth: "34px",
+            //   maxWidth: "34px",
+            //   // marginLeft: "2px",
+            //   // marginRight: "2.5px",
+            //   // marginBottom: "4px",
+            //   backgroundColor: "transparent",
+            //   border: "none",
+            //   color: "white",
+            //   textAlign: "center",
+            //   fontFamily: "Roboto",
+            //   textTransform: "none",
+            //   fontWeight: "400",
+            //   fontSize: "14px",
+            //   height: "100%",
+            // }}
             type="number"
             className={styles.luggageQuantityInputSelf}
           />

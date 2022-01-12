@@ -1,9 +1,8 @@
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_IconsForWholeAddressFormPage.scss"
   as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_FontColor.module.scss" as *;
-
-@use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
-  as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_MainCountersStyles.module.scss" as *;
 
 .boosterSeatCounterWrapper,
 .safetySeatCounterWrapper {
@@ -12,6 +11,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+.safetySeatCounterWrapper {
+  margin-top: 11px;
 }
 .boosterSeatIconAndTitleContainer,
 .safetySeatIconAndTitleContainer {
@@ -32,6 +34,11 @@
   align-items: center;
 }
 
+.boosterSeatCounterInputSelf,
+.safetySeatCounterInputSelf {
+  @include counters-input-styles;
+}
+
 .boosterSeatCounterMinusSelf,
 .boosterSeatCounterPlusSelf,
 .safetySeatCounterMinusSelf,
@@ -42,9 +49,15 @@
 .boosterSeatCounterMinusSelf,
 .safetySeatCounterMinusSelf {
   @include counters-buttons-minus-icon;
+  border: $inputs-border;
+  border-top-left-radius: $inputs-border-radius;
+  border-bottom-left-radius: $inputs-border-radius;
 }
 
 .boosterSeatCounterPlusSelf,
 .safetySeatCounterPlusSelf {
   @include counters-buttons-plus-icon;
+  border: $inputs-border;
+  border-top-right-radius: $inputs-border-radius;
+  border-bottom-right-radius: $inputs-border-radius;
 }

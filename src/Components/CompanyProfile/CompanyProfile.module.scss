@@ -11,6 +11,8 @@
   padding-top: 10px;
   padding-bottom: 5px;
   border-bottom: 1px solid grey;
+  border-top-left-radius: $whole-app-border-radius;
+  border-top-right-radius: $whole-app-border-radius;
 }
 .companyProfileImageSelf {
   width: 55px;

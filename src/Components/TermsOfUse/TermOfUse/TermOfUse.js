@@ -1,18 +1,18 @@
-import React from 'react'
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import { termsApi } from '../../../api/api'
-import { p } from '@material-ui/core'
-import styles from './TermOfUse.module.scss'
-import { Modal } from '../../Helpers/Modal/Modal'
+import React from "react"
+import Button from "@material-ui/core/Button"
+import Dialog from "@material-ui/core/Dialog"
+import DialogActions from "@material-ui/core/DialogActions"
+import DialogContent from "@material-ui/core/DialogContent"
+import DialogContentText from "@material-ui/core/DialogContentText"
+import DialogTitle from "@material-ui/core/DialogTitle"
+import { termsApi } from "../../../api/api"
+import { p } from "@material-ui/core"
+import styles from "./TermOfUse.module.scss"
+import { Modal } from "../../Helpers/Modal/Modal"
 
 export default function TermsOfUse() {
   const [open, setOpen] = React.useState(false)
-  const [term, setTerm] = React.useState('')
+  const [term, setTerm] = React.useState("")
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -22,35 +22,35 @@ export default function TermsOfUse() {
     setOpen(false)
   }
   const [show, setShow] = React.useState(false)
-  React.useEffect(() => {
-    let componentMounted = true
-    if (open) {
-      const fetchTerms = async () => {
-        const data = await termsApi.getTermOfUse()
-        if (componentMounted) {
-          setTerm(data)
-        }
-        fetchTerms()
-      }
-    }
-    return () => {
-      componentMounted = false
-    }
-  }, [])
+  // React.useEffect(() => {
+  //   let componentMounted = true
+  //   if (open) {
+  //     const fetchTerms = async () => {
+  //       const data = await termsApi.getTermOfUse()
+  //       if (componentMounted) {
+  //         setTerm(data)
+  //       }
+  //       fetchTerms()
+  //     }
+  //   }
+  //   return () => {
+  //     componentMounted = false
+  //   }
+  // }, [])
 
-  let descriptionElementRef = React.useRef(null)
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef
-      if (descriptionElement !== null) {
-        descriptionElement.focus()
-      }
-    }
-  }, [open])
+  // let descriptionElementRef = React.useRef(null)
+  // React.useEffect(() => {
+  //   if (open) {
+  //     const { current: descriptionElement } = descriptionElementRef
+  //     if (descriptionElement !== null) {
+  //       descriptionElement.focus()
+  //     }
+  //   }
+  // }, [open])
 
   return (
     <>
-      <button
+      <span
         onClick={() => setShow(true)}
         // disableRipple
         // style={{
@@ -62,8 +62,8 @@ export default function TermsOfUse() {
         // }}
         className={styles.termOfUseOpenButton}
       >
-        Terms
-      </button>
+        Terms&nbsp;
+      </span>
       <Modal
         onClose={() => setShow(false)}
         show={show}
@@ -74,7 +74,7 @@ export default function TermsOfUse() {
           id='scroll-dialog-title'
           style={{ height: '55px', backgroundColor: 'black' }}
         > */}
-        <div style={{ width: '600px', height: '100%' }}>
+        <div style={{ width: "600px", height: "100%" }}>
           <p>Terms Of Use</p>
           {/* </DialogTitle> */}
           {/* <DialogContent style={{ backgroundColor: 'black' }}>
@@ -360,7 +360,7 @@ export default function TermsOfUse() {
               Manager.
             </p>
 
-            <p variant='h5' color='textPrimary' paragraph={true}>
+            <p variant="h5" color="textPrimary" paragraph={true}>
               TERMS AND CONDITIONS OF SALE
             </p>
 

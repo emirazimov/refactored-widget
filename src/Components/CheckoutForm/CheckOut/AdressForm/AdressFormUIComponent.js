@@ -143,15 +143,7 @@ const AdressFormwithoutReactMemo = ({
 
   const MeetAndGreetSwitchBlock = (
     <>
-      <div
-        item
-        style={{
-          width: "100%",
-          marginTop: "8px",
-          marginBottom: "8px",
-        }}
-        className={styles.meetAndGreetWrapper}
-      >
+      <div className={styles.meetAndGreetWrapper}>
         <div
           // container
           // direction="row"
@@ -167,7 +159,7 @@ const AdressFormwithoutReactMemo = ({
             className={styles.meetAndGreetIconAndNameContainer}
           >
             <span className={styles.meetAndGreetIconSelf}></span>
-            <h3
+            <span
               // className={classes.swichesTextColor}
               // style={{
               //   fontSize: "15px",
@@ -176,7 +168,7 @@ const AdressFormwithoutReactMemo = ({
               className={styles.meetAndGreetIconAndNameTitle}
             >
               {"Meet & Greet/Luggage Assist"}
-            </h3>
+            </span>
           </div>
 
           <div className={styles.meetAndGreetSwitch}>
@@ -840,7 +832,7 @@ const AdressFormwithoutReactMemo = ({
                       className={styles.safetySeatIconAndNameContainer}
                     >
                       <span className={styles.safetySeatIconSelf}></span>
-                      <h3
+                      <span
                         // className={classes.swichesTextColor}
                         // style={{
                         //   fontSize: "14px",
@@ -849,7 +841,7 @@ const AdressFormwithoutReactMemo = ({
                         className={styles.safetySeatIconAndNameTitle}
                       >
                         Safety Seat
-                      </h3>
+                      </span>
                     </div>
                     {/* <AntSwitch
                       color="primary"
@@ -913,13 +905,13 @@ const AdressFormwithoutReactMemo = ({
                     className={styles.hourlyIconAndNameContainer}
                   >
                     <span className={styles.hourlyIconSelf}></span>
-                    <h3
+                    <span
                       // className={classes.swichesTextColor}
                       // style={{ fontSize: "14px" }}
                       className={styles.hourlyIconAndNameTitle}
                     >
                       Hourly
-                    </h3>
+                    </span>
                   </div>
                   {/* <AntSwitch
                     color="primary"
@@ -1014,7 +1006,7 @@ const AdressFormwithoutReactMemo = ({
                   // item
                   className={styles.preferencesTitleContainer}
                 >
-                  <h3 className={styles.preferencesTitle}>Preferences</h3>
+                  <span className={styles.preferencesTitle}>Preferences</span>
                 </div>
                 <div
                   // item

@@ -142,24 +142,24 @@ export default React.memo(function PassengerQuantity({
             className="passenger"
             value={passengersQuantityForBackStep}
             size="1"
-            style={{
-              // pointerEvents: "none",
-              minWidth: "34px",
-              maxWidth: "34px",
-              // marginLeft: "2px",
-              // marginRight: "2.5px",
-              // marginBottom: "4px",
-              backgroundColor: "transparent",
-              border: "none",
-              color: "white",
-              textAlign: "center",
-              fontFamily: "Roboto",
-              textTransform: "none",
-              fontWeight: "400",
-              fontSize: "14px",
-              // height: "100%",
-              // borderBottom: "2px solid #AC8159",
-            }}
+            // style={{
+            //   // pointerEvents: "none",
+            //   minWidth: "34px",
+            //   maxWidth: "34px",
+            //   // marginLeft: "2px",
+            //   // marginRight: "2.5px",
+            //   // marginBottom: "4px",
+            //   backgroundColor: "transparent",
+            //   border: "none",
+            //   color: "white",
+            //   textAlign: "center",
+            //   fontFamily: "Roboto",
+            //   textTransform: "none",
+            //   fontWeight: "400",
+            //   fontSize: "14px",
+            //   // height: "100%",
+            //   // borderBottom: "2px solid #AC8159",
+            // }}
             type="number"
             className={styles.passengerQuantityInputSelf}
           />

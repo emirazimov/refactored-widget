@@ -4,6 +4,7 @@
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/MainInputsStyles.module" as *;
 @use "../../../../MAINCSSFORWHOLECOMPONENTS/_ButtonsGroupBackAndNext.module.scss"
   as *;
+@use "../../../../MAINCSSFORWHOLECOMPONENTS/_MainCountersStyles.module.scss" as *;
 
 .luggageQuantityWrapper {
   display: flex;
@@ -29,6 +30,9 @@
   height: 24px;
   @include counters-and-switches-icon-margins;
 }
+.luggageQuantityInputSelf {
+  @include counters-input-styles;
+}
 
 .luggageQuantityMinusSelf,
 .luggageQuantityPlusSelf {
@@ -37,7 +41,13 @@
 
 .luggageQuantityMinusSelf {
   @include counters-buttons-minus-icon;
+  border: $inputs-border;
+  border-top-left-radius: $inputs-border-radius;
+  border-bottom-left-radius: $inputs-border-radius;
 }
 .luggageQuantityPlusSelf {
   @include counters-buttons-plus-icon;
+  border: $inputs-border;
+  border-top-right-radius: $inputs-border-radius;
+  border-bottom-right-radius: $inputs-border-radius;
 }

@@ -1,11 +1,18 @@
-$inputs-background: white;
-$inputs-color: black;
+@use "./_BorderRadiuses.module.scss" as *;
+@use "./_ColorsForCustomize.module.scss" as *;
+
+$inputs-background: transparent;
+$inputs-color: white;
+$inputs-border: 1px solid $borders-color;
+$inputs-border-radius: $inner-elements-border-radius;
+$background-position-x-for-date-time-picker: 4%;
 
 @mixin main-inputs-size-and-background-styles-etc {
   width: 100%;
   height: 33px;
   background-color: $inputs-background;
-  border: none;
+  border: $inputs-border;
+  border-radius: $inputs-border-radius;
   color: $inputs-color;
   &:focus {
     outline: none;
@@ -17,6 +24,7 @@ $inputs-color: black;
   padding-right: 35px;
 
   background-position-x: 2%;
+  background-position-y: 60%;
 }
 @mixin payment-inputs-with-left-padding {
   padding-left: 11px;
@@ -24,9 +32,4 @@ $inputs-color: black;
 
 @mixin margin-top-bottom-for-adressfrom-inputs {
   margin-top: 15px;
-}
-
-@mixin counters-and-switches-icon-margins {
-  margin-left: 4px;
-  margin-right: 10px;
 }

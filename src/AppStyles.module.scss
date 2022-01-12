@@ -181,6 +181,8 @@ html {
   height: 70vh;
   overflow-y: scroll;
   padding-right: 0px;
+  border-bottom-left-radius: $whole-app-border-radius;
+  border-bottom-right-radius: $whole-app-border-radius;
   @include whole-app-background;
   &::-webkit-scrollbar {
     width: 0.15em;
@@ -190,7 +192,7 @@ html {
   }
   &::-webkit-scrollbar-track {
     // margin-top: 84px;
-    // marginBottom: "300px",
+    margin-bottom: 22px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: #c7c7c7;

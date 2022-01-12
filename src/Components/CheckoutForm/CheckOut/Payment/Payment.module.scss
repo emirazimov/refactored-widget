@@ -187,6 +187,20 @@ $background: grey;
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.errorInputs {
+  margin: 0;
+  margin-top: 3px;
+  color: red;
+  font-size: 13px;
+}
+.errorInputs {
+  margin: 0;
+  margin-top: 3px;
+  color: red;
+  font-size: 13px;
+}
+
 .formWrapper {
   width: 100%;
   @include whole-app-background;
@@ -287,11 +301,11 @@ $background: grey;
   &:after {
     position: absolute;
     content: "";
-    border-right: 1px solid rgb(47, 47, 47);
+    border-right: 1px solid $inputs-color;
     top: 28%;
     right: 0;
     width: 1px;
-    height: 41%;
+    height: 44%;
     margin-top: auto;
     margin-bottom: auto;
   }
@@ -300,7 +314,9 @@ $background: grey;
   justify-content: center;
   align-items: flex-start;
 }
-.cardholderInformationInputSelf {
+.cardholderInformationInputSelf,
+.cardholderInformationInputSelfFirstName,
+.cardholderInformationInputSelfLastName {
   @include main-inputs-size-and-background-styles-etc;
   // &::placeholder {
   //   @include payment-inputs-with-left-padding;
@@ -312,6 +328,16 @@ $background: grey;
     opacity: 100;
     color: red;
   }
+}
+.cardholderInformationInputSelfFirstName {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.cardholderInformationInputSelfLastName {
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 .cardholderInformationInputWithFullWidthSelf {
   @include main-inputs-size-and-background-styles-etc;

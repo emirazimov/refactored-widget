@@ -1,18 +1,18 @@
-import React from 'react'
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import { termsApi } from '../../../api/api'
-import { Typography } from '@material-ui/core'
-import { Modal } from '../../Helpers/Modal/Modal'
-import styles from './PrivacyPolicy.module.scss'
+import React from "react"
+import Button from "@material-ui/core/Button"
+import Dialog from "@material-ui/core/Dialog"
+import DialogActions from "@material-ui/core/DialogActions"
+import DialogContent from "@material-ui/core/DialogContent"
+import DialogContentText from "@material-ui/core/DialogContentText"
+import DialogTitle from "@material-ui/core/DialogTitle"
+import { termsApi } from "../../../api/api"
+import { Typography } from "@material-ui/core"
+import { Modal } from "../../Helpers/Modal/Modal"
+import styles from "./PrivacyPolicy.module.scss"
 
 export default function PrivacyPolicy() {
   const [open, setOpen] = React.useState(false)
-  const [privacyPolicy, setPrivacyPolicy] = React.useState('')
+  const [privacyPolicy, setPrivacyPolicy] = React.useState("")
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -24,34 +24,34 @@ export default function PrivacyPolicy() {
 
   const [show, setShow] = React.useState(false)
 
-  React.useEffect(() => {
-    let componentMounted = true
-    const fetchPrivacyPolicy = async () => {
-      const data = await termsApi.getPrivacyPolicy()
-      if (componentMounted) {
-        setPrivacyPolicy(data)
-      }
-      fetchPrivacyPolicy()
-    }
-    return () => {
-      componentMounted = false
-    }
-  }, [])
+  // React.useEffect(() => {
+  //   let componentMounted = true
+  //   const fetchPrivacyPolicy = async () => {
+  //     const data = await termsApi.getPrivacyPolicy()
+  //     if (componentMounted) {
+  //       setPrivacyPolicy(data)
+  //     }
+  //     fetchPrivacyPolicy()
+  //   }
+  //   return () => {
+  //     componentMounted = false
+  //   }
+  // }, [])
 
-  const descriptionElementRef = React.useRef(null)
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef
-      if (descriptionElement !== null) {
-        descriptionElement.focus()
-      }
-    }
-  }, [open])
+  // const descriptionElementRef = React.useRef(null)
+  // React.useEffect(() => {
+  //   if (open) {
+  //     const { current: descriptionElement } = descriptionElementRef
+  //     if (descriptionElement !== null) {
+  //       descriptionElement.focus()
+  //     }
+  //   }
+  // }, [open])
 
   return (
     <>
-      <button
-        onClick={() => setShow(true)}
+      <span
+        onClick={(event) => setShow(true)}
         // disableRipple
         // style={{
         //   height: '50px',
@@ -63,13 +63,13 @@ export default function PrivacyPolicy() {
         className={styles.privacyPolicyOpenButton}
       >
         / Privacy Policy
-      </button>
+      </span>
       <Modal onClose={() => setShow(false)} show={show}>
         {/* <DialogTitle
           id='scroll-dialog-title'
           style={{ height: '55px', backgroundColor: 'black' }}
         > */}
-        <div style={{ width: '600px', height: '100%' }}>
+        <div style={{ width: "600px", height: "100%" }}>
           <span>Privacy Policy</span>
           {/* </DialogTitle> */}
           {/* <DialogContent style={{ backgroundColor: 'black' }}>
@@ -87,31 +87,31 @@ export default function PrivacyPolicy() {
           </p>
           <p>Analytics</p>
           <p>
-            <span style={{ marginRight: '7px' }}>&#9679;</span>Google Analytics
+            <span style={{ marginRight: "7px" }}>&#9679;</span>Google Analytics
             <br />
-            <span style={{ marginRight: '7px' }}>&#9679;</span>Personal Data:
+            <span style={{ marginRight: "7px" }}>&#9679;</span>Personal Data:
             Tracker; Usage Data
           </p>
           <p>Beta Testing</p>
           <p>
-            <span style={{ marginRight: '7px' }}>&#9679;</span>App Center
+            <span style={{ marginRight: "7px" }}>&#9679;</span>App Center
             <br />
-            <span style={{ marginRight: '7px' }}>&#9679;</span>Personal Data:
+            <span style={{ marginRight: "7px" }}>&#9679;</span>Personal Data:
             Data communicated while using the service; email address; various
             types of Data as specified in the privacy policy of the service
             <br />
           </p>
           <p>Displaying content from external platforms</p>
           <p>
-            <span style={{ marginRight: '7px' }}>&#9679;</span>Google Maps
+            <span style={{ marginRight: "7px" }}>&#9679;</span>Google Maps
             widget and Instagram widget
             <br />
-            <span style={{ marginRight: '7px' }}>&#9679;</span>Personal Data:
+            <span style={{ marginRight: "7px" }}>&#9679;</span>Personal Data:
             Tracker; Usage Data
           </p>
           <p>Handling payments</p>
           <p>
-            <span style={{ marginRight: '7px' }}>&#9679;</span>Stripe
+            <span style={{ marginRight: "7px" }}>&#9679;</span>Stripe
             <br />
             Personal Data: billing address; email address; first name; last
             name; purchase history; various types of Data as specified in the
@@ -132,28 +132,28 @@ export default function PrivacyPolicy() {
           </p>
           <p>Interaction with external social networks and platforms</p>
           <p>
-            <span style={{ marginRight: '7px' }}>&#9679;</span>LinkedIn button
+            <span style={{ marginRight: "7px" }}>&#9679;</span>LinkedIn button
             and social widgets and Twitter Tweet button and social widgets
             Personal Data: Tracker; Usage Data <br />
-            <span style={{ marginRight: '7px' }}>&#9679;</span>Buffer button and
+            <span style={{ marginRight: "7px" }}>&#9679;</span>Buffer button and
             social widgets Personal Data:Usage Data
           </p>
           <p>Interaction with live chat platforms</p>
           <p>
-            <span style={{ marginRight: '7px' }}>&#9679;</span>ClickDesk Widget{' '}
+            <span style={{ marginRight: "7px" }}>&#9679;</span>ClickDesk Widget{" "}
             <br />
             Personal Data: Data communicated while using the service; Tracker;
             Usage Data
           </p>
           <p>Platform services and hosting</p>
           <p>
-            <span style={{ marginRight: '7px' }}>&#9679;</span>Apple App Store
+            <span style={{ marginRight: "7px" }}>&#9679;</span>Apple App Store
             and Google Play Store <br />
             Personal Data: Usage Data
           </p>
           <p>Contact information</p>
           <p>
-            <span style={{ marginRight: '7px' }}>&#9679;</span>Owner and Data
+            <span style={{ marginRight: "7px" }}>&#9679;</span>Owner and Data
             Controller <br />
             Bookinglane LLC 1905 Concord Blvd, Concord, 94520, CA, USA
           </p>
